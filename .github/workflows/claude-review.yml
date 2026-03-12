@@ -1,0 +1,46 @@
+name: Claude Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  pull_request_review_comment:
+    types: [created]
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  claude-review:
+    name: AI Code Review
+    # Only run on PR comments that tag @claude, or automatically on new PRs
+    if: |
+      github.event_name == 'pull_request' ||
+      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude')) ||
+      (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@claude'))
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Claude Code Review
+        uses: anthropics/claude-code-action@beta
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          # Custom review prompt tailored for this Next.js sports dashboard
+          custom_instructions: |
+            You are reviewing a Next.js 14 TypeScript sports prediction dashboard.
+
+            Focus your review on:
+            1. **Type safety** — flag any missing types, `any` usage, or unsafe casts
+            2. **API route correctness** — check /api routes (predictions, publish, pipeline, accuracy) for proper error handling and response shapes
+            3. **Security** — look for exposed secrets, unvalidated inputs from external sources, or unsafe env var usage
+            4. **Performance** — flag unnecessary re-renders, large bundle additions, or blocking operations in route handlers
+            5. **Next.js patterns** — ensure App Router conventions are followed (server vs client components, metadata, layouts)
+
+            Be concise. Point out issues with line references. Suggest fixes inline.
+            If the code looks good, say so briefly rather than inventing issues.
