@@ -80,13 +80,19 @@ function ValueBadge({ value }: { value: number }) {
 function Toggle({
   checked,
   onChange,
+  ariaLabel,
 }: {
   checked: boolean;
   onChange: () => void;
+  ariaLabel: string;
 }) {
   return (
-    <div
+    <button
+      type="button"
       onClick={onChange}
+      role="switch"
+      aria-checked={checked}
+      aria-label={ariaLabel}
       style={{
         width: 44,
         height: 24,
@@ -97,6 +103,7 @@ function Toggle({
         border: `1px solid ${checked ? "#00FF8860" : "#2a2a3e"}`,
         position: "relative",
         flexShrink: 0,
+        padding: 0,
       }}
     >
       <div
@@ -111,7 +118,7 @@ function Toggle({
           background: checked ? "#0a0a0f" : "#4a4a5e",
         }}
       />
-    </div>
+    </button>
   );
 }
 
@@ -533,6 +540,7 @@ export default function Dashboard() {
                       <Toggle
                         checked={match.selected}
                         onChange={() => togglePrediction(match.id)}
+                        ariaLabel={`Include ${match.homeTeam} vs ${match.awayTeam} in publishing`}
                       />
                       <div>
                         <div style={{ fontSize: 15, fontWeight: 700 }}>
@@ -622,7 +630,9 @@ export default function Dashboard() {
                             {pred.stake}u
                           </span>
                           <button
+                            type="button"
                             onClick={() => removePick(match.id, pred.market)}
+                            aria-label={`Remove ${pred.market} prediction for ${match.homeTeam} vs ${match.awayTeam}`}
                             style={{
                               background: "none",
                               border: "none",
@@ -699,6 +709,7 @@ export default function Dashboard() {
                   <Toggle
                     checked={selectedPlatforms.includes(p.id)}
                     onChange={() => togglePlatform(p.id)}
+                    ariaLabel={`Publish to ${p.name}`}
                   />
                 </div>
               ))}
