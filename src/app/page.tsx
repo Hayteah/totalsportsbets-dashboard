@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 // =============================================
 // Types
@@ -270,6 +271,7 @@ export default function Dashboard() {
   const tabs = [
     { id: "predictions", label: "Predictions", icon: "🎯" },
     { id: "publish", label: "Publish", icon: "📱" },
+    { id: "branding", label: "Branding", icon: "🎨" },
     { id: "accuracy", label: "Accuracy", icon: "📊" },
     { id: "settings", label: "Settings", icon: "⚙️" },
   ];
@@ -334,32 +336,60 @@ export default function Dashboard() {
         </div>
 
         <div style={{ padding: "16px 12px", flex: 1 }}>
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              style={{
-                width: "100%",
-                display: "flex",
-                alignItems: "center",
-                gap: 10,
-                padding: "12px 14px",
-                borderRadius: 10,
-                border: "none",
-                cursor: "pointer",
-                background: activeTab === tab.id ? "#00FF8812" : "transparent",
-                color: activeTab === tab.id ? "#00FF88" : "#6b6b80",
-                fontSize: 14,
-                fontWeight: 600,
-                fontFamily: "inherit",
-                marginBottom: 4,
-                transition: "all 0.15s",
-                textAlign: "left" as const,
-              }}
-            >
-              <span style={{ fontSize: 16 }}>{tab.icon}</span> {tab.label}
-            </button>
-          ))}
+          {tabs.map((tab) =>
+            tab.id === "branding" ? (
+              <Link
+                key={tab.id}
+                href="/branding"
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  padding: "12px 14px",
+                  borderRadius: 10,
+                  border: "none",
+                  cursor: "pointer",
+                  background: "transparent",
+                  color: "#6b6b80",
+                  fontSize: 14,
+                  fontWeight: 600,
+                  fontFamily: "inherit",
+                  marginBottom: 4,
+                  transition: "all 0.15s",
+                  textAlign: "left",
+                  textDecoration: "none",
+                }}
+              >
+                <span style={{ fontSize: 16 }}>{tab.icon}</span> {tab.label}
+              </Link>
+            ) : (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  padding: "12px 14px",
+                  borderRadius: 10,
+                  border: "none",
+                  cursor: "pointer",
+                  background: activeTab === tab.id ? "#00FF8812" : "transparent",
+                  color: activeTab === tab.id ? "#00FF88" : "#6b6b80",
+                  fontSize: 14,
+                  fontWeight: 600,
+                  fontFamily: "inherit",
+                  marginBottom: 4,
+                  transition: "all 0.15s",
+                  textAlign: "left" as const,
+                }}
+              >
+                <span style={{ fontSize: 16 }}>{tab.icon}</span> {tab.label}
+              </button>
+            ),
+          )}
         </div>
 
         <div style={{ padding: "16px 12px", borderTop: "1px solid #1a1a2e" }}>
