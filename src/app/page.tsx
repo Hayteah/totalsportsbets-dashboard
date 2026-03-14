@@ -80,12 +80,18 @@ function ValueBadge({ value }: { value: number }) {
 function Toggle({
   checked,
   onChange,
+  label,
 }: {
   checked: boolean;
   onChange: () => void;
+  label: string;
 }) {
   return (
-    <div
+    <button
+      type="button"
+      role="switch"
+      aria-checked={checked}
+      aria-label={label}
       onClick={onChange}
       style={{
         width: 44,
@@ -97,6 +103,7 @@ function Toggle({
         border: `1px solid ${checked ? "#00FF8860" : "#2a2a3e"}`,
         position: "relative",
         flexShrink: 0,
+        padding: 0,
       }}
     >
       <div
@@ -111,7 +118,7 @@ function Toggle({
           background: checked ? "#0a0a0f" : "#4a4a5e",
         }}
       />
-    </div>
+    </button>
   );
 }
 
@@ -450,6 +457,8 @@ export default function Dashboard() {
         {/* Status banner */}
         {publishStatus && (
           <div
+            role="status"
+            aria-live="polite"
             style={{
               padding: "14px 20px",
               borderRadius: 10,
@@ -533,6 +542,7 @@ export default function Dashboard() {
                       <Toggle
                         checked={match.selected}
                         onChange={() => togglePrediction(match.id)}
+                        label={`Include ${match.homeTeam} vs ${match.awayTeam} in publishing`}
                       />
                       <div>
                         <div style={{ fontSize: 15, fontWeight: 700 }}>
@@ -622,6 +632,7 @@ export default function Dashboard() {
                             {pred.stake}u
                           </span>
                           <button
+                            aria-label={`Remove ${pred.market} pick for ${match.homeTeam} vs ${match.awayTeam}`}
                             onClick={() => removePick(match.id, pred.market)}
                             style={{
                               background: "none",
@@ -631,7 +642,14 @@ export default function Dashboard() {
                               fontSize: 16,
                               padding: "2px 6px",
                               borderRadius: 4,
+                              transition: "all 0.2s",
                             }}
+                            onMouseOver={(e) =>
+                              (e.currentTarget.style.color = "#FF6B6B")
+                            }
+                            onMouseOut={(e) =>
+                              (e.currentTarget.style.color = "#FF6B6B60")
+                            }
                           >
                             ×
                           </button>
@@ -699,6 +717,7 @@ export default function Dashboard() {
                   <Toggle
                     checked={selectedPlatforms.includes(p.id)}
                     onChange={() => togglePlatform(p.id)}
+                    label={`Select ${p.name} for publishing`}
                   />
                 </div>
               ))}
