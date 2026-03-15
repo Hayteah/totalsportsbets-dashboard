@@ -80,12 +80,18 @@ function ValueBadge({ value }: { value: number }) {
 function Toggle({
   checked,
   onChange,
+  ariaLabel,
 }: {
   checked: boolean;
   onChange: () => void;
+  ariaLabel: string;
 }) {
   return (
-    <div
+    <button
+      type="button"
+      role="switch"
+      aria-checked={checked}
+      aria-label={ariaLabel}
       onClick={onChange}
       style={{
         width: 44,
@@ -97,6 +103,7 @@ function Toggle({
         border: `1px solid ${checked ? "#00FF8860" : "#2a2a3e"}`,
         position: "relative",
         flexShrink: 0,
+        padding: 0,
       }}
     >
       <div
@@ -111,7 +118,7 @@ function Toggle({
           background: checked ? "#0a0a0f" : "#4a4a5e",
         }}
       />
-    </div>
+    </button>
   );
 }
 
@@ -337,6 +344,7 @@ export default function Dashboard() {
           {tabs.map((tab) => (
             <button
               key={tab.id}
+              type="button"
               onClick={() => setActiveTab(tab.id)}
               style={{
                 width: "100%",
@@ -364,6 +372,7 @@ export default function Dashboard() {
 
         <div style={{ padding: "16px 12px", borderTop: "1px solid #1a1a2e" }}>
           <button
+            type="button"
             onClick={runPipeline}
             disabled={pipelineRunning}
             style={{
@@ -495,7 +504,7 @@ export default function Dashboard() {
                   No predictions yet
                 </div>
                 <div style={{ fontSize: 13, color: "#4a4a5e" }}>
-                  Click "Run Full Pipeline" to fetch today's data and generate
+                  Click &quot;Run Full Pipeline&quot; to fetch today&apos;s data and generate
                   predictions
                 </div>
               </div>
@@ -533,6 +542,7 @@ export default function Dashboard() {
                       <Toggle
                         checked={match.selected}
                         onChange={() => togglePrediction(match.id)}
+                        ariaLabel={`Include ${match.homeTeam} vs ${match.awayTeam} in selection`}
                       />
                       <div>
                         <div style={{ fontSize: 15, fontWeight: 700 }}>
@@ -622,6 +632,8 @@ export default function Dashboard() {
                             {pred.stake}u
                           </span>
                           <button
+                            type="button"
+                            aria-label={`Remove ${pred.pick} from ${pred.market}`}
                             onClick={() => removePick(match.id, pred.market)}
                             style={{
                               background: "none",
@@ -699,6 +711,7 @@ export default function Dashboard() {
                   <Toggle
                     checked={selectedPlatforms.includes(p.id)}
                     onChange={() => togglePlatform(p.id)}
+                    ariaLabel={`Select ${p.name}`}
                   />
                 </div>
               ))}
@@ -734,6 +747,7 @@ export default function Dashboard() {
                     (time) => (
                       <button
                         key={time}
+                        type="button"
                         onClick={() => setScheduleTime(time)}
                         style={{
                           padding: "10px 16px",
@@ -813,6 +827,7 @@ export default function Dashboard() {
 
             <div style={{ gridColumn: "1 / -1" }}>
               <button
+                type="button"
                 onClick={handlePublish}
                 disabled={isPublishing || selectedPlatforms.length === 0}
                 style={{
@@ -1180,6 +1195,7 @@ export default function Dashboard() {
                 ].map((action, i) => (
                   <button
                     key={i}
+                    type="button"
                     style={{
                       display: "flex",
                       justifyContent: "space-between",
