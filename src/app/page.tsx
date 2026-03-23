@@ -80,13 +80,26 @@ function ValueBadge({ value }: { value: number }) {
 function Toggle({
   checked,
   onChange,
+  label,
 }: {
   checked: boolean;
   onChange: () => void;
+  label?: string;
 }) {
+  const [isFocused, setIsFocused] = useState(false);
+
   return (
-    <div
-      onClick={onChange}
+    <button
+      type="button"
+      role="switch"
+      aria-checked={checked}
+      aria-label={label}
+      onClick={(e) => {
+        e.stopPropagation();
+        onChange();
+      }}
+      onFocus={() => setIsFocused(true)}
+      onBlur={() => setIsFocused(false)}
       style={{
         width: 44,
         height: 24,
@@ -97,6 +110,9 @@ function Toggle({
         border: `1px solid ${checked ? "#00FF8860" : "#2a2a3e"}`,
         position: "relative",
         flexShrink: 0,
+        padding: 0,
+        outline: isFocused ? "2px solid #00FF88" : "none",
+        outlineOffset: "2px",
       }}
     >
       <div
@@ -111,7 +127,7 @@ function Toggle({
           background: checked ? "#0a0a0f" : "#4a4a5e",
         }}
       />
-    </div>
+    </button>
   );
 }
 
@@ -143,6 +159,7 @@ const platforms = [
 // =============================================
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState("predictions");
+  const [focusedRemoveBtn, setFocusedRemoveBtn] = useState<string | null>(null);
   const [predictions, setPredictions] = useState<Match[]>([]);
   const [selectedPlatforms, setSelectedPlatforms] = useState(["instagram"]);
   const [scheduleTime, setScheduleTime] = useState("12:00");
@@ -533,6 +550,7 @@ export default function Dashboard() {
                       <Toggle
                         checked={match.selected}
                         onChange={() => togglePrediction(match.id)}
+                        label={`Include ${match.homeTeam} vs ${match.awayTeam} in publishing`}
                       />
                       <div>
                         <div style={{ fontSize: 15, fontWeight: 700 }}>
@@ -623,14 +641,42 @@ export default function Dashboard() {
                           </span>
                           <button
                             onClick={() => removePick(match.id, pred.market)}
+                            onFocus={() =>
+                              setFocusedRemoveBtn(`${match.id}-${pred.market}`)
+                            }
+                            onBlur={() => setFocusedRemoveBtn(null)}
+                            aria-label={`Remove ${pred.market} pick for ${match.homeTeam} vs ${match.awayTeam}`}
+                            title="Remove pick"
                             style={{
                               background: "none",
                               border: "none",
-                              color: "#FF6B6B60",
+                              color:
+                                focusedRemoveBtn ===
+                                `${match.id}-${pred.market}`
+                                  ? "#FF6B6B"
+                                  : "#FF6B6B60",
                               cursor: "pointer",
                               fontSize: 16,
                               padding: "2px 6px",
                               borderRadius: 4,
+                              transition: "all 0.2s",
+                              outline:
+                                focusedRemoveBtn ===
+                                `${match.id}-${pred.market}`
+                                  ? "2px solid #FF6B6B"
+                                  : "none",
+                              outlineOffset: "2px",
+                            }}
+                            onMouseOver={(e) =>
+                              (e.currentTarget.style.color = "#FF6B6B")
+                            }
+                            onMouseOut={(e) => {
+                              if (
+                                focusedRemoveBtn !==
+                                `${match.id}-${pred.market}`
+                              ) {
+                                e.currentTarget.style.color = "#FF6B6B60";
+                              }
                             }}
                           >
                             ×
@@ -699,6 +745,7 @@ export default function Dashboard() {
                   <Toggle
                     checked={selectedPlatforms.includes(p.id)}
                     onChange={() => togglePlatform(p.id)}
+                    label={`Publish to ${p.name}`}
                   />
                 </div>
               ))}
