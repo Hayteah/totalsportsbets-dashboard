@@ -1,0 +1,3 @@
+## 2026-03-29 - [Accessibility for Interactive Components]
+**Learning:** Custom UI components like toggles often lack standard accessibility features (role, aria-checked, keyboard focus) when built with generic divs. Converting them to semantic buttons with appropriate ARIA attributes and custom focus indicators significantly improves the experience for keyboard and screen reader users without requiring global CSS changes.
+**Action:** Always use semantic elements (like `<button>`) for interactive components and manage focus states manually using `onFocus`/`onBlur` if a custom focus ring is required for brand consistency.
