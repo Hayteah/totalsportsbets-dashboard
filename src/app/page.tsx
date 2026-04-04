@@ -36,6 +36,36 @@ type DayRecord = {
 // =============================================
 // Small Components
 // =============================================
+function RemovePickButton({ onClick }: { onClick: () => void }) {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label="Remove pick"
+      title="Remove pick"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onFocus={() => setIsFocused(true)}
+      onBlur={() => setIsFocused(false)}
+      style={{
+        background: "none",
+        border: "none",
+        color: isHovered || isFocused ? "#FF6B6B" : "#FF6B6B60",
+        cursor: "pointer",
+        fontSize: 16,
+        padding: "2px 6px",
+        borderRadius: 4,
+        transition: "all 0.2s",
+        outline: isFocused ? "1px solid #FF6B6B40" : "none",
+      }}
+    >
+      ×
+    </button>
+  );
+}
+
 function ConfBadge({ confidence }: { confidence: number }) {
   const color =
     confidence >= 75 ? "#00FF88" : confidence >= 60 ? "#FFAA00" : "#FF6B6B";
@@ -80,13 +110,22 @@ function ValueBadge({ value }: { value: number }) {
 function Toggle({
   checked,
   onChange,
+  ariaLabel,
 }: {
   checked: boolean;
   onChange: () => void;
+  ariaLabel?: string;
 }) {
+  const [isFocused, setIsFocused] = useState(false);
   return (
-    <div
+    <button
+      type="button"
+      role="switch"
+      aria-checked={checked}
+      aria-label={ariaLabel}
       onClick={onChange}
+      onFocus={() => setIsFocused(true)}
+      onBlur={() => setIsFocused(false)}
       style={{
         width: 44,
         height: 24,
@@ -97,6 +136,9 @@ function Toggle({
         border: `1px solid ${checked ? "#00FF8860" : "#2a2a3e"}`,
         position: "relative",
         flexShrink: 0,
+        padding: 0,
+        outline: isFocused ? "2px solid #00FF88" : "none",
+        outlineOffset: "2px",
       }}
     >
       <div
@@ -111,13 +153,15 @@ function Toggle({
           background: checked ? "#0a0a0f" : "#4a4a5e",
         }}
       />
-    </div>
+    </button>
   );
 }
 
 function StatusDot({ active }: { active: boolean }) {
   return (
     <div
+      role="status"
+      aria-label={active ? "Active" : "Inactive"}
       style={{
         width: 8,
         height: 8,
@@ -164,10 +208,13 @@ export default function Dashboard() {
     try {
       const res = await fetch("/api/predictions");
       const data = await res.json();
-      if (data.predictions) {
+      if (data.predictions && data.predictions.length > 0) {
         setPredictions(
           data.predictions.map((m: any) => ({ ...m, selected: true })),
         );
+      } else {
+        // Use demo data if API returns empty predictions
+        setPredictions(getDemoData());
       }
     } catch {
       // Use demo data if API not connected yet
@@ -450,6 +497,8 @@ export default function Dashboard() {
         {/* Status banner */}
         {publishStatus && (
           <div
+            role="status"
+            aria-live="polite"
             style={{
               padding: "14px 20px",
               borderRadius: 10,
@@ -533,6 +582,7 @@ export default function Dashboard() {
                       <Toggle
                         checked={match.selected}
                         onChange={() => togglePrediction(match.id)}
+                        ariaLabel={`Select match: ${match.homeTeam} vs ${match.awayTeam}`}
                       />
                       <div>
                         <div style={{ fontSize: 15, fontWeight: 700 }}>
@@ -621,20 +671,7 @@ export default function Dashboard() {
                           >
                             {pred.stake}u
                           </span>
-                          <button
-                            onClick={() => removePick(match.id, pred.market)}
-                            style={{
-                              background: "none",
-                              border: "none",
-                              color: "#FF6B6B60",
-                              cursor: "pointer",
-                              fontSize: 16,
-                              padding: "2px 6px",
-                              borderRadius: 4,
-                            }}
-                          >
-                            ×
-                          </button>
+<RemovePickButton onClick={() => removePick(match.id, pred.market)} />
                         </div>
                       </div>
                     ))}
@@ -699,6 +736,7 @@ export default function Dashboard() {
                   <Toggle
                     checked={selectedPlatforms.includes(p.id)}
                     onChange={() => togglePlatform(p.id)}
+                    ariaLabel={`Enable publishing to ${p.name}`}
                   />
                 </div>
               ))}
