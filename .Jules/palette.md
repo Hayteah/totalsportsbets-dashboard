@@ -1,0 +1,4 @@
+## 2026-04-15 - [Accessible Toggle and Interactive Icon Buttons]
+**Learning:** Custom UI components like toggles implemented with `div` lack essential accessibility features. Semantic conversion to `button` with `role="switch"` and `aria-checked` is required for screen reader support. Focus indicators must be manually managed via `useState` and `onFocus`/`onBlur` when using inline styles in React, as `:focus-visible` cannot be directly applied. Icon-only buttons (like "×" for removal) require `aria-label` and `title` to provide context to assistive technologies and visual tooltips for users.
+
+**Action:** Always use semantic HTML elements (`button` instead of `div` for interactive controls). For inline-styled components, implement `isFocused` state to provide visible focus rings. Ensure all icon-only interactive elements have descriptive `aria-label` and `title` attributes.
