@@ -1,0 +1,3 @@
+## 2026-04-23 - [Toggle Accessibility & Focus States]
+**Learning:** The dashboard used non-semantic `div` elements for toggles, which are inaccessible to screen readers and lack keyboard navigation. Manual focus state management using `useState` and `onFocus`/`onBlur` is necessary for custom focus indicators when using inline styles in React, as `:focus-visible` cannot be applied via the `style` attribute.
+**Action:** Always refactor interactive `div` elements to semantic `button` or `input` elements. Use `role="switch"` and `aria-checked` for toggle buttons. Implement visible focus indicators for all interactive elements to ensure keyboard accessibility.
