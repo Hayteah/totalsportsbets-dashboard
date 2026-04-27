@@ -1,0 +1,3 @@
+## 2026-04-27 - [Component Accessibility & Focus Management]
+**Learning:** In a project using React with direct inline styles (no tailwind or external CSS files), interactive elements like toggles implemented as `div`s are invisible to screen readers and keyboard users. Additionally, focus-visible states cannot be managed via CSS pseudo-classes in the `style` attribute.
+**Action:** Always use semantic HTML (e.g., `<button type="button">`) for interactive components. Implement `role="switch"`, `aria-checked`, and `aria-label` for toggles. Manage focus visibility using React state (`onFocus`, `onBlur`) to apply a neon green outline (`2px solid #00FF88`) when the element is focused.
