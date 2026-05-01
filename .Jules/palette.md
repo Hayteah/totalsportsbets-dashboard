@@ -1,0 +1,3 @@
+## 2026-05-01 - [Accessible Toggle Patterns]
+**Learning:** In this dashboard, interactive components like toggles were implemented using non-semantic `div` elements, lacking keyboard support and ARIA roles. Since the project heavily relies on inline styles, standard CSS pseudo-classes like `:focus-visible` cannot be used directly for accessibility indicators.
+**Action:** Always convert non-semantic interactive `div`s to semantic `button` elements with appropriate ARIA roles (e.g., `role="switch"`). Manage focus visibility using local React state (`onFocus`, `onBlur`) to apply custom outline styles through the `style` attribute.
