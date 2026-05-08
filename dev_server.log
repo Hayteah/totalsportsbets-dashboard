@@ -1,0 +1,25 @@
+
+> totalsportbet-dashboard@1.0.0 dev /app
+> next dev
+
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+ ✓ Ready in 1795ms
+ ○ Compiling / ...
+ ✓ Compiled / in 4s (461 modules)
+ GET / 200 in 4495ms
+ ○ Compiling /api/accuracy ...
+ ✓ Compiled /api/accuracy in 6.9s (253 modules)
+ ✓ Compiled (255 modules)
+ GET /api/predictions 200 in 13ms
+ ✓ Compiled in 89ms (253 modules)
+ ✓ Compiled in 277ms (477 modules)
+ GET / 200 in 164ms
+ GET /api/accuracy 200 in 43ms
+ GET /api/accuracy 200 in 22ms
+ ✓ Compiled /_not-found in 420ms (480 modules)
+ GET /api/predictions 404 in 555ms
+ GET /api/predictions 404 in 24ms
+ ✓ Compiled in 348ms (480 modules)
