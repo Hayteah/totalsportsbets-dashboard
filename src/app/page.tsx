@@ -80,13 +80,26 @@ function ValueBadge({ value }: { value: number }) {
 function Toggle({
   checked,
   onChange,
+  ariaLabel,
 }: {
   checked: boolean;
   onChange: () => void;
+  ariaLabel: string;
 }) {
+  const [isFocused, setIsFocused] = useState(false);
+
   return (
-    <div
-      onClick={onChange}
+    <button
+      type="button"
+      role="switch"
+      aria-checked={checked}
+      aria-label={ariaLabel}
+      onFocus={() => setIsFocused(true)}
+      onBlur={() => setIsFocused(false)}
+      onClick={(e) => {
+        e.stopPropagation();
+        onChange();
+      }}
       style={{
         width: 44,
         height: 24,
@@ -95,8 +108,11 @@ function Toggle({
         transition: "all 0.2s",
         background: checked ? "#00FF88" : "#1a1a2e",
         border: `1px solid ${checked ? "#00FF8860" : "#2a2a3e"}`,
+        outline: isFocused ? "2px solid #00FF88" : "none",
+        outlineOffset: "2px",
         position: "relative",
         flexShrink: 0,
+        padding: 0,
       }}
     >
       <div
@@ -111,13 +127,15 @@ function Toggle({
           background: checked ? "#0a0a0f" : "#4a4a5e",
         }}
       />
-    </div>
+    </button>
   );
 }
 
 function StatusDot({ active }: { active: boolean }) {
   return (
     <div
+      role="img"
+      aria-label={active ? "Active" : "Inactive"}
       style={{
         width: 8,
         height: 8,
@@ -482,9 +500,25 @@ export default function Dashboard() {
                   textAlign: "center" as const,
                   padding: 60,
                   color: "#4a4a5e",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: 12,
                 }}
               >
-                Loading predictions...
+                <div
+                  style={{
+                    width: 24,
+                    height: 24,
+                    border: "2px solid #1a1a2e",
+                    borderTopColor: "#00FF88",
+                    borderRadius: "50%",
+                    animation: "spin 1s linear infinite",
+                  }}
+                />
+                <span style={{ fontSize: 13, fontWeight: 500 }}>
+                  Loading predictions...
+                </span>
               </div>
             ) : predictions.length === 0 ? (
               <div style={{ textAlign: "center" as const, padding: 60 }}>
@@ -533,6 +567,7 @@ export default function Dashboard() {
                       <Toggle
                         checked={match.selected}
                         onChange={() => togglePrediction(match.id)}
+                        ariaLabel={`Select match: ${match.homeTeam} vs ${match.awayTeam}`}
                       />
                       <div>
                         <div style={{ fontSize: 15, fontWeight: 700 }}>
@@ -623,6 +658,8 @@ export default function Dashboard() {
                           </span>
                           <button
                             onClick={() => removePick(match.id, pred.market)}
+                            aria-label={`Remove pick: ${pred.pick} for ${pred.market}`}
+                            title="Remove pick"
                             style={{
                               background: "none",
                               border: "none",
@@ -699,6 +736,7 @@ export default function Dashboard() {
                   <Toggle
                     checked={selectedPlatforms.includes(p.id)}
                     onChange={() => togglePlatform(p.id)}
+                    ariaLabel={`Enable ${p.name}`}
                   />
                 </div>
               ))}
