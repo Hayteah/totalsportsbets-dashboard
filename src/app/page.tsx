@@ -80,13 +80,26 @@ function ValueBadge({ value }: { value: number }) {
 function Toggle({
   checked,
   onChange,
+  ariaLabel,
 }: {
   checked: boolean;
   onChange: () => void;
+  ariaLabel: string;
 }) {
+  const [isFocused, setIsFocused] = useState(false);
+
   return (
-    <div
-      onClick={onChange}
+    <button
+      type="button"
+      role="switch"
+      aria-checked={checked}
+      aria-label={ariaLabel}
+      onFocus={() => setIsFocused(true)}
+      onBlur={() => setIsFocused(false)}
+      onClick={(e) => {
+        e.stopPropagation();
+        onChange();
+      }}
       style={{
         width: 44,
         height: 24,
@@ -94,9 +107,14 @@ function Toggle({
         cursor: "pointer",
         transition: "all 0.2s",
         background: checked ? "#00FF88" : "#1a1a2e",
-        border: `1px solid ${checked ? "#00FF8860" : "#2a2a3e"}`,
+        border: isFocused
+          ? "1px solid #00FF88"
+          : `1px solid ${checked ? "#00FF8860" : "#2a2a3e"}`,
+        outline: isFocused ? "2px solid #00FF88" : "none",
+        outlineOffset: "2px",
         position: "relative",
         flexShrink: 0,
+        padding: 0,
       }}
     >
       <div
@@ -109,9 +127,10 @@ function Toggle({
           left: checked ? 22 : 2,
           transition: "all 0.2s",
           background: checked ? "#0a0a0f" : "#4a4a5e",
+          pointerEvents: "none",
         }}
       />
-    </div>
+    </button>
   );
 }
 
@@ -533,6 +552,7 @@ export default function Dashboard() {
                       <Toggle
                         checked={match.selected}
                         onChange={() => togglePrediction(match.id)}
+                        ariaLabel={`Include ${match.homeTeam} vs ${match.awayTeam} in publishing`}
                       />
                       <div>
                         <div style={{ fontSize: 15, fontWeight: 700 }}>
@@ -623,6 +643,8 @@ export default function Dashboard() {
                           </span>
                           <button
                             onClick={() => removePick(match.id, pred.market)}
+                            aria-label="Remove pick"
+                            title="Remove pick"
                             style={{
                               background: "none",
                               border: "none",
@@ -699,6 +721,7 @@ export default function Dashboard() {
                   <Toggle
                     checked={selectedPlatforms.includes(p.id)}
                     onChange={() => togglePlatform(p.id)}
+                    ariaLabel={`Enable publishing to ${p.name}`}
                   />
                 </div>
               ))}
