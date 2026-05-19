@@ -132,8 +132,30 @@ function StatusDot({ active }: { active: boolean }) {
 // Platforms config
 // =============================================
 const platforms = [
-  { id: "instagram", name: "Instagram", icon: "📸", connected: true },
-  { id: "facebook", name: "Facebook", icon: "📘", connected: true },
+  {
+    id: "instagram",
+    name: "Instagram",
+    icon: "/branding/instagram-pfp.svg",
+    connected: true,
+  },
+  {
+    id: "facebook",
+    name: "Facebook",
+    icon: "/branding/facebook-pfp.svg",
+    connected: true,
+  },
+  {
+    id: "youtube",
+    name: "YouTube",
+    icon: "/branding/youtube-pfp.svg",
+    connected: true,
+  },
+  {
+    id: "twitter",
+    name: "Twitter",
+    icon: "/branding/twitter-pfp.svg",
+    connected: true,
+  },
   { id: "tiktok", name: "TikTok", icon: "🎵", connected: false },
   { id: "telegram", name: "Telegram", icon: "✈️", connected: false },
 ];
@@ -304,10 +326,14 @@ export default function Dashboard() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontSize: 18,
+                overflow: "hidden",
               }}
             >
-              ⚡
+              <img
+                src="/branding/homepage-icon.svg"
+                alt="Logo"
+                style={{ width: "100%", height: "100%", objectFit: "contain" }}
+              />
             </div>
             <div>
               <div
@@ -681,7 +707,31 @@ export default function Dashboard() {
                   <div
                     style={{ display: "flex", alignItems: "center", gap: 12 }}
                   >
-                    <span style={{ fontSize: 20 }}>{p.icon}</span>
+                    <div
+                      style={{
+                        width: 24,
+                        height: 24,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        overflow: "hidden",
+                        fontSize: 20,
+                      }}
+                    >
+                      {p.icon.startsWith("/") ? (
+                        <img
+                          src={p.icon}
+                          alt={p.name}
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "contain",
+                          }}
+                        />
+                      ) : (
+                        <span>{p.icon}</span>
+                      )}
+                    </div>
                     <div>
                       <div style={{ fontSize: 14, fontWeight: 600 }}>
                         {p.name}
@@ -800,11 +850,34 @@ export default function Dashboard() {
                         fontWeight: 600,
                       }}
                     >
-                      {i === 0
-                        ? "COVER"
-                        : i <= selectedCount
-                          ? `MATCH ${i}`
-                          : "ACCA"}
+                      {i === 0 ? (
+                        <div
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            gap: 4,
+                          }}
+                        >
+                          <img
+                            src="/branding/template-icon.svg"
+                            alt="Cover"
+                            style={{
+                              width: "40%",
+                              height: "40%",
+                              objectFit: "contain",
+                            }}
+                          />
+                          <span style={{ fontSize: 8 }}>COVER</span>
+                        </div>
+                      ) : i <= selectedCount ? (
+                        `MATCH ${i}`
+                      ) : (
+                        "ACCA"
+                      )}
                     </div>
                   ))}
                 </div>
