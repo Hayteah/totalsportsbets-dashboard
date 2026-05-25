@@ -1,0 +1,3 @@
+## 2025-05-14 - Semantic Toggles and ARIA Enhancements
+**Learning:** Replacing `div`-based interactive elements with semantic `<button>` tags and proper ARIA roles (`switch`, `img`) significantly improves accessibility and robustness. Using local React state for focus rings ensures that users navigating via keyboard have clear visual feedback, which is critical in high-contrast or dark-themed dashboards.
+**Action:** Prioritize semantic elements over generic containers for all interactive components. Always include descriptive `aria-label` or `aria-labelledby` for icon-only buttons to ensure they are accessible to screen reader users.
