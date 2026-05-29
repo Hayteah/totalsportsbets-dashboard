@@ -1,0 +1,3 @@
+## 2026-05-29 - [Semantic Toggles & Focus Visibility]
+**Learning:** Using a semantic `<button>` with `role="switch"` instead of a `<div>` for toggles is critical for screen reader and keyboard accessibility. Additionally, inline styles like `outline: "none"` on interactive elements will override global focus indicators in CSS, potentially breaking accessibility even if a global style exists.
+**Action:** Always use semantic interactive elements (buttons/links) for clickable components and avoid inline focus-suppressing styles unless a custom focus state is explicitly provided in the same style object.
