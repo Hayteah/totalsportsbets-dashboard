@@ -132,8 +132,30 @@ function StatusDot({ active }: { active: boolean }) {
 // Platforms config
 // =============================================
 const platforms = [
-  { id: "instagram", name: "Instagram", icon: "📸", connected: true },
-  { id: "facebook", name: "Facebook", icon: "📘", connected: true },
+  {
+    id: "instagram",
+    name: "Instagram",
+    icon: "/branding/instagram-pfp.svg",
+    connected: true,
+  },
+  {
+    id: "youtube",
+    name: "YouTube",
+    icon: "/branding/youtube-pfp.svg",
+    connected: true,
+  },
+  {
+    id: "facebook",
+    name: "Facebook",
+    icon: "/branding/facebook-pfp.svg",
+    connected: true,
+  },
+  {
+    id: "twitter",
+    name: "Twitter",
+    icon: "/branding/twitter-pfp.svg",
+    connected: true,
+  },
   { id: "tiktok", name: "TikTok", icon: "🎵", connected: false },
   { id: "telegram", name: "Telegram", icon: "✈️", connected: false },
 ];
@@ -300,14 +322,17 @@ export default function Dashboard() {
                 width: 36,
                 height: 36,
                 borderRadius: 10,
-                background: "linear-gradient(135deg, #00FF88, #00AAFF)",
+                overflow: "hidden",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontSize: 18,
               }}
             >
-              ⚡
+              <img
+                src="/branding/logo.svg"
+                alt="Totalsportbet Logo"
+                style={{ width: "100%", height: "100%", objectFit: "contain" }}
+              />
             </div>
             <div>
               <div
@@ -681,7 +706,28 @@ export default function Dashboard() {
                   <div
                     style={{ display: "flex", alignItems: "center", gap: 12 }}
                   >
-                    <span style={{ fontSize: 20 }}>{p.icon}</span>
+                    {p.icon.startsWith("/") ? (
+                      <div
+                        style={{
+                          width: 24,
+                          height: 24,
+                          borderRadius: 4,
+                          overflow: "hidden",
+                        }}
+                      >
+                        <img
+                          src={p.icon}
+                          alt={p.name}
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "contain",
+                          }}
+                        />
+                      </div>
+                    ) : (
+                      <span style={{ fontSize: 20 }}>{p.icon}</span>
+                    )}
                     <div>
                       <div style={{ fontSize: 14, fontWeight: 600 }}>
                         {p.name}
@@ -798,13 +844,25 @@ export default function Dashboard() {
                         fontSize: 10,
                         color: "#4a4a5e",
                         fontWeight: 600,
+                        overflow: "hidden",
                       }}
                     >
-                      {i === 0
-                        ? "COVER"
-                        : i <= selectedCount
-                          ? `MATCH ${i}`
-                          : "ACCA"}
+                      {i === 0 ? (
+                        <img
+                          src="/branding/template-icon.svg"
+                          alt="Cover Template"
+                          style={{
+                            width: "60%",
+                            height: "60%",
+                            objectFit: "contain",
+                            opacity: 0.8,
+                          }}
+                        />
+                      ) : i <= selectedCount ? (
+                        `MATCH ${i}`
+                      ) : (
+                        "ACCA"
+                      )}
                     </div>
                   ))}
                 </div>
