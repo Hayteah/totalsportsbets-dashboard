@@ -1,0 +1,3 @@
+## 2025-06-05 - [Accessibility & PR Hygiene]
+**Learning:** Transitioning from non-semantic `div` to `button` for components like Toggles significantly improves keyboard accessibility but requires careful handling of default browser styles (like `padding: 0`). Additionally, PR hygiene is critical when working in environments with existing lockfiles; avoid committing auto-generated `pnpm-lock.yaml` if `package-lock.json` is already present to prevent repository pollution.
+**Action:** Always use semantic buttons for switches/toggles, apply global `:focus-visible` styles, and check for "junk" files (logs, unintentional lockfiles) before submission.
