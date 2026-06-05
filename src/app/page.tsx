@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 // =============================================
 // Types
@@ -132,8 +133,10 @@ function StatusDot({ active }: { active: boolean }) {
 // Platforms config
 // =============================================
 const platforms = [
-  { id: "instagram", name: "Instagram", icon: "📸", connected: true },
-  { id: "facebook", name: "Facebook", icon: "📘", connected: true },
+  { id: "instagram", name: "Instagram", icon: "/branding/instagram-pfp.svg", connected: true },
+  { id: "youtube", name: "YouTube", icon: "/branding/youtube-pfp.svg", connected: true },
+  { id: "facebook", name: "Facebook", icon: "/branding/facebook-pfp.svg", connected: true },
+  { id: "twitter", name: "Twitter", icon: "/branding/twitter-pfp.svg", connected: true },
   { id: "tiktok", name: "TikTok", icon: "🎵", connected: false },
   { id: "telegram", name: "Telegram", icon: "✈️", connected: false },
 ];
@@ -300,14 +303,19 @@ export default function Dashboard() {
                 width: 36,
                 height: 36,
                 borderRadius: 10,
-                background: "linear-gradient(135deg, #00FF88, #00AAFF)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontSize: 18,
+                overflow: "hidden",
               }}
             >
-              ⚡
+              <Image
+                src="/branding/logo.svg"
+                alt="Logo"
+                width={36}
+                height={36}
+                style={{ objectFit: 'contain' }}
+              />
             </div>
             <div>
               <div
@@ -681,7 +689,13 @@ export default function Dashboard() {
                   <div
                     style={{ display: "flex", alignItems: "center", gap: 12 }}
                   >
-                    <span style={{ fontSize: 20 }}>{p.icon}</span>
+                    <div style={{ width: 24, height: 24, borderRadius: 4, overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      {p.icon.startsWith("/") ? (
+                        <Image src={p.icon} alt={p.name} width={24} height={24} style={{ objectFit: 'contain' }} />
+                      ) : (
+                        <span style={{ fontSize: 20 }}>{p.icon}</span>
+                      )}
+                    </div>
                     <div>
                       <div style={{ fontSize: 14, fontWeight: 600 }}>
                         {p.name}
@@ -787,10 +801,7 @@ export default function Dashboard() {
                       style={{
                         aspectRatio: "4/5",
                         borderRadius: 8,
-                        background:
-                          i === 0
-                            ? "linear-gradient(135deg, #00FF8820, #00AAFF20)"
-                            : "#12121e",
+                        background: i === 0 ? "rgba(0, 0, 0, 0.4)" : "#12121e",
                         border: "1px solid #1a1a2e",
                         display: "flex",
                         alignItems: "center",
@@ -798,13 +809,20 @@ export default function Dashboard() {
                         fontSize: 10,
                         color: "#4a4a5e",
                         fontWeight: 600,
+                        overflow: "hidden",
+                        position: "relative"
                       }}
                     >
-                      {i === 0
-                        ? "COVER"
-                        : i <= selectedCount
-                          ? `MATCH ${i}`
-                          : "ACCA"}
+                      {i === 0 ? (
+                        <Image
+                          src="/branding/template-icon.svg"
+                          alt="Cover"
+                          fill
+                          style={{ objectFit: 'contain', padding: '15%' }}
+                        />
+                      ) : (
+                        i <= selectedCount ? `MATCH ${i}` : "ACCA"
+                      )}
                     </div>
                   ))}
                 </div>
