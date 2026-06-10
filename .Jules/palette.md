@@ -1,0 +1,3 @@
+## 2026-06-10 - Accessibility & Keyboard Navigation
+**Learning:** Non-semantic interactive elements (like `div` with `onClick`) are common accessibility pitfalls in rapid development. Refactoring them to semantic `<button>` elements with `role="switch"` and `aria-checked` provides immediate wins for screen readers and keyboard navigation. Global focus indicators using `:focus-visible` and `outline-offset` ensure a non-intrusive but clear experience for power users.
+**Action:** Always check for `div` or `span` elements with click handlers and refactor them to semantic buttons. Ensure every icon-only action has a descriptive `aria-label`.
