@@ -1,0 +1,3 @@
+## 2025-05-15 - Semantic Toggles and Event Bubbling
+**Learning:** When converting non-semantic `div`-based interactive elements (like custom toggles) to semantic `<button>` elements, it is critical to use `e.stopPropagation()` on the click handler if the component might be nested in other clickable containers (like list items). Additionally, buttons have default browser padding that must be reset (`padding: 0`) to maintain the original design's dimensions.
+**Action:** Always prefer `<button type="button">` with `role="switch"` for toggles, ensuring a CSS reset for padding and event propagation is handled.
