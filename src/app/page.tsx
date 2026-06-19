@@ -80,13 +80,22 @@ function ValueBadge({ value }: { value: number }) {
 function Toggle({
   checked,
   onChange,
+  ariaLabel,
 }: {
   checked: boolean;
   onChange: () => void;
+  ariaLabel?: string;
 }) {
   return (
-    <div
-      onClick={onChange}
+    <button
+      type="button"
+      role="switch"
+      aria-checked={checked}
+      aria-label={ariaLabel}
+      onClick={(e) => {
+        e.stopPropagation();
+        onChange();
+      }}
       style={{
         width: 44,
         height: 24,
@@ -97,6 +106,7 @@ function Toggle({
         border: `1px solid ${checked ? "#00FF8860" : "#2a2a3e"}`,
         position: "relative",
         flexShrink: 0,
+        padding: 0,
       }}
     >
       <div
@@ -111,13 +121,15 @@ function Toggle({
           background: checked ? "#0a0a0f" : "#4a4a5e",
         }}
       />
-    </div>
+    </button>
   );
 }
 
 function StatusDot({ active }: { active: boolean }) {
   return (
     <div
+      role="img"
+      aria-label={active ? "Integration active" : "Integration inactive"}
       style={{
         width: 8,
         height: 8,
@@ -132,8 +144,30 @@ function StatusDot({ active }: { active: boolean }) {
 // Platforms config
 // =============================================
 const platforms = [
-  { id: "instagram", name: "Instagram", icon: "📸", connected: true },
-  { id: "facebook", name: "Facebook", icon: "📘", connected: true },
+  {
+    id: "instagram",
+    name: "Instagram",
+    icon: "/branding/instagram-pfp.svg",
+    connected: true,
+  },
+  {
+    id: "youtube",
+    name: "YouTube",
+    icon: "/branding/youtube-pfp.svg",
+    connected: true,
+  },
+  {
+    id: "facebook",
+    name: "Facebook",
+    icon: "/branding/facebook-pfp.svg",
+    connected: true,
+  },
+  {
+    id: "twitter",
+    name: "Twitter",
+    icon: "/branding/twitter-pfp.svg",
+    connected: true,
+  },
   { id: "tiktok", name: "TikTok", icon: "🎵", connected: false },
   { id: "telegram", name: "Telegram", icon: "✈️", connected: false },
 ];
@@ -300,14 +334,17 @@ export default function Dashboard() {
                 width: 36,
                 height: 36,
                 borderRadius: 10,
-                background: "linear-gradient(135deg, #00FF88, #00AAFF)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontSize: 18,
+                overflow: "hidden",
               }}
             >
-              ⚡
+              <img
+                src="/branding/logo.svg"
+                alt="Logo"
+                style={{ width: "100%", height: "100%", objectFit: "contain" }}
+              />
             </div>
             <div>
               <div
@@ -495,8 +532,8 @@ export default function Dashboard() {
                   No predictions yet
                 </div>
                 <div style={{ fontSize: 13, color: "#4a4a5e" }}>
-                  Click "Run Full Pipeline" to fetch today's data and generate
-                  predictions
+                  Click &quot;Run Full Pipeline&quot; to fetch today&apos;s data
+                  and generate predictions
                 </div>
               </div>
             ) : (
@@ -533,6 +570,7 @@ export default function Dashboard() {
                       <Toggle
                         checked={match.selected}
                         onChange={() => togglePrediction(match.id)}
+                        ariaLabel={`Select ${match.homeTeam} vs ${match.awayTeam}`}
                       />
                       <div>
                         <div style={{ fontSize: 15, fontWeight: 700 }}>
@@ -681,7 +719,31 @@ export default function Dashboard() {
                   <div
                     style={{ display: "flex", alignItems: "center", gap: 12 }}
                   >
-                    <span style={{ fontSize: 20 }}>{p.icon}</span>
+                    <div
+                      style={{
+                        width: 24,
+                        height: 24,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: 20,
+                        overflow: "hidden",
+                      }}
+                    >
+                      {p.icon.startsWith("/") ? (
+                        <img
+                          src={p.icon}
+                          alt=""
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "contain",
+                          }}
+                        />
+                      ) : (
+                        p.icon
+                      )}
+                    </div>
                     <div>
                       <div style={{ fontSize: 14, fontWeight: 600 }}>
                         {p.name}
@@ -699,6 +761,7 @@ export default function Dashboard() {
                   <Toggle
                     checked={selectedPlatforms.includes(p.id)}
                     onChange={() => togglePlatform(p.id)}
+                    ariaLabel={`Toggle ${p.name} publishing`}
                   />
                 </div>
               ))}
@@ -798,13 +861,32 @@ export default function Dashboard() {
                         fontSize: 10,
                         color: "#4a4a5e",
                         fontWeight: 600,
+                        position: "relative",
+                        overflow: "hidden",
                       }}
                     >
-                      {i === 0
-                        ? "COVER"
-                        : i <= selectedCount
-                          ? `MATCH ${i}`
-                          : "ACCA"}
+                      {i === 0 && (
+                        <img
+                          src="/branding/template-icon.svg"
+                          alt=""
+                          style={{
+                            position: "absolute",
+                            width: "40%",
+                            opacity: 0.2,
+                            top: "50%",
+                            left: "50%",
+                            transform: "translate(-50%, -50%)",
+                            objectFit: "contain",
+                          }}
+                        />
+                      )}
+                      <span style={{ position: "relative", zIndex: 1 }}>
+                        {i === 0
+                          ? "COVER"
+                          : i <= selectedCount
+                            ? `MATCH ${i}`
+                            : "ACCA"}
+                      </span>
                     </div>
                   ))}
                 </div>
