@@ -4,6 +4,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Totalsportbet AI Dashboard",
   description: "AI-powered sports prediction management dashboard",
+  icons: {
+    icon: "/branding/logo.svg",
+  },
 };
 
 export default function RootLayout({
