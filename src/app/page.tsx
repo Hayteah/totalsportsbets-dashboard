@@ -132,8 +132,30 @@ function StatusDot({ active }: { active: boolean }) {
 // Platforms config
 // =============================================
 const platforms = [
-  { id: "instagram", name: "Instagram", icon: "📸", connected: true },
-  { id: "facebook", name: "Facebook", icon: "📘", connected: true },
+  {
+    id: "instagram",
+    name: "Instagram",
+    icon: "/branding/instagram-pfp.svg",
+    connected: true,
+  },
+  {
+    id: "youtube",
+    name: "YouTube",
+    icon: "/branding/youtube-pfp.svg",
+    connected: true,
+  },
+  {
+    id: "facebook",
+    name: "Facebook",
+    icon: "/branding/facebook-pfp.svg",
+    connected: true,
+  },
+  {
+    id: "twitter",
+    name: "Twitter",
+    icon: "/branding/twitter-pfp.svg",
+    connected: true,
+  },
   { id: "tiktok", name: "TikTok", icon: "🎵", connected: false },
   { id: "telegram", name: "Telegram", icon: "✈️", connected: false },
 ];
@@ -300,14 +322,21 @@ export default function Dashboard() {
                 width: 36,
                 height: 36,
                 borderRadius: 10,
-                background: "linear-gradient(135deg, #00FF88, #00AAFF)",
+                background: "#1a1a2e",
+                border: "1px solid #00FF8830",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 fontSize: 18,
+                overflow: "hidden",
               }}
             >
-              ⚡
+              <img
+                src="/branding/logo.svg"
+                alt="Totalsportbet Logo"
+                role="img"
+                style={{ width: "100%", height: "100%", objectFit: "contain" }}
+              />
             </div>
             <div>
               <div
@@ -495,8 +524,8 @@ export default function Dashboard() {
                   No predictions yet
                 </div>
                 <div style={{ fontSize: 13, color: "#4a4a5e" }}>
-                  Click "Run Full Pipeline" to fetch today's data and generate
-                  predictions
+                  Click &quot;Run Full Pipeline&quot; to fetch today&apos;s data
+                  and generate predictions
                 </div>
               </div>
             ) : (
@@ -681,7 +710,28 @@ export default function Dashboard() {
                   <div
                     style={{ display: "flex", alignItems: "center", gap: 12 }}
                   >
-                    <span style={{ fontSize: 20 }}>{p.icon}</span>
+                    {p.icon.startsWith("/") ? (
+                      <div
+                        style={{
+                          width: 24,
+                          height: 24,
+                          borderRadius: 6,
+                          overflow: "hidden",
+                        }}
+                      >
+                        <img
+                          src={p.icon}
+                          alt=""
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "contain",
+                          }}
+                        />
+                      </div>
+                    ) : (
+                      <span style={{ fontSize: 20 }}>{p.icon}</span>
+                    )}
                     <div>
                       <div style={{ fontSize: 14, fontWeight: 600 }}>
                         {p.name}
@@ -789,8 +839,15 @@ export default function Dashboard() {
                         borderRadius: 8,
                         background:
                           i === 0
-                            ? "linear-gradient(135deg, #00FF8820, #00AAFF20)"
+                            ? "#12121e"
                             : "#12121e",
+                        backgroundImage:
+                          i === 0
+                            ? "url(/branding/template-icon.svg)"
+                            : "none",
+                        backgroundSize: i === 0 ? "40%" : "auto",
+                        backgroundPosition: i === 0 ? "center" : "initial",
+                        backgroundRepeat: "no-repeat",
                         border: "1px solid #1a1a2e",
                         display: "flex",
                         alignItems: "center",
