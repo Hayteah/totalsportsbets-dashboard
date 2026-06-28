@@ -1,0 +1,3 @@
+## 2025-05-14 - Semantic Toggles and Focus Management
+**Learning:** Custom interactive elements like toggles implemented as `div`s lack essential accessibility features: keyboard navigation, screen reader roles, and clear focus indicators. Converting them to semantic `<button type="button">` with `role="switch"` and `aria-checked` provides these out of the box or with minimal extra code.
+**Action:** Always prefer semantic elements (button, input) over generic containers (div, span) for interactive components. Implement `onFocus`/`onBlur` with `useState` to provide visual focus rings when working in restricted CSS environments (e.g., inline styles only).
