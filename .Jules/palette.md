@@ -1,0 +1,3 @@
+## 2025-05-15 - [Improving Toggle Accessibility]
+**Learning:** Custom toggle components implemented with `div` elements lack keyboard focusability and screen reader semantics. Refactoring them to use `<button type="button">` with `role="switch"` and `aria-checked` ensures they are accessible out of the box. Additionally, managing focus states manually with `useState` and `box-shadow` is necessary when using inline styles to provide visual feedback for keyboard users.
+**Action:** Always use semantic elements or appropriate ARIA roles and manage focus states for interactive components, especially when using custom styling solutions like inline styles.
