@@ -132,10 +132,30 @@ function StatusDot({ active }: { active: boolean }) {
 // Platforms config
 // =============================================
 const platforms = [
-  { id: "instagram", name: "Instagram", icon: "📸", connected: true },
-  { id: "facebook", name: "Facebook", icon: "📘", connected: true },
-  { id: "tiktok", name: "TikTok", icon: "🎵", connected: false },
-  { id: "telegram", name: "Telegram", icon: "✈️", connected: false },
+  {
+    id: "instagram",
+    name: "Instagram",
+    icon: "/branding/instagram-pfp.svg",
+    connected: true,
+  },
+  {
+    id: "youtube",
+    name: "YouTube",
+    icon: "/branding/youtube-pfp.svg",
+    connected: true,
+  },
+  {
+    id: "facebook",
+    name: "Facebook",
+    icon: "/branding/facebook-pfp.svg",
+    connected: true,
+  },
+  {
+    id: "twitter",
+    name: "Twitter",
+    icon: "/branding/twitter-pfp.svg",
+    connected: true,
+  },
 ];
 
 // =============================================
@@ -300,14 +320,19 @@ export default function Dashboard() {
                 width: 36,
                 height: 36,
                 borderRadius: 10,
-                background: "linear-gradient(135deg, #00FF88, #00AAFF)",
+                background: "#1a1a2e",
+                border: "1px solid #00FF8830",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontSize: 18,
+                overflow: "hidden",
               }}
             >
-              ⚡
+              <img
+                src="/branding/logo.svg"
+                alt="Totalsportbet Logo"
+                style={{ width: "100%", height: "100%", objectFit: "contain" }}
+              />
             </div>
             <div>
               <div
@@ -495,8 +520,8 @@ export default function Dashboard() {
                   No predictions yet
                 </div>
                 <div style={{ fontSize: 13, color: "#4a4a5e" }}>
-                  Click "Run Full Pipeline" to fetch today's data and generate
-                  predictions
+                  Click &quot;Run Full Pipeline&quot; to fetch today&apos;s data
+                  and generate predictions
                 </div>
               </div>
             ) : (
@@ -681,7 +706,32 @@ export default function Dashboard() {
                   <div
                     style={{ display: "flex", alignItems: "center", gap: 12 }}
                   >
-                    <span style={{ fontSize: 20 }}>{p.icon}</span>
+                    <div
+                      style={{
+                        width: 32,
+                        height: 32,
+                        borderRadius: 8,
+                        overflow: "hidden",
+                        background: "#12121e",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      {p.icon.startsWith("/") ? (
+                        <img
+                          src={p.icon}
+                          alt={p.name}
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "contain",
+                          }}
+                        />
+                      ) : (
+                        <span style={{ fontSize: 18 }}>{p.icon}</span>
+                      )}
+                    </div>
                     <div>
                       <div style={{ fontSize: 14, fontWeight: 600 }}>
                         {p.name}
@@ -791,13 +841,20 @@ export default function Dashboard() {
                           i === 0
                             ? "linear-gradient(135deg, #00FF8820, #00AAFF20)"
                             : "#12121e",
+                        backgroundImage:
+                          i === 0 ? "url(/branding/template-icon.svg)" : "none",
+                        backgroundSize: "40%",
+                        backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat",
                         border: "1px solid #1a1a2e",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                         fontSize: 10,
-                        color: "#4a4a5e",
-                        fontWeight: 600,
+                        color: i === 0 ? "#00FF88" : "#4a4a5e",
+                        fontWeight: 700,
+                        textShadow:
+                          i === 0 ? "0 0 10px rgba(0,255,136,0.5)" : "none",
                       }}
                     >
                       {i === 0
