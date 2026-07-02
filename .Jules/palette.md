@@ -1,0 +1,3 @@
+## 2025-05-14 - Semantic Toggles and Focus Indicators
+**Learning:** Interactive elements implemented as `div`s with `onClick` handlers are invisible to screen readers and inaccessible via keyboard. In this app, the `Toggle` component was a `div`, making it difficult for users relying on assistive technology to interact with predictions and platform settings.
+**Action:** Always use semantic `<button>` elements for interactive components. For switches, use `role="switch"` and `aria-checked`. Ensure focus states are visually distinct (e.g., using `boxShadow` in inline styles) to support keyboard navigation.
