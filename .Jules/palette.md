@@ -1,0 +1,3 @@
+## 2025-07-04 - [Toggle Accessibility Refactor]
+**Learning:** In a dashboard where critical actions like selecting predictions or enabling publishing platforms are controlled by custom toggles, using a semantic `<button>` with `role="switch"` and `aria-checked` is essential for screen reader users to understand the state and purpose of the control. Furthermore, providing a focus ring for keyboard navigation ensures that users can visually track their position when tabbing through a list of toggles.
+**Action:** Always refactor custom `div`-based interactive elements into semantic HTML elements (like `button`) and ensure they include appropriate ARIA roles, labels, and focus indicators.
