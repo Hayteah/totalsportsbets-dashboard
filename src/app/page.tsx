@@ -300,14 +300,19 @@ export default function Dashboard() {
                 width: 36,
                 height: 36,
                 borderRadius: 10,
-                background: "linear-gradient(135deg, #00FF88, #00AAFF)",
+                background: "#1a1a2e",
+                border: "1px solid #00FF8830",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontSize: 18,
+                overflow: "hidden",
               }}
             >
-              ⚡
+              <img
+                src="/branding/logo.svg"
+                alt="Totalsportbet Logo"
+                style={{ width: "100%", height: "100%", objectFit: "contain" }}
+              />
             </div>
             <div>
               <div
@@ -495,8 +500,8 @@ export default function Dashboard() {
                   No predictions yet
                 </div>
                 <div style={{ fontSize: 13, color: "#4a4a5e" }}>
-                  Click "Run Full Pipeline" to fetch today's data and generate
-                  predictions
+                  Click &quot;Run Full Pipeline&quot; to fetch today&apos;s data
+                  and generate predictions
                 </div>
               </div>
             ) : (
@@ -791,20 +796,28 @@ export default function Dashboard() {
                           i === 0
                             ? "linear-gradient(135deg, #00FF8820, #00AAFF20)"
                             : "#12121e",
+                        backgroundImage:
+                          i === 0 ? "url(/branding/template-icon.svg)" : "none",
+                        backgroundSize: "40%",
+                        backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat",
                         border: "1px solid #1a1a2e",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                         fontSize: 10,
-                        color: "#4a4a5e",
-                        fontWeight: 600,
+                        color: i === 0 ? "#00FF88" : "#4a4a5e",
+                        fontWeight: 700,
+                        position: "relative",
                       }}
                     >
-                      {i === 0
-                        ? "COVER"
-                        : i <= selectedCount
-                          ? `MATCH ${i}`
-                          : "ACCA"}
+                      <span style={{ position: "relative", zIndex: 1 }}>
+                        {i === 0
+                          ? "COVER"
+                          : i <= selectedCount
+                            ? `MATCH ${i}`
+                            : "ACCA"}
+                      </span>
                     </div>
                   ))}
                 </div>
