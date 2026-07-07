@@ -80,13 +80,26 @@ function ValueBadge({ value }: { value: number }) {
 function Toggle({
   checked,
   onChange,
+  ariaLabel,
 }: {
   checked: boolean;
   onChange: () => void;
+  ariaLabel?: string;
 }) {
+  const [isFocused, setIsFocused] = useState(false);
+
   return (
-    <div
-      onClick={onChange}
+    <button
+      type="button"
+      role="switch"
+      aria-checked={checked}
+      aria-label={ariaLabel}
+      onClick={(e) => {
+        e.stopPropagation();
+        onChange();
+      }}
+      onFocus={() => setIsFocused(true)}
+      onBlur={() => setIsFocused(false)}
       style={{
         width: 44,
         height: 24,
@@ -97,6 +110,9 @@ function Toggle({
         border: `1px solid ${checked ? "#00FF8860" : "#2a2a3e"}`,
         position: "relative",
         flexShrink: 0,
+        padding: 0,
+        outline: "none",
+        boxShadow: isFocused ? "0 0 0 2px #00FF8840" : "none",
       }}
     >
       <div
@@ -111,7 +127,37 @@ function Toggle({
           background: checked ? "#0a0a0f" : "#4a4a5e",
         }}
       />
-    </div>
+    </button>
+  );
+}
+
+function RemoveButton({
+  onClick,
+  ariaLabel,
+}: {
+  onClick: () => void;
+  ariaLabel: string;
+}) {
+  const [isHovered, setIsHovered] = useState(false);
+  return (
+    <button
+      onClick={onClick}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      aria-label={ariaLabel}
+      style={{
+        background: "none",
+        border: "none",
+        color: isHovered ? "#FF6B6B" : "#FF6B6B60",
+        cursor: "pointer",
+        fontSize: 16,
+        padding: "2px 6px",
+        borderRadius: 4,
+        transition: "all 0.2s",
+      }}
+    >
+      ×
+    </button>
   );
 }
 
@@ -495,7 +541,7 @@ export default function Dashboard() {
                   No predictions yet
                 </div>
                 <div style={{ fontSize: 13, color: "#4a4a5e" }}>
-                  Click "Run Full Pipeline" to fetch today's data and generate
+                  Click &quot;Run Full Pipeline&quot; to fetch today&apos;s data and generate
                   predictions
                 </div>
               </div>
@@ -533,6 +579,7 @@ export default function Dashboard() {
                       <Toggle
                         checked={match.selected}
                         onChange={() => togglePrediction(match.id)}
+                        ariaLabel={`Select ${match.homeTeam} vs ${match.awayTeam}`}
                       />
                       <div>
                         <div style={{ fontSize: 15, fontWeight: 700 }}>
@@ -621,20 +668,10 @@ export default function Dashboard() {
                           >
                             {pred.stake}u
                           </span>
-                          <button
+                          <RemoveButton
                             onClick={() => removePick(match.id, pred.market)}
-                            style={{
-                              background: "none",
-                              border: "none",
-                              color: "#FF6B6B60",
-                              cursor: "pointer",
-                              fontSize: 16,
-                              padding: "2px 6px",
-                              borderRadius: 4,
-                            }}
-                          >
-                            ×
-                          </button>
+                            ariaLabel={`Remove ${pred.market} prediction`}
+                          />
                         </div>
                       </div>
                     ))}
@@ -699,6 +736,7 @@ export default function Dashboard() {
                   <Toggle
                     checked={selectedPlatforms.includes(p.id)}
                     onChange={() => togglePlatform(p.id)}
+                    ariaLabel={`Toggle ${p.name} publishing`}
                   />
                 </div>
               ))}
