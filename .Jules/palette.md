@@ -1,0 +1,3 @@
+## 2026-07-08 - Accessible Toggle Pattern
+**Learning:** In a dashboard where interactive states are primarily handled through custom `div` elements, refactoring to semantic `<button type="button">` with `role="switch"` and `aria-checked` significantly improves keyboard accessibility without requiring CSS framework overhead. Using `useState` to track focus for a custom `boxShadow` focus ring provides high-visibility feedback for keyboard users.
+**Action:** When encountering custom-styled interactive components like toggles or switches, prioritize semantic button wrappers and explicit focus state management.
