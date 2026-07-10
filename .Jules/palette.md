@@ -1,0 +1,3 @@
+## 2024-07-10 - Accessible Toggle and Button Components
+**Learning:** When refactoring non-semantic elements (like `div` based toggles) to semantic buttons, it's crucial to explicitly manage focus states with `boxShadow` or similar if `outline: none` is used. Keyboard users rely on these visual cues to navigate. Also, ensuring data hydration before running Playwright tests prevents false negatives in UI verification.
+**Action:** Always include `onFocus` and `onBlur` handlers for custom interactive components and verify keyboard navigation in Playwright scripts by explicitly calling `.focus()` on elements.
