@@ -1,0 +1,3 @@
+## 2025-05-15 - Semantic Interaction in Inline-Style Environments
+**Learning:** In a codebase restricted to inline styles, creating dedicated sub-components (like `RemoveButton` or `Toggle`) is the most effective way to manage accessible interactive states (hover/focus) using React `useState`. This maintains encapsulation and ensures consistent visual feedback for both mouse and keyboard users without the need for external CSS selectors.
+**Action:** When encountering `div`-based interactive elements or plain text buttons in an inline-style environment, refactor them into functional components that utilize `useState` and ARIA roles to provide a robust and accessible UX.
