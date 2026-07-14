@@ -1,0 +1,12 @@
+<svg width="400" height="100" viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="boltGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00FF88;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00AAFF;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect x="10" y="10" width="80" height="80" rx="15" fill="url(#boltGradient)" />
+  <path d="M 65 25 L 35 55 L 50 55 L 45 75 L 75 45 L 60 45 Z" fill="#0a0a0f" />
+  <text x="110" y="55" font-family="sans-serif" font-weight="800" font-size="32" fill="#e2e2e8" letter-spacing="1">TOTALSPORTBET</text>
+  <text x="110" y="85" font-family="sans-serif" font-weight="600" font-size="14" fill="#4a4a5e" letter-spacing="4">AI DASHBOARD</text>
+</svg>
