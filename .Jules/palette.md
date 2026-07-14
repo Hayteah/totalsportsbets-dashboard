@@ -1,0 +1,3 @@
+## 2026-07-14 - Accessible Toggles without Layout Shift
+**Learning:** Refactoring non-interactive elements (like `div` toggles) to semantic `button`s requires careful style resets (`padding`, `border`, `outline`) to prevent layout shifts. Focus states should be explicitly managed via `useState` and `boxShadow` to maintain visual consistency with custom designs while meeting WCAG success criteria for keyboard focus visibility.
+**Action:** Always use semantic `<button type="button">` for custom toggles and implement a clear focus ring using `boxShadow` to avoid adding width/height to the element.
