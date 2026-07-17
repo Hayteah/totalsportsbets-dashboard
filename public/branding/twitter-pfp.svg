@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="100%" height="100%">
+  <defs>
+    <linearGradient id="boltGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+  </defs>
+  <!-- Background with dark theme -->
+  <rect width="1000" height="1000" fill="#08080d" />
+  <!-- Centered Lightning Bolt logo representing Totalsportbet -->
+  <path d="M 575 200 L 350 537.5 L 500 537.5 L 425 800 L 650 462.5 L 500 462.5 Z" fill="url(#boltGradient)" />
+</svg>

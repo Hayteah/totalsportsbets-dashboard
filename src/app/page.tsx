@@ -80,13 +80,23 @@ function ValueBadge({ value }: { value: number }) {
 function Toggle({
   checked,
   onChange,
+  ariaLabel,
 }: {
   checked: boolean;
   onChange: () => void;
+  ariaLabel?: string;
 }) {
+  const [isFocused, setIsFocused] = useState(false);
+
   return (
-    <div
+    <button
+      type="button"
+      role="switch"
+      aria-checked={checked}
+      aria-label={ariaLabel}
       onClick={onChange}
+      onFocus={() => setIsFocused(true)}
+      onBlur={() => setIsFocused(false)}
       style={{
         width: 44,
         height: 24,
@@ -97,6 +107,9 @@ function Toggle({
         border: `1px solid ${checked ? "#00FF8860" : "#2a2a3e"}`,
         position: "relative",
         flexShrink: 0,
+        padding: 0,
+        outline: "none",
+        boxShadow: isFocused ? "0 0 0 2px #00FF8880" : "none",
       }}
     >
       <div
@@ -111,13 +124,15 @@ function Toggle({
           background: checked ? "#0a0a0f" : "#4a4a5e",
         }}
       />
-    </div>
+    </button>
   );
 }
 
 function StatusDot({ active }: { active: boolean }) {
   return (
     <div
+      role="img"
+      aria-label={active ? "Online" : "Offline"}
       style={{
         width: 8,
         height: 8,
@@ -132,10 +147,12 @@ function StatusDot({ active }: { active: boolean }) {
 // Platforms config
 // =============================================
 const platforms = [
-  { id: "instagram", name: "Instagram", icon: "📸", connected: true },
-  { id: "facebook", name: "Facebook", icon: "📘", connected: true },
+  { id: "instagram", name: "Instagram", icon: "/branding/instagram-pfp.svg", connected: true },
+  { id: "facebook", name: "Facebook", icon: "/branding/facebook-pfp.svg", connected: true },
   { id: "tiktok", name: "TikTok", icon: "🎵", connected: false },
   { id: "telegram", name: "Telegram", icon: "✈️", connected: false },
+  { id: "youtube", name: "YouTube", icon: "/branding/youtube-pfp.svg", connected: true },
+  { id: "twitter", name: "Twitter", icon: "/branding/twitter-pfp.svg", connected: true },
 ];
 
 // =============================================
@@ -300,14 +317,23 @@ export default function Dashboard() {
                 width: 36,
                 height: 36,
                 borderRadius: 10,
-                background: "linear-gradient(135deg, #00FF88, #00AAFF)",
+                background: "#1a1a2e",
+                border: "1px solid #00FF8830",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontSize: 18,
+                overflow: "hidden",
               }}
             >
-              ⚡
+              <img
+                src="/branding/logo.svg"
+                alt="Logo"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain",
+                }}
+              />
             </div>
             <div>
               <div
@@ -495,7 +521,7 @@ export default function Dashboard() {
                   No predictions yet
                 </div>
                 <div style={{ fontSize: 13, color: "#4a4a5e" }}>
-                  Click "Run Full Pipeline" to fetch today's data and generate
+                  Click &quot;Run Full Pipeline&quot; to fetch today&apos;s data and generate
                   predictions
                 </div>
               </div>
@@ -533,6 +559,7 @@ export default function Dashboard() {
                       <Toggle
                         checked={match.selected}
                         onChange={() => togglePrediction(match.id)}
+                        ariaLabel={`Select ${match.homeTeam} vs ${match.awayTeam}`}
                       />
                       <div>
                         <div style={{ fontSize: 15, fontWeight: 700 }}>
@@ -623,6 +650,7 @@ export default function Dashboard() {
                           </span>
                           <button
                             onClick={() => removePick(match.id, pred.market)}
+                            aria-label={`Remove ${pred.market} for ${match.homeTeam} vs ${match.awayTeam}`}
                             style={{
                               background: "none",
                               border: "none",
@@ -681,7 +709,33 @@ export default function Dashboard() {
                   <div
                     style={{ display: "flex", alignItems: "center", gap: 12 }}
                   >
-                    <span style={{ fontSize: 20 }}>{p.icon}</span>
+                    {p.icon.startsWith("/") ? (
+                      <div
+                        style={{
+                          width: 32,
+                          height: 32,
+                          borderRadius: "50%",
+                          overflow: "hidden",
+                          background: "#1a1a2e",
+                          border: "1px solid #00FF8830",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <img
+                          src={p.icon}
+                          alt={`${p.name} Icon`}
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "contain",
+                          }}
+                        />
+                      </div>
+                    ) : (
+                      <span style={{ fontSize: 20 }}>{p.icon}</span>
+                    )}
                     <div>
                       <div style={{ fontSize: 14, fontWeight: 600 }}>
                         {p.name}
@@ -699,6 +753,7 @@ export default function Dashboard() {
                   <Toggle
                     checked={selectedPlatforms.includes(p.id)}
                     onChange={() => togglePlatform(p.id)}
+                    ariaLabel={`Toggle ${p.name} publishing`}
                   />
                 </div>
               ))}
@@ -791,6 +846,13 @@ export default function Dashboard() {
                           i === 0
                             ? "linear-gradient(135deg, #00FF8820, #00AAFF20)"
                             : "#12121e",
+                        backgroundImage:
+                          i === 0
+                            ? "linear-gradient(135deg, #00FF8820, #00AAFF20), url(/branding/template-icon.svg)"
+                            : "none",
+                        backgroundSize: i === 0 ? "40%" : "auto",
+                        backgroundPosition: i === 0 ? "center" : "initial",
+                        backgroundRepeat: "no-repeat",
                         border: "1px solid #1a1a2e",
                         display: "flex",
                         alignItems: "center",
