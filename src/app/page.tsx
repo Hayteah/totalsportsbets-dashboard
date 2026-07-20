@@ -132,8 +132,8 @@ function StatusDot({ active }: { active: boolean }) {
 // Platforms config
 // =============================================
 const platforms = [
-  { id: "instagram", name: "Instagram", icon: "📸", connected: true },
-  { id: "facebook", name: "Facebook", icon: "📘", connected: true },
+  { id: "instagram", name: "Instagram", icon: "/branding/instagram-pfp.svg", connected: true },
+  { id: "facebook", name: "Facebook", icon: "/branding/facebook-pfp.svg", connected: true },
   { id: "tiktok", name: "TikTok", icon: "🎵", connected: false },
   { id: "telegram", name: "Telegram", icon: "✈️", connected: false },
 ];
@@ -294,42 +294,28 @@ export default function Dashboard() {
         <div
           style={{ padding: "24px 20px", borderBottom: "1px solid #1a1a2e" }}
         >
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <div
+          <div
+            style={{
+              background: "#1a1a2e",
+              border: "1px solid #00FF8830",
+              borderRadius: 10,
+              overflow: "hidden",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              height: 48,
+              width: "100%",
+            }}
+          >
+            <img
+              src="/branding/logo.svg"
+              alt="Logo"
               style={{
-                width: 36,
-                height: 36,
-                borderRadius: 10,
-                background: "linear-gradient(135deg, #00FF88, #00AAFF)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: 18,
+                width: "100%",
+                height: "100%",
+                objectFit: "contain",
               }}
-            >
-              ⚡
-            </div>
-            <div>
-              <div
-                style={{
-                  fontSize: 15,
-                  fontWeight: 800,
-                  letterSpacing: "0.5px",
-                }}
-              >
-                TOTALSPORTBET
-              </div>
-              <div
-                style={{
-                  fontSize: 10,
-                  color: "#4a4a5e",
-                  letterSpacing: "2px",
-                  fontWeight: 600,
-                }}
-              >
-                AI DASHBOARD
-              </div>
-            </div>
+            />
           </div>
         </div>
 
@@ -681,7 +667,21 @@ export default function Dashboard() {
                   <div
                     style={{ display: "flex", alignItems: "center", gap: 12 }}
                   >
-                    <span style={{ fontSize: 20 }}>{p.icon}</span>
+                    <span style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 24, height: 24, borderRadius: 6, overflow: "hidden" }}>
+                      {p.icon.startsWith("/") ? (
+                        <img
+                          src={p.icon}
+                          alt={p.name}
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "contain",
+                          }}
+                        />
+                      ) : (
+                        <span style={{ fontSize: 20 }}>{p.icon}</span>
+                      )}
+                    </span>
                     <div>
                       <div style={{ fontSize: 14, fontWeight: 600 }}>
                         {p.name}
@@ -791,6 +791,13 @@ export default function Dashboard() {
                           i === 0
                             ? "linear-gradient(135deg, #00FF8820, #00AAFF20)"
                             : "#12121e",
+                        backgroundImage:
+                          i === 0
+                            ? "url(/branding/template-icon.svg), linear-gradient(135deg, #00FF8820, #00AAFF20)"
+                            : "none",
+                        backgroundSize: "40%, auto",
+                        backgroundPosition: "center, initial",
+                        backgroundRepeat: "no-repeat, repeat",
                         border: "1px solid #1a1a2e",
                         display: "flex",
                         alignItems: "center",
