@@ -1,0 +1,3 @@
+## 2026-07-25 - Cohesive Brand and Platform Icon System
+**Learning:** Standardizing visual assets like logos and platform profile pictures (PFPs) across social previews using cohesive SVG viewBoxes (e.g., 1000x1000) and uniform background/gradient structures drastically improves brand identity and UX consistency. Ensuring SVGs use vertically/horizontally centered paths prevents unwanted cropping on social platforms.
+**Action:** Always generate vector assets using a standard centering safety margin, matching the brand color palette exactly, and gracefully handle both text/emojis and image-based SVGs in lists to preserve responsiveness.
