@@ -1,0 +1,3 @@
+## 2025-05-10 - Custom Interactive Toggle Pattern with React State and Inline Styles
+**Learning:** In standard Tailwind or CSS environments, custom focus states (like `:focus-visible`) are easily styled. In a pure inline-style React application, custom focus styles require tracking interactive state with React `onFocus` and `onBlur` event handlers and local state. Converting inaccessible custom `div` toggles to native accessible `<button>` components with `role="switch"`, `aria-checked`, and state-driven focus styles keeps the visual design pristine while achieving WCAG AA accessibility compliance.
+**Action:** Always refactor custom interactive elements to native semantic elements, and manage focus and hover states via React state when working with inline styles.
