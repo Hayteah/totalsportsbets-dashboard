@@ -1,0 +1,3 @@
+## 2026-07-28 - Semantic Accessible Switches
+**Learning:** Refactoring raw div toggles to HTML `<button>` elements with `role="switch"`, `aria-checked`, and custom local `useState` focus/hover states dramatically improves keyboard navigability and screen-reader accessibility without disrupting custom inline-styled visual designs.
+**Action:** When implementing toggles, custom buttons, or interactive controls in inline-styled systems, always use semantic elements (`<button type="button">`) and track `:focus` and `:hover` transitions via state rather than relying on raw `div` tags or raw DOM interactions.
