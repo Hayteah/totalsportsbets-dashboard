@@ -1,0 +1,3 @@
+## 2026-07-29 - Brand Identity Scaling and Social Media Cropping
+**Learning:** Social media platforms often crop profile pictures into a circle, which can clip logo text or complex shapes at the edges. Using a vertically and horizontally centered SVG vector path on a solid background (e.g., #08080d) with generous padding ensures the logo remains fully visible, balanced, and aesthetically pleasing regardless of standard cropping styles.
+**Action:** Always center primary branding elements inside a safe, padded boundary (such as the middle 60% of a 1000x1000 viewBox) and verify with a mock circle crop boundary when designing social media profile pictures.
