@@ -1,0 +1,3 @@
+## 2025-03-05 - [Semantic Keyboard-Accessible Toggle Switch]
+**Learning:** In highly stylized web interfaces, standard HTML checkbox inputs are often replaced with custom CSS/styled divs. However, this strips away screen reader support and keyboard tab-ability. Converting stylized switches to `<button type="button">` elements with `role="switch"` and handling the focus visual indicators using customized `boxShadow` provides full keyboard-accessibility and standard screen reader behavior without breaking custom visual layouts.
+**Action:** Always implement custom switches, checkboxes, or interactive toggles as semantic `<button>` elements with `role="switch"`, `aria-checked`, and focus-visible/focused state styles instead of generic `div` containers.
