@@ -1,0 +1,3 @@
+## 2025-08-01 - Accessible and State-Driven Interactive Controls
+**Learning:** In a React/Next.js dashboard using inline styles, interactive elements like button controls often lack visual hover/focus states, making keyboard navigation difficult and styling less engaging. Additionally, async operations and quick action items lack proper interactive feedback.
+**Action:** Created a reusable state-driven `QuickActionButton` component using inline focus/hover states to visually communicate active interactions, combined with an `aria-live="polite"` powered toast system to provide accessible announcements for background tasks.
