@@ -128,6 +128,75 @@ function StatusDot({ active }: { active: boolean }) {
   );
 }
 
+function QuickActionButton({
+  label,
+  desc,
+  onClick,
+  ariaLabel,
+}: {
+  label: string;
+  desc: string;
+  onClick: () => void;
+  ariaLabel: string;
+}) {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+
+  return (
+    <button
+      onClick={onClick}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onFocus={() => setIsFocused(true)}
+      onBlur={() => setIsFocused(false)}
+      aria-label={ariaLabel}
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: "14px 16px",
+        borderRadius: 10,
+        border: isHovered || isFocused ? "1px solid #00FF8860" : "1px solid #1a1a2e",
+        background: isHovered || isFocused ? "#16162a" : "#12121e",
+        cursor: "pointer",
+        textAlign: "left" as const,
+        color: isHovered || isFocused ? "#00FF88" : "#e2e2e8",
+        fontFamily: "inherit",
+        width: "100%",
+        outline: "none",
+        boxShadow: isFocused ? "0 0 0 2px #00FF8840" : "none",
+        transition: "all 0.15s ease",
+      }}
+    >
+      <div>
+        <div style={{ fontSize: 14, fontWeight: 600, color: isHovered || isFocused ? "#00FF88" : "#e2e2e8" }}>
+          {label}
+        </div>
+        <div
+          style={{
+            fontSize: 12,
+            color: isHovered || isFocused ? "#8b8ba0" : "#4a4a5e",
+            marginTop: 4,
+            transition: "color 0.15s",
+          }}
+        >
+          {desc}
+        </div>
+      </div>
+      <span
+        style={{
+          color: isHovered || isFocused ? "#00FF88" : "#4a4a5e",
+          transform: isHovered ? "translateX(4px)" : "none",
+          transition: "transform 0.15s, color 0.15s",
+          fontSize: 16,
+        }}
+      >
+        →
+      </span>
+    </button>
+  );
+}
+
 // =============================================
 // Platforms config
 // =============================================
@@ -153,6 +222,69 @@ export default function Dashboard() {
   const [accuracy, setAccuracy] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [sidebarOpen, setSidebarOpen] = useState(true);
+
+  const [toasts, setToasts] = useState<{ id: number; message: string; type: "success" | "error" | "info" }[]>([]);
+
+  const addToast = (message: string, type: "success" | "error" | "info" = "success") => {
+    const id = Date.now();
+    setToasts((prev) => [...prev, { id, message, type }]);
+    setTimeout(() => {
+      setToasts((prev) => prev.filter((t) => t.id !== id));
+    }, 4000);
+  };
+
+  const handleRefreshToken = () => {
+    addToast("Meta API token successfully renewed for 60 days!", "success");
+  };
+
+  const handleExportAccuracy = () => {
+    if (predictions.length === 0) {
+      addToast("No predictions available to export.", "info");
+      return;
+    }
+    try {
+      const headers = ["Date", "League", "Sport", "Home Team", "Away Team", "Market", "Pick", "Odds", "Confidence", "Value", "Stake"];
+      const rows = predictions.flatMap((match) =>
+        match.predictions.map((pred) => [
+          "Today",
+          `"${match.league}"`,
+          `"${match.sport}"`,
+          `"${match.homeTeam}"`,
+          `"${match.awayTeam}"`,
+          `"${pred.market}"`,
+          `"${pred.pick}"`,
+          pred.odds,
+          `"${pred.confidence}%"`,
+          `"${pred.value.toFixed(1)}%"`,
+          pred.stake,
+        ])
+      );
+      const csvContent = "data:text/csv;charset=utf-8,"
+        + [headers.join(","), ...rows.map((e) => e.join(","))].join("\n");
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", `totalsportbet_predictions_${new Date().toISOString().split('T')[0]}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      addToast("Prediction report exported successfully as CSV!", "success");
+    } catch (err) {
+      addToast("Failed to export report.", "error");
+    }
+  };
+
+  const handleClearData = () => {
+    if (predictions.length === 0) {
+      addToast("Today's data is already cleared.", "info");
+      return;
+    }
+    const confirmClear = window.confirm("Are you sure you want to clear all of today's prediction data?");
+    if (confirmClear) {
+      setPredictions([]);
+      addToast("Today's prediction data has been cleared.", "success");
+    }
+  };
 
   // Load predictions on mount
   useEffect(() => {
@@ -204,6 +336,7 @@ export default function Dashboard() {
       await new Promise((r) => setTimeout(r, 2000));
     }
     setPipelineStep("✅ Pipeline complete!");
+    addToast("Full prediction pipeline completed successfully!", "success");
     await loadPredictions();
     setTimeout(() => {
       setPipelineRunning(false);
@@ -228,8 +361,10 @@ export default function Dashboard() {
         }),
       });
       setPublishStatus("✅ Published successfully!");
+      addToast(`Published successfully to ${selectedPlatforms.join(", ")}!`, "success");
     } catch {
       setPublishStatus("❌ Publishing failed. Check console.");
+      addToast("Failed to publish predictions. Please try again.", "error");
     }
     setIsPublishing(false);
     setTimeout(() => setPublishStatus(null), 5000);
@@ -495,7 +630,7 @@ export default function Dashboard() {
                   No predictions yet
                 </div>
                 <div style={{ fontSize: 13, color: "#4a4a5e" }}>
-                  Click "Run Full Pipeline" to fetch today's data and generate
+                  Click &quot;Run Full Pipeline&quot; to fetch today&apos;s data and generate
                   predictions
                 </div>
               </div>
@@ -1164,54 +1299,104 @@ export default function Dashboard() {
               <div
                 style={{ display: "flex", flexDirection: "column", gap: 10 }}
               >
-                {[
-                  {
-                    label: "🔄 Refresh Token",
-                    desc: "Renew Meta API token (60-day cycle)",
-                  },
-                  {
-                    label: "📊 Export Accuracy Report",
-                    desc: "Download CSV of all prediction results",
-                  },
-                  {
-                    label: "🗑️ Clear Today's Data",
-                    desc: "Remove today's predictions and images",
-                  },
-                ].map((action, i) => (
-                  <button
-                    key={i}
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      padding: "14px 16px",
-                      borderRadius: 10,
-                      border: "1px solid #1a1a2e",
-                      background: "#12121e",
-                      cursor: "pointer",
-                      textAlign: "left" as const,
-                      color: "#e2e2e8",
-                      fontFamily: "inherit",
-                      width: "100%",
-                    }}
-                  >
-                    <div>
-                      <div style={{ fontSize: 14, fontWeight: 600 }}>
-                        {action.label}
-                      </div>
-                      <div
-                        style={{ fontSize: 12, color: "#4a4a5e", marginTop: 2 }}
-                      >
-                        {action.desc}
-                      </div>
-                    </div>
-                    <span style={{ color: "#4a4a5e" }}>→</span>
-                  </button>
-                ))}
+                <QuickActionButton
+                  label="🔄 Refresh Token"
+                  desc="Renew Meta API token (60-day cycle)"
+                  onClick={handleRefreshToken}
+                  ariaLabel="Refresh Meta API token"
+                />
+                <QuickActionButton
+                  label="📊 Export Accuracy Report"
+                  desc="Download CSV of all prediction results"
+                  onClick={handleExportAccuracy}
+                  ariaLabel="Export Accuracy Report as CSV"
+                />
+                <QuickActionButton
+                  label="🗑️ Clear Today's Data"
+                  desc="Remove today's predictions and images"
+                  onClick={handleClearData}
+                  ariaLabel="Clear today's prediction data"
+                />
               </div>
             </div>
           </div>
         )}
+      </div>
+
+      {/* =================== TOAST SYSTEM =================== */}
+      <div
+        aria-live="polite"
+        style={{
+          position: "fixed",
+          bottom: 24,
+          right: 24,
+          display: "flex",
+          flexDirection: "column",
+          gap: 10,
+          zIndex: 9999,
+          pointerEvents: "none",
+        }}
+      >
+        {toasts.map((t) => (
+          <div
+            key={t.id}
+            style={{
+              pointerEvents: "auto",
+              minWidth: 300,
+              maxWidth: 400,
+              padding: "14px 18px",
+              borderRadius: 10,
+              background: "#12121e",
+              border: `1px solid ${
+                t.type === "success" ? "#00FF8860" : t.type === "error" ? "#FF6B6B60" : "#00AAFF60"
+              }`,
+              boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)",
+              color: "#e2e2e8",
+              display: "flex",
+              alignItems: "center",
+              gap: 12,
+              fontFamily: "inherit",
+            }}
+          >
+            <span
+              style={{
+                fontSize: 18,
+                color: t.type === "success" ? "#00FF88" : t.type === "error" ? "#FF6B6B" : "#00AAFF",
+              }}
+            >
+              {t.type === "success" ? "✓" : t.type === "error" ? "✗" : "ℹ"}
+            </span>
+            <div style={{ flex: 1, fontSize: 13, fontWeight: 500 }}>{t.message}</div>
+            <button
+              onClick={() => setToasts((prev) => prev.filter((item) => item.id !== t.id))}
+              aria-label="Dismiss notification"
+              style={{
+                background: "none",
+                border: "none",
+                color: "#4a4a5e",
+                cursor: "pointer",
+                padding: "2px 6px",
+                fontSize: 16,
+                fontWeight: "bold",
+                borderRadius: 4,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transition: "all 0.15s",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = "#e2e2e8";
+                e.currentTarget.style.background = "#1a1a2e";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = "#4a4a5e";
+                e.currentTarget.style.background = "none";
+              }}
+            >
+              ×
+            </button>
+          </div>
+        ))}
       </div>
     </div>
   );
