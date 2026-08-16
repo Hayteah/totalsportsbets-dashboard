@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e0e18" />
+      <stop offset="100%" stop-color="#05050a" />
+    </linearGradient>
+    <linearGradient id="boltGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141424" />
+      <stop offset="100%" stop-color="#0b0b14" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="15" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background Template Card -->
+  <rect width="800" height="600" rx="24" fill="url(#bgGrad)" stroke="#00FF88" stroke-width="2" stroke-opacity="0.3" />
+
+  <!-- Grid Pattern overlay -->
+  <g opacity="0.1" stroke="#00AAFF" stroke-width="1">
+    <line x1="0" y1="100" x2="800" y2="100" />
+    <line x1="0" y1="200" x2="800" y2="200" />
+    <line x1="0" y1="300" x2="800" y2="300" />
+    <line x1="0" y1="400" x2="800" y2="400" />
+    <line x1="0" y1="500" x2="800" y2="500" />
+    <line x1="200" y1="0" x2="200" y2="600" />
+    <line x1="400" y1="0" x2="400" y2="600" />
+    <line x1="600" y1="0" x2="600" y2="600" />
+  </g>
+
+  <!-- Header Banner -->
+  <rect x="40" y="40" width="720" height="70" rx="12" fill="url(#cardGrad)" stroke="#00FF88" stroke-width="1" />
+  <text x="70" y="83" font-family="'Inter', sans-serif" font-size="24" font-weight="900" fill="#00FF88" letter-spacing="2">TOTALSPORTBET <tspan fill="#00AAFF">AI PREDICTION</tspan></text>
+  <rect x="610" y="55" width="120" height="40" rx="20" fill="#00FF88" fill-opacity="0.15" stroke="#00FF88" stroke-width="1.5" />
+  <text x="670" y="81" font-family="'Inter', sans-serif" font-size="14" font-weight="800" fill="#00FF88" text-anchor="middle">92% CONF</text>
+
+  <!-- Match Container -->
+  <rect x="40" y="130" width="720" height="320" rx="16" fill="url(#cardGrad)" stroke="#1f1f33" stroke-width="2" />
+
+  <!-- Team vs Team Graphic Placeholder -->
+  <text x="220" y="230" font-family="'Inter', sans-serif" font-size="32" font-weight="800" fill="#FFFFFF" text-anchor="middle">HOME TEAM</text>
+  <text x="400" y="230" font-family="'Inter', sans-serif" font-size="28" font-weight="900" fill="#00FF88" text-anchor="middle">VS</text>
+  <text x="580" y="230" font-family="'Inter', sans-serif" font-size="32" font-weight="800" fill="#FFFFFF" text-anchor="middle">AWAY TEAM</text>
+
+  <!-- Watermark Lightning Bolt in Background -->
+  <path d="M 440 180 L 330 350 L 410 350 L 360 480 L 470 330 L 390 330 Z" fill="url(#boltGrad)" opacity="0.2" filter="url(#glow)" />
+
+  <!-- Pick Overlay Box -->
+  <rect x="120" y="290" width="560" height="120" rx="12" fill="#0a0a14" stroke="#00AAFF" stroke-width="2" />
+  <text x="400" y="335" font-family="'Inter', sans-serif" font-size="16" font-weight="700" fill="#8b8ba0" text-anchor="middle">AI RECOMMENDED PICK</text>
+  <text x="400" y="380" font-family="'Inter', sans-serif" font-size="32" font-weight="900" fill="#00FF88" text-anchor="middle">MATCH WINNER — ODDS 1.85</text>
+
+  <!-- Footer Info -->
+  <text x="50" y="490" font-family="'Inter', sans-serif" font-size="14" fill="#6b6b80">⚡ Automated AI Analysis</text>
+  <text x="750" y="490" font-family="'Inter', sans-serif" font-size="14" fill="#6b6b80" text-anchor="end">totalsportbet.com</text>
+</svg>
