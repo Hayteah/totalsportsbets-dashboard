@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="100%" height="100%">
+  <defs>
+    <linearGradient id="boltGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <linearGradient id="fbRing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1877F2" />
+      <stop offset="100%" stop-color="#00C6FF" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="24" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Dark primary background -->
+  <rect width="1000" height="1000" fill="#08080d" />
+
+  <!-- Facebook Blue Accent Ring -->
+  <circle cx="500" cy="500" r="460" fill="none" stroke="url(#fbRing)" stroke-width="20" />
+  <circle cx="500" cy="500" r="440" fill="none" stroke="#08080d" stroke-width="12" />
+  <circle cx="500" cy="500" r="425" fill="#0f0f18" stroke="#1a1a2e" stroke-width="4" />
+
+  <!-- Centered Lightning Bolt Logo -->
+  <g filter="url(#glow)">
+    <path d="M 580 200 L 360 520 L 520 520 L 420 800 L 640 480 L 480 480 Z" fill="url(#boltGradient)" />
+  </g>
+
+  <!-- Text Label -->
+  <text x="500" y="860" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="44" fill="#ffffff" letter-spacing="4" text-anchor="middle">TOTALSPORTBET</text>
+  <text x="500" y="900" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="22" fill="#00FF88" letter-spacing="8" text-anchor="middle">AI PREDICTIONS</text>
+</svg>
