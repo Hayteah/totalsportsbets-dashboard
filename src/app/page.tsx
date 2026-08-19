@@ -128,6 +128,47 @@ function StatusDot({ active }: { active: boolean }) {
   );
 }
 
+function RemoveButton({
+  onClick,
+  ariaLabel,
+}: {
+  onClick: () => void;
+  ariaLabel: string;
+}) {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label={ariaLabel}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onFocus={() => setIsFocused(true)}
+      onBlur={() => setIsFocused(false)}
+      style={{
+        background: isHovered ? "#FF6B6B20" : "transparent",
+        border: "none",
+        color: isHovered || isFocused ? "#FF6B6B" : "#FF6B6B60",
+        cursor: "pointer",
+        fontSize: 16,
+        lineHeight: 1,
+        padding: "4px 8px",
+        borderRadius: 4,
+        outline: "none",
+        boxShadow: isFocused ? "0 0 0 2px #FF6B6B80" : "none",
+        transition: "all 0.15s ease",
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      ×
+    </button>
+  );
+}
+
 // =============================================
 // Platforms config
 // =============================================
@@ -164,10 +205,12 @@ export default function Dashboard() {
     try {
       const res = await fetch("/api/predictions");
       const data = await res.json();
-      if (data.predictions) {
+      if (data.predictions && data.predictions.length > 0) {
         setPredictions(
           data.predictions.map((m: any) => ({ ...m, selected: true })),
         );
+      } else {
+        setPredictions(getDemoData());
       }
     } catch {
       // Use demo data if API not connected yet
@@ -495,7 +538,7 @@ export default function Dashboard() {
                   No predictions yet
                 </div>
                 <div style={{ fontSize: 13, color: "#4a4a5e" }}>
-                  Click "Run Full Pipeline" to fetch today's data and generate
+                  Click &quot;Run Full Pipeline&quot; to fetch today&apos;s data and generate
                   predictions
                 </div>
               </div>
@@ -621,20 +664,10 @@ export default function Dashboard() {
                           >
                             {pred.stake}u
                           </span>
-                          <button
+                          <RemoveButton
                             onClick={() => removePick(match.id, pred.market)}
-                            style={{
-                              background: "none",
-                              border: "none",
-                              color: "#FF6B6B60",
-                              cursor: "pointer",
-                              fontSize: 16,
-                              padding: "2px 6px",
-                              borderRadius: 4,
-                            }}
-                          >
-                            ×
-                          </button>
+                            ariaLabel={`Remove ${pred.market} prediction for ${match.homeTeam} vs ${match.awayTeam}`}
+                          />
                         </div>
                       </div>
                     ))}
