@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="boltGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <rect width="512" height="512" fill="#0c0c14" />
+  <circle cx="256" cy="256" r="220" fill="none" stroke="url(#boltGradient)" stroke-width="6" stroke-opacity="0.2" />
+  <path d="M 296 80 L 176 272 L 264 272 L 216 432 L 336 240 L 248 240 Z" fill="url(#boltGradient)" filter="url(#glow)" />
+</svg>
