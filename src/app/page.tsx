@@ -128,6 +128,53 @@ function StatusDot({ active }: { active: boolean }) {
   );
 }
 
+function ScheduleButton({
+  time,
+  selected,
+  onClick,
+}: {
+  time: string;
+  selected: boolean;
+  onClick: () => void;
+}) {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+
+  const label =
+    time === "Now"
+      ? "Schedule for immediate publishing"
+      : `Schedule publishing for ${time} CET`;
+
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={selected}
+      aria-label={label}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onFocus={() => setIsFocused(true)}
+      onBlur={() => setIsFocused(false)}
+      style={{
+        padding: "10px 16px",
+        borderRadius: 8,
+        border: `1px solid ${selected ? "#00FF8860" : isHovered ? "#00FF8830" : "#1a1a2e"}`,
+        cursor: "pointer",
+        background: selected ? "#00FF8818" : isHovered ? "#161625" : "#12121e",
+        color: selected ? "#00FF88" : isHovered ? "#a0a0b8" : "#6b6b80",
+        fontSize: 13,
+        fontWeight: 700,
+        fontFamily: "inherit",
+        outline: "none",
+        boxShadow: isFocused ? "0 0 0 2px #00FF88" : "none",
+        transition: "all 0.15s ease",
+      }}
+    >
+      {time === "Now" ? "🚀 Now" : `${time} CET`}
+    </button>
+  );
+}
+
 // =============================================
 // Platforms config
 // =============================================
@@ -732,24 +779,12 @@ export default function Dashboard() {
                 >
                   {["Now", "10:00", "12:00", "15:00", "18:00", "20:00"].map(
                     (time) => (
-                      <button
+                      <ScheduleButton
                         key={time}
+                        time={time}
+                        selected={scheduleTime === time}
                         onClick={() => setScheduleTime(time)}
-                        style={{
-                          padding: "10px 16px",
-                          borderRadius: 8,
-                          border: `1px solid ${scheduleTime === time ? "#00FF8840" : "#1a1a2e"}`,
-                          cursor: "pointer",
-                          background:
-                            scheduleTime === time ? "#00FF8818" : "#12121e",
-                          color: scheduleTime === time ? "#00FF88" : "#6b6b80",
-                          fontSize: 13,
-                          fontWeight: 700,
-                          fontFamily: "inherit",
-                        }}
-                      >
-                        {time === "Now" ? "🚀 Now" : `${time} CET`}
-                      </button>
+                      />
                     ),
                   )}
                 </div>
