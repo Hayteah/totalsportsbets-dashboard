@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" width="800" height="200">
+  <defs>
+    <linearGradient id="logoBoltGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <filter id="logoGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <!-- Lightning Icon -->
+  <rect width="140" height="140" x="10" y="30" rx="32" fill="#0f0f18" stroke="#1a1a2e" stroke-width="4" />
+  <path d="M 95 50 L 40 110 L 80 110 L 55 160 L 110 100 L 70 100 Z" fill="url(#logoBoltGrad)" filter="url(#logoGlow)" />
+
+  <!-- Text Brand -->
+  <text x="175" y="105" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-weight="900" font-size="52" letter-spacing="2">TOTALSPORTBET</text>
+  <text x="178" y="145" fill="#00FF88" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-weight="700" font-size="24" letter-spacing="6">AI DASHBOARD</text>
+</svg>
