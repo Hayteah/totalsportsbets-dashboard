@@ -80,12 +80,18 @@ function ValueBadge({ value }: { value: number }) {
 function Toggle({
   checked,
   onChange,
+  ariaLabel,
 }: {
   checked: boolean;
   onChange: () => void;
+  ariaLabel?: string;
 }) {
   return (
-    <div
+    <button
+      type="button"
+      role="switch"
+      aria-checked={checked}
+      aria-label={ariaLabel}
       onClick={onChange}
       style={{
         width: 44,
@@ -97,6 +103,8 @@ function Toggle({
         border: `1px solid ${checked ? "#00FF8860" : "#2a2a3e"}`,
         position: "relative",
         flexShrink: 0,
+        padding: 0,
+        outline: "none",
       }}
     >
       <div
@@ -111,7 +119,7 @@ function Toggle({
           background: checked ? "#0a0a0f" : "#4a4a5e",
         }}
       />
-    </div>
+    </button>
   );
 }
 
@@ -164,10 +172,12 @@ export default function Dashboard() {
     try {
       const res = await fetch("/api/predictions");
       const data = await res.json();
-      if (data.predictions) {
+      if (data.predictions && data.predictions.length > 0) {
         setPredictions(
           data.predictions.map((m: any) => ({ ...m, selected: true })),
         );
+      } else {
+        setPredictions(getDemoData());
       }
     } catch {
       // Use demo data if API not connected yet
@@ -495,7 +505,7 @@ export default function Dashboard() {
                   No predictions yet
                 </div>
                 <div style={{ fontSize: 13, color: "#4a4a5e" }}>
-                  Click "Run Full Pipeline" to fetch today's data and generate
+                  Click &quot;Run Full Pipeline&quot; to fetch today&apos;s data and generate
                   predictions
                 </div>
               </div>
@@ -533,6 +543,7 @@ export default function Dashboard() {
                       <Toggle
                         checked={match.selected}
                         onChange={() => togglePrediction(match.id)}
+                        ariaLabel={`Select ${match.homeTeam} vs ${match.awayTeam}`}
                       />
                       <div>
                         <div style={{ fontSize: 15, fontWeight: 700 }}>
@@ -623,6 +634,7 @@ export default function Dashboard() {
                           </span>
                           <button
                             onClick={() => removePick(match.id, pred.market)}
+                            aria-label={`Remove ${pred.market} pick for ${match.homeTeam} vs ${match.awayTeam}`}
                             style={{
                               background: "none",
                               border: "none",
@@ -699,6 +711,7 @@ export default function Dashboard() {
                   <Toggle
                     checked={selectedPlatforms.includes(p.id)}
                     onChange={() => togglePlatform(p.id)}
+                    ariaLabel={`Toggle ${p.name} publishing`}
                   />
                 </div>
               ))}
