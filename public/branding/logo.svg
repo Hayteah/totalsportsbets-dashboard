@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="100%" height="100%">
+  <defs>
+    <linearGradient id="boltGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="25" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <rect width="1000" height="1000" fill="#08080d" />
+  <rect x="20" y="20" width="960" height="960" fill="none" stroke="#1a1a2e" stroke-width="8" rx="40" />
+  <g filter="url(#glow)">
+    <path d="M 580 180 L 360 500 L 520 500 L 420 780 L 640 460 L 480 460 Z" fill="url(#boltGradient)" />
+  </g>
+  <text x="500" y="860" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="52" fill="#FFFFFF" text-anchor="middle" letter-spacing="4">TOTALSPORTBET</text>
+  <text x="500" y="915" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="28" fill="#00FF88" text-anchor="middle" letter-spacing="8">AI PREDICTIONS</text>
+</svg>
