@@ -1,0 +1,67 @@
+<svg width="800" height="1000" viewBox="0 0 800 1000" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f0f18" />
+      <stop offset="100%" stop-color="#0a0a0f" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <linearGradient id="boltGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+  </defs>
+
+  <!-- Card Frame -->
+  <rect width="800" height="1000" rx="32" fill="url(#cardBg)" stroke="#1a1a2e" stroke-width="4" />
+
+  <!-- Header Bar -->
+  <path d="M 0 32 A 32 32 0 0 1 32 0 L 768 0 A 32 32 0 0 1 800 32 L 800 120 L 0 120 Z" fill="#12121e" />
+  <rect x="0" y="116" width="800" height="4" fill="url(#accentGrad)" />
+
+  <!-- Logo watermark -->
+  <g transform="translate(100, 150) scale(0.6)" opacity="0.2">
+    <path d="M 580 200 L 360 520 L 520 520 L 420 800 L 640 480 L 480 480 Z" fill="url(#boltGradient)" />
+  </g>
+
+  <!-- Header text -->
+  <text x="400" y="70" font-family="'Inter', sans-serif" font-weight="900" font-size="36" fill="#FFFFFF" text-anchor="middle" letter-spacing="4">TOTALSPORTBET</text>
+  <text x="400" y="100" font-family="'Inter', sans-serif" font-weight="700" font-size="16" fill="#00FF88" text-anchor="middle" letter-spacing="3">AI MATCH PREDICTION</text>
+
+  <!-- Match Container Card -->
+  <rect x="50" y="180" width="700" height="640" rx="20" fill="#141422" stroke="#2a2a3e" stroke-width="2" />
+
+  <!-- Teams Header -->
+  <text x="400" y="250" font-family="'Inter', sans-serif" font-weight="800" font-size="36" fill="#FFFFFF" text-anchor="middle">HOME TEAM vs AWAY TEAM</text>
+  <text x="400" y="285" font-family="'Inter', sans-serif" font-weight="600" font-size="20" fill="#6b6b80" text-anchor="middle">CHAMPIONS LEAGUE · 21:00 CET</text>
+
+  <!-- Prediction Box 1 -->
+  <rect x="90" y="330" width="620" height="120" rx="14" fill="#0c0c14" stroke="#00FF8840" stroke-width="2" />
+  <text x="130" y="380" font-family="'Inter', sans-serif" font-weight="700" font-size="18" fill="#8b8ba0">MATCH WINNER (1X2)</text>
+  <text x="130" y="415" font-family="'Inter', sans-serif" font-weight="800" font-size="26" fill="#FFFFFF">HOME WIN</text>
+  <text x="670" y="395" font-family="monospace" font-weight="900" font-size="36" fill="#00FF88" text-anchor="end">@2.10</text>
+  <rect x="550" y="350" width="120" height="28" rx="14" fill="#00FF8818" stroke="#00FF8840" stroke-width="1" />
+  <text x="610" y="369" font-family="'Inter', sans-serif" font-weight="700" font-size="13" fill="#00FF88" text-anchor="middle">CONF 78%</text>
+
+  <!-- Prediction Box 2 -->
+  <rect x="90" y="475" width="620" height="120" rx="14" fill="#0c0c14" stroke="#00AAFF40" stroke-width="2" />
+  <text x="130" y="525" font-family="'Inter', sans-serif" font-weight="700" font-size="18" fill="#8b8ba0">BOTH TEAMS TO SCORE</text>
+  <text x="130" y="560" font-family="'Inter', sans-serif" font-weight="800" font-size="26" fill="#FFFFFF">YES</text>
+  <text x="670" y="540" font-family="monospace" font-weight="900" font-size="36" fill="#00AAFF" text-anchor="end">@1.85</text>
+  <rect x="550" y="495" width="120" height="28" rx="14" fill="#00AAFF18" stroke="#00AAFF40" stroke-width="1" />
+  <text x="610" y="514" font-family="'Inter', sans-serif" font-weight="700" font-size="13" fill="#00AAFF" text-anchor="middle">CONF 82%</text>
+
+  <!-- Reasoning Box -->
+  <rect x="90" y="620" width="620" height="160" rx="14" fill="#0c0c14" stroke="#1a1a2e" stroke-width="2" />
+  <text x="120" y="655" font-family="'Inter', sans-serif" font-weight="700" font-size="16" fill="#00FF88">💡 AI KEY INSIGHTS</text>
+  <text x="120" y="690" font-family="'Inter', sans-serif" font-weight="500" font-size="16" fill="#a0a0b0">• Home team scored 2.4 goals/game in last 5 matches</text>
+  <text x="120" y="720" font-family="'Inter', sans-serif" font-weight="500" font-size="16" fill="#a0a0b0">• Away team key defender suspended for this fixture</text>
+  <text x="120" y="750" font-family="'Inter', sans-serif" font-weight="500" font-size="16" fill="#a0a0b0">• High value edge identified by quantitative model (+9.4%)</text>
+
+  <!-- Footer -->
+  <rect x="0" y="860" width="800" height="140" fill="#0a0a0f" />
+  <text x="400" y="915" font-family="'Inter', sans-serif" font-weight="800" font-size="20" fill="#FFFFFF" text-anchor="middle" letter-spacing="2">FOLLOW @TOTALSPORTBET FOR DAILY PICKS</text>
+  <text x="400" y="950" font-family="'Inter', sans-serif" font-weight="600" font-size="14" fill="#4a4a5e" text-anchor="middle">Gamble Responsibly 18+ · For Educational &amp; Entertainment Purposes Only</text>
+</svg>
