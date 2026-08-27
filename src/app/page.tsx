@@ -115,6 +115,46 @@ function Toggle({
   );
 }
 
+function RemoveButton({
+  onClick,
+  ariaLabel,
+}: {
+  onClick: () => void;
+  ariaLabel: string;
+}) {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onFocus={() => setIsFocused(true)}
+      onBlur={() => setIsFocused(false)}
+      aria-label={ariaLabel}
+      style={{
+        background: "none",
+        border: "none",
+        color: isHovered || isFocused ? "#FF6B6B" : "#FF6B6B60",
+        cursor: "pointer",
+        fontSize: 16,
+        padding: "2px 6px",
+        borderRadius: 4,
+        outline: "none",
+        boxShadow: isFocused ? "0 0 0 2px #FF6B6B" : "none",
+        transition: "all 0.15s ease",
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      ×
+    </button>
+  );
+}
+
 function StatusDot({ active }: { active: boolean }) {
   return (
     <div
@@ -164,10 +204,12 @@ export default function Dashboard() {
     try {
       const res = await fetch("/api/predictions");
       const data = await res.json();
-      if (data.predictions) {
+      if (data.predictions && data.predictions.length > 0) {
         setPredictions(
           data.predictions.map((m: any) => ({ ...m, selected: true })),
         );
+      } else {
+        setPredictions(getDemoData());
       }
     } catch {
       // Use demo data if API not connected yet
@@ -621,20 +663,10 @@ export default function Dashboard() {
                           >
                             {pred.stake}u
                           </span>
-                          <button
+                          <RemoveButton
                             onClick={() => removePick(match.id, pred.market)}
-                            style={{
-                              background: "none",
-                              border: "none",
-                              color: "#FF6B6B60",
-                              cursor: "pointer",
-                              fontSize: 16,
-                              padding: "2px 6px",
-                              borderRadius: 4,
-                            }}
-                          >
-                            ×
-                          </button>
+                            ariaLabel={`Remove prediction ${pred.market} (${pred.pick}) for ${match.homeTeam} vs ${match.awayTeam}`}
+                          />
                         </div>
                       </div>
                     ))}
