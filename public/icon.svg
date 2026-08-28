@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="boltGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f0f18" />
+      <stop offset="100%" stop-color="#08080d" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="16" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="110" fill="url(#bgGradient)" stroke="#00FF88" stroke-width="6" stroke-opacity="0.3"/>
+
+  <!-- Glowing Glow Circle -->
+  <circle cx="256" cy="256" r="140" fill="#00FF88" opacity="0.12" filter="url(#glow)"/>
+
+  <!-- Lightning Bolt (Standard Centered Path) -->
+  <path d="M 296 102.4 L 184.3 266.2 L 266.2 266.2 L 215 409.6 L 327.7 245.8 L 245.8 245.8 Z" fill="url(#boltGradient)" filter="url(#glow)"/>
+</svg>

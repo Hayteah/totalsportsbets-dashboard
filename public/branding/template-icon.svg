@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <defs>
+    <linearGradient id="neonGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#12121e" />
+      <stop offset="100%" stop-color="#0a0a0f" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="20" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Dark Background Plate -->
+  <rect width="1000" height="1000" rx="40" fill="#08080d"/>
+
+  <!-- Watermark Grid Pattern -->
+  <g opacity="0.15" stroke="#00FF88" stroke-width="1">
+    <path d="M 0,200 L 1000,200 M 0,400 L 1000,400 M 0,600 L 1000,600 M 0,800 L 1000,800"/>
+    <path d="M 200,0 L 200,1000 M 400,0 L 400,1000 M 600,0 L 600,1000 M 800,0 L 800,1000"/>
+  </g>
+
+  <!-- Prediction Card Graphic Container Frame -->
+  <rect x="100" y="100" width="800" height="800" rx="32" fill="url(#cardBg)" stroke="url(#neonGlow)" stroke-width="4" stroke-opacity="0.5"/>
+
+  <!-- Outer Decorative Corner Rings -->
+  <circle cx="100" cy="100" r="12" fill="#00FF88"/>
+  <circle cx="900" cy="100" r="12" fill="#00AAFF"/>
+  <circle cx="100" cy="900" r="12" fill="#00AAFF"/>
+  <circle cx="900" cy="900" r="12" fill="#00FF88"/>
+
+  <!-- Central Watermark Lightning Bolt Emblem -->
+  <path d="M 580 200 L 360 520 L 520 520 L 420 800 L 640 480 L 480 480 Z" fill="url(#neonGlow)" filter="url(#glow)"/>
+
+  <!-- Header Branding Watermark Text -->
+  <text x="500" y="860" font-family="'Segoe UI', Roboto, Helvetica, sans-serif" font-weight="900" font-size="32" fill="#00FF88" letter-spacing="8" text-anchor="middle" opacity="0.8">
+    TOTALSPORTBET PREDICTION TEMPLATE
+  </text>
+</svg>
