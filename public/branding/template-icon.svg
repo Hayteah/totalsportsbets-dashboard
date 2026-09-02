@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e0e18" />
+      <stop offset="50%" stop-color="#121222" />
+      <stop offset="100%" stop-color="#0a0a14" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <linearGradient id="boltGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="20" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Card Outer Frame -->
+  <rect width="800" height="1000" rx="32" fill="url(#cardBg)" stroke="#1a1a2e" stroke-width="8" />
+
+  <!-- Header Accent Line -->
+  <rect x="0" y="0" width="800" height="16" fill="url(#accentGrad)" />
+
+  <!-- Subtle Watermark Lightning Bolt in Background -->
+  <path d="M 460 200 L 280 520 L 410 520 L 330 800 L 510 480 L 380 480 Z" fill="url(#boltGrad)" opacity="0.08" />
+
+  <!-- Top Brand Header -->
+  <g transform="translate(60, 60)">
+    <rect width="56" height="56" rx="14" fill="url(#accentGrad)" />
+    <path d="M 33 12 L 20 31 L 29 31 L 23 48 L 36 29 L 27 29 Z" fill="#0a0a0f" />
+    <text x="76" y="34" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="28" letter-spacing="2">TOTALSPORTBET</text>
+    <text x="76" y="52" fill="#00FF88" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="14" letter-spacing="4">DAILY AI PREDICTIONS</text>
+  </g>
+
+  <!-- Card Content Placeholder Box (Match Card Frame) -->
+  <rect x="60" y="160" width="680" height="680" rx="24" fill="#12121e" stroke="#00FF8830" stroke-width="3" />
+
+  <!-- Content Grid Lines (Template Styling) -->
+  <line x1="100" y1="280" x2="700" y2="280" stroke="#1a1a2e" stroke-width="2" />
+  <line x1="100" y1="420" x2="700" y2="420" stroke="#1a1a2e" stroke-width="2" />
+  <line x1="100" y1="560" x2="700" y2="560" stroke="#1a1a2e" stroke-width="2" />
+
+  <!-- Central Watermark Emblem -->
+  <g filter="url(#glow)">
+    <circle cx="400" cy="500" r="100" fill="#0c0c16" stroke="url(#accentGrad)" stroke-width="4" />
+    <path d="M 415 420 L 370 495 L 400 495 L 380 570 L 430 485 L 400 485 Z" fill="url(#boltGrad)" />
+  </g>
+
+  <!-- Card Footer -->
+  <rect x="0" y="880" width="800" height="120" fill="#090910" />
+  <line x1="0" y1="880" x2="800" y2="880" stroke="#1a1a2e" stroke-width="2" />
+  <text x="400" y="930" text-anchor="middle" fill="#6b6b80" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="18" letter-spacing="3">AI MATCH PREDICTIONS · SWIPE FOR MORE</text>
+  <text x="400" y="960" text-anchor="middle" fill="#00FF88" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="16" letter-spacing="4">@TOTALSPORTBET</text>
+</svg>
