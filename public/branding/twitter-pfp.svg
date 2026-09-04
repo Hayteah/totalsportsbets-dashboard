@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="100%" height="100%">
+  <defs>
+    <linearGradient id="twGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1DA1F2" />
+      <stop offset="50%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <linearGradient id="boltGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00FF88" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#0c0c14" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Dark Background -->
+  <rect width="1000" height="1000" fill="#0c0c14" />
+
+  <!-- Radial Glow -->
+  <circle cx="500" cy="500" r="450" fill="url(#bgGlow)" />
+
+  <!-- Outer Circular Border (Twitter/X Circular Mask Safe) -->
+  <circle cx="500" cy="500" r="440" fill="#12121e" stroke="url(#twGrad)" stroke-width="16" />
+  <circle cx="500" cy="500" r="410" fill="#0f0f18" stroke="#1a1a2e" stroke-width="6" />
+
+  <!-- Center Lightning Icon -->
+  <g transform="translate(50, -20)">
+    <path d="M 540 180 L 330 500 L 490 500 L 390 780 L 630 440 L 470 440 Z" fill="url(#boltGrad)" filter="drop-shadow(0px 0px 20px rgba(0,255,136,0.5))" />
+  </g>
+
+  <!-- Brand Typography Badge -->
+  <rect x="220" y="720" width="560" height="90" rx="45" fill="#0c0c14" stroke="url(#boltGrad)" stroke-width="4" />
+  <text x="500" y="778" font-family="'Inter', 'Montserrat', 'Segoe UI', sans-serif" font-weight="900" font-size="40" fill="#FFFFFF" text-anchor="middle" letter-spacing="4">TOTALSPORT<tspan fill="#00FF88">BET</tspan></text>
+</svg>
