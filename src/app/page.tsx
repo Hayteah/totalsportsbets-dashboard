@@ -338,6 +338,7 @@ export default function Dashboard() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
+              aria-current={activeTab === tab.id ? "page" : undefined}
               style={{
                 width: "100%",
                 display: "flex",
