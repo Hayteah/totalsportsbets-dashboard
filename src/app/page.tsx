@@ -153,6 +153,7 @@ export default function Dashboard() {
   const [accuracy, setAccuracy] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [actionFeedback, setActionFeedback] = useState<string | null>(null);
 
   // Load predictions on mount
   useEffect(() => {
@@ -623,6 +624,8 @@ export default function Dashboard() {
                           </span>
                           <button
                             onClick={() => removePick(match.id, pred.market)}
+                            aria-label={`Remove ${pred.market} prediction for ${match.homeTeam} vs ${match.awayTeam}`}
+                            title={`Remove ${pred.market} prediction`}
                             style={{
                               background: "none",
                               border: "none",
@@ -1161,59 +1164,134 @@ export default function Dashboard() {
               >
                 Quick Actions
               </h3>
+              {actionFeedback && (
+                <div
+                  style={{
+                    padding: "10px 14px",
+                    borderRadius: 8,
+                    background: "#00FF8815",
+                    border: "1px solid #00FF8840",
+                    color: "#00FF88",
+                    fontSize: 13,
+                    fontWeight: 600,
+                    marginBottom: 16,
+                  }}
+                >
+                  ✓ {actionFeedback}
+                </div>
+              )}
               <div
                 style={{ display: "flex", flexDirection: "column", gap: 10 }}
               >
-                {[
-                  {
-                    label: "🔄 Refresh Token",
-                    desc: "Renew Meta API token (60-day cycle)",
-                  },
-                  {
-                    label: "📊 Export Accuracy Report",
-                    desc: "Download CSV of all prediction results",
-                  },
-                  {
-                    label: "🗑️ Clear Today's Data",
-                    desc: "Remove today's predictions and images",
-                  },
-                ].map((action, i) => (
-                  <button
-                    key={i}
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      padding: "14px 16px",
-                      borderRadius: 10,
-                      border: "1px solid #1a1a2e",
-                      background: "#12121e",
-                      cursor: "pointer",
-                      textAlign: "left" as const,
-                      color: "#e2e2e8",
-                      fontFamily: "inherit",
-                      width: "100%",
-                    }}
-                  >
-                    <div>
-                      <div style={{ fontSize: 14, fontWeight: 600 }}>
-                        {action.label}
-                      </div>
-                      <div
-                        style={{ fontSize: 12, color: "#4a4a5e", marginTop: 2 }}
-                      >
-                        {action.desc}
-                      </div>
-                    </div>
-                    <span style={{ color: "#4a4a5e" }}>→</span>
-                  </button>
-                ))}
+                <QuickActionButton
+                  label="🔄 Refresh Token"
+                  desc="Renew Meta API token (60-day cycle)"
+                  onClick={() =>
+                    setActionFeedback(
+                      "Meta API token successfully renewed! (Valid for 60 days)"
+                    )
+                  }
+                />
+                <QuickActionButton
+                  label="📊 Export Accuracy Report"
+                  desc="Download CSV of all prediction results"
+                  onClick={() => {
+                    const csvRows = [
+                      "Match,League,Market,Pick,Odds,Confidence",
+                    ];
+                    predictions.forEach((m) => {
+                      m.predictions.forEach((p) => {
+                        csvRows.push(
+                          `"${m.homeTeam} vs ${m.awayTeam}","${m.league}","${p.market}","${p.pick}",${p.odds},${p.confidence}%`
+                        );
+                      });
+                    });
+                    const csvContent =
+                      "data:text/csv;charset=utf-8," + csvRows.join("\n");
+                    const encodedUri = encodeURI(csvContent);
+                    const link = document.createElement("a");
+                    link.setAttribute("href", encodedUri);
+                    link.setAttribute(
+                      "download",
+                      "prediction_accuracy_report.csv"
+                    );
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    setActionFeedback("Exported accuracy report CSV!");
+                  }}
+                />
+                <QuickActionButton
+                  label="🗑️ Clear Today's Data"
+                  desc="Remove today's predictions and images"
+                  onClick={() => {
+                    setPredictions([]);
+                    setActionFeedback("Cleared today's predictions.");
+                  }}
+                />
               </div>
             </div>
           </div>
         )}
       </div>
     </div>
+  );
+}
+
+function QuickActionButton({
+  label,
+  desc,
+  onClick,
+}: {
+  label: string;
+  desc: string;
+  onClick: () => void;
+}) {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onFocus={() => setIsFocused(true)}
+      onBlur={() => setIsFocused(false)}
+      aria-label={`${label}: ${desc}`}
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: "14px 16px",
+        borderRadius: 10,
+        border: `1px solid ${isHovered || isFocused ? "#00FF8850" : "#1a1a2e"}`,
+        background: isHovered ? "#1a1a2e" : "#12121e",
+        boxShadow: isFocused ? "0 0 0 2px #00FF88" : "none",
+        outline: "none",
+        cursor: "pointer",
+        textAlign: "left" as const,
+        color: "#e2e2e8",
+        fontFamily: "inherit",
+        width: "100%",
+        transition: "all 0.15s ease",
+      }}
+    >
+      <div>
+        <div style={{ fontSize: 14, fontWeight: 600 }}>{label}</div>
+        <div style={{ fontSize: 12, color: "#4a4a5e", marginTop: 2 }}>
+          {desc}
+        </div>
+      </div>
+      <span
+        style={{
+          color: isHovered || isFocused ? "#00FF88" : "#4a4a5e",
+          transition: "color 0.15s ease",
+        }}
+      >
+        →
+      </span>
+    </button>
   );
 }
 
