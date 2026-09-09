@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="100%" height="100%">
+  <defs>
+    <linearGradient id="boltGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+  </defs>
+  <!-- Background transparent / frame -->
+  <rect width="1000" height="1000" fill="none" />
+
+  <!-- Subtle overlay stroke frame -->
+  <rect x="50" y="50" width="900" height="900" rx="40" fill="none" stroke="#1a1a2e" stroke-width="8" opacity="0.5" />
+
+  <!-- Background Watermark Lightning Bolt with opacity 0.2 -->
+  <path d="M 580 200 L 360 520 L 520 520 L 420 800 L 640 480 L 480 480 Z" fill="url(#boltGradient)" opacity="0.2" />
+
+  <!-- Accent Corner Marks -->
+  <path d="M 50 150 L 50 50 L 150 50" fill="none" stroke="#00FF88" stroke-width="12" stroke-linecap="round" />
+  <path d="M 850 50 L 950 50 L 950 150" fill="none" stroke="#00FF88" stroke-width="12" stroke-linecap="round" />
+  <path d="M 50 850 L 50 950 L 150 950" fill="none" stroke="#00AAFF" stroke-width="12" stroke-linecap="round" />
+  <path d="M 950 850 L 950 950 L 850 950" fill="none" stroke="#00AAFF" stroke-width="12" stroke-linecap="round" />
+</svg>
