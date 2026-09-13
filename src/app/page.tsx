@@ -132,8 +132,10 @@ function StatusDot({ active }: { active: boolean }) {
 // Platforms config
 // =============================================
 const platforms = [
-  { id: "instagram", name: "Instagram", icon: "📸", connected: true },
-  { id: "facebook", name: "Facebook", icon: "📘", connected: true },
+  { id: "instagram", name: "Instagram", icon: "/branding/instagram-pfp.svg", connected: true },
+  { id: "youtube", name: "YouTube", icon: "/branding/youtube-pfp.svg", connected: true },
+  { id: "facebook", name: "Facebook", icon: "/branding/facebook-pfp.svg", connected: true },
+  { id: "twitter", name: "Twitter / X", icon: "/branding/twitter-pfp.svg", connected: true },
   { id: "tiktok", name: "TikTok", icon: "🎵", connected: false },
   { id: "telegram", name: "Telegram", icon: "✈️", connected: false },
 ];
@@ -681,7 +683,11 @@ export default function Dashboard() {
                   <div
                     style={{ display: "flex", alignItems: "center", gap: 12 }}
                   >
-                    <span style={{ fontSize: 20 }}>{p.icon}</span>
+                    {p.icon.startsWith("/") ? (
+                      <img src={p.icon} alt={p.name} style={{ width: 24, height: 24, borderRadius: 6 }} />
+                    ) : (
+                      <span style={{ fontSize: 20 }}>{p.icon}</span>
+                    )}
                     <div>
                       <div style={{ fontSize: 14, fontWeight: 600 }}>
                         {p.name}
