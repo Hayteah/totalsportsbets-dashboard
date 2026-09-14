@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 240" width="100%" height="100%">
+  <defs>
+    <linearGradient id="boltGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+  </defs>
+  <rect x="10" y="20" width="200" height="200" rx="40" fill="#1a1a2e" stroke="#00FF8830" stroke-width="4" />
+  <path d="M 126 60 L 82 124 L 114 124 L 94 180 L 138 116 L 106 116 Z" fill="url(#boltGradient)" />
+  <text x="240" y="125" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="70" letter-spacing="2">TOTALSPORTBET</text>
+  <text x="245" y="175" fill="#00FF88" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="32" letter-spacing="6">AI DASHBOARD</text>
+</svg>
