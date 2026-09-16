@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <defs>
+    <linearGradient id="fbGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1877F2"/>
+      <stop offset="50%" stop-color="#00AAFF"/>
+      <stop offset="100%" stop-color="#00FF88"/>
+    </linearGradient>
+    <linearGradient id="boltGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88"/>
+      <stop offset="100%" stop-color="#00AAFF"/>
+    </linearGradient>
+    <filter id="fbFilter" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="22" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Dark Canvas -->
+  <rect width="1000" height="1000" rx="120" fill="#08080d"/>
+
+  <!-- FB Outer Border Ring -->
+  <rect x="30" y="30" width="940" height="940" rx="100" fill="#0f0f18" stroke="url(#fbGlow)" stroke-width="12" filter="url(#fbFilter)"/>
+  <rect x="50" y="50" width="900" height="900" rx="80" fill="#12121e" stroke="#1a1a2e" stroke-width="4"/>
+
+  <!-- Inner Tech Circle -->
+  <circle cx="500" cy="460" r="320" fill="none" stroke="url(#fbGlow)" stroke-width="6" stroke-dasharray="18 12"/>
+
+  <!-- Central Lightning Bolt Icon -->
+  <path d="M 580 200 L 360 520 L 520 520 L 420 800 L 640 480 L 480 480 Z" fill="url(#boltGrad)" filter="url(#fbFilter)"/>
+
+  <!-- Platform Badge Top -->
+  <rect x="420" y="90" width="160" height="38" rx="19" fill="#12121e" stroke="#1877F2" stroke-width="2"/>
+  <text x="500" y="115" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="14" fill="#1877F2" letter-spacing="2" text-anchor="middle">FACEBOOK</text>
+
+  <!-- Brand Typography Pill -->
+  <rect x="250" y="800" width="500" height="68" rx="34" fill="#08080d" stroke="url(#boltGrad)" stroke-width="4"/>
+  <text x="500" y="844" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="28" fill="#ffffff" letter-spacing="3" text-anchor="middle">TOTALSPORTBET <tspan fill="#00FF88">AI</tspan></text>
+</svg>
