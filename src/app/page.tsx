@@ -132,10 +132,10 @@ function StatusDot({ active }: { active: boolean }) {
 // Platforms config
 // =============================================
 const platforms = [
-  { id: "instagram", name: "Instagram", icon: "📸", connected: true },
-  { id: "facebook", name: "Facebook", icon: "📘", connected: true },
-  { id: "tiktok", name: "TikTok", icon: "🎵", connected: false },
-  { id: "telegram", name: "Telegram", icon: "✈️", connected: false },
+  { id: "instagram", name: "Instagram", icon: "/branding/instagram-pfp.svg", connected: true },
+  { id: "youtube", name: "YouTube", icon: "/branding/youtube-pfp.svg", connected: true },
+  { id: "facebook", name: "Facebook", icon: "/branding/facebook-pfp.svg", connected: true },
+  { id: "twitter", name: "Twitter / X", icon: "/branding/twitter-pfp.svg", connected: true },
 ];
 
 // =============================================
@@ -295,20 +295,16 @@ export default function Dashboard() {
           style={{ padding: "24px 20px", borderBottom: "1px solid #1a1a2e" }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <div
+            <img
+              src="/branding/homepage-icon.svg"
+              alt="Totalsportbet AI"
               style={{
-                width: 36,
-                height: 36,
+                width: 38,
+                height: 38,
                 borderRadius: 10,
-                background: "linear-gradient(135deg, #00FF88, #00AAFF)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: 18,
+                objectFit: "cover",
               }}
-            >
-              ⚡
-            </div>
+            />
             <div>
               <div
                 style={{
@@ -322,7 +318,7 @@ export default function Dashboard() {
               <div
                 style={{
                   fontSize: 10,
-                  color: "#4a4a5e",
+                  color: "#00FF88",
                   letterSpacing: "2px",
                   fontWeight: 600,
                 }}
@@ -681,7 +677,20 @@ export default function Dashboard() {
                   <div
                     style={{ display: "flex", alignItems: "center", gap: 12 }}
                   >
-                    <span style={{ fontSize: 20 }}>{p.icon}</span>
+                    {p.icon.startsWith("/") ? (
+                      <img
+                        src={p.icon}
+                        alt={p.name}
+                        style={{
+                          width: 28,
+                          height: 28,
+                          borderRadius: 6,
+                          objectFit: "contain",
+                        }}
+                      />
+                    ) : (
+                      <span style={{ fontSize: 20 }}>{p.icon}</span>
+                    )}
                     <div>
                       <div style={{ fontSize: 14, fontWeight: 600 }}>
                         {p.name}
@@ -842,6 +851,123 @@ export default function Dashboard() {
                   ? "⏳ Publishing..."
                   : `🚀 Publish to ${selectedPlatforms.length} platform(s) ${scheduleTime === "Now" ? "now" : `at ${scheduleTime} CET`}`}
               </button>
+            </div>
+
+            {/* Brand Assets & Graphic Templates Section */}
+            <div
+              style={{
+                gridColumn: "1 / -1",
+                background: "#0f0f18",
+                borderRadius: 14,
+                padding: 24,
+                border: "1px solid #1a1a2e",
+                marginTop: 12,
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: 16,
+                  fontWeight: 700,
+                  marginBottom: 8,
+                  color: "#8b8ba0",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 8,
+                }}
+              >
+                ⚡ Brand Assets &amp; Sports Prediction Templates
+              </h3>
+              <p
+                style={{
+                  fontSize: 13,
+                  color: "#6b6b80",
+                  marginBottom: 20,
+                }}
+              >
+                Generated social media profile pictures, homepage icons, and sports prediction post templates matching your dashboard theme.
+              </p>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+                  gap: 16,
+                }}
+              >
+                {[
+                  { title: "Instagram PFP", path: "/branding/instagram-pfp.svg" },
+                  { title: "YouTube Icon", path: "/branding/youtube-pfp.svg" },
+                  { title: "Facebook PFP", path: "/branding/facebook-pfp.svg" },
+                  { title: "Twitter / X Icon", path: "/branding/twitter-pfp.svg" },
+                  { title: "Homepage Icon", path: "/branding/homepage-icon.svg" },
+                  { title: "Prediction Template", path: "/branding/template-icon.svg" },
+                ].map((asset) => (
+                  <div
+                    key={asset.title}
+                    style={{
+                      background: "#12121e",
+                      borderRadius: 12,
+                      padding: 16,
+                      border: "1px solid #1a1a2e",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      gap: 12,
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: "100%",
+                        height: 140,
+                        background: "#08080d",
+                        borderRadius: 8,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        overflow: "hidden",
+                        border: "1px solid #1a1a2e",
+                      }}
+                    >
+                      <img
+                        src={asset.path}
+                        alt={asset.title}
+                        style={{
+                          maxHeight: "90%",
+                          maxWidth: "90%",
+                          objectFit: "contain",
+                        }}
+                      />
+                    </div>
+                    <div
+                      style={{
+                        width: "100%",
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                      }}
+                    >
+                      <span style={{ fontSize: 13, fontWeight: 700 }}>
+                        {asset.title}
+                      </span>
+                      <a
+                        href={asset.path}
+                        download
+                        style={{
+                          padding: "4px 10px",
+                          borderRadius: 6,
+                          background: "#00FF8818",
+                          color: "#00FF88",
+                          border: "1px solid #00FF8840",
+                          fontSize: 11,
+                          fontWeight: 700,
+                          textDecoration: "none",
+                        }}
+                      >
+                        Download
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         )}
