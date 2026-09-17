@@ -337,6 +337,7 @@ export default function Dashboard() {
           {tabs.map((tab) => (
             <button
               key={tab.id}
+              aria-current={activeTab === tab.id ? "page" : undefined}
               onClick={() => setActiveTab(tab.id)}
               style={{
                 width: "100%",
@@ -623,6 +624,8 @@ export default function Dashboard() {
                           </span>
                           <button
                             onClick={() => removePick(match.id, pred.market)}
+                            aria-label={`Remove ${pred.market} prediction for ${match.homeTeam} vs ${match.awayTeam}`}
+                            title={`Remove ${pred.market} prediction`}
                             style={{
                               background: "none",
                               border: "none",
