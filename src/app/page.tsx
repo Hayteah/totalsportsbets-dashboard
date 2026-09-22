@@ -132,8 +132,10 @@ function StatusDot({ active }: { active: boolean }) {
 // Platforms config
 // =============================================
 const platforms = [
-  { id: "instagram", name: "Instagram", icon: "📸", connected: true },
-  { id: "facebook", name: "Facebook", icon: "📘", connected: true },
+  { id: "instagram", name: "Instagram", icon: "/branding/instagram-pfp.svg", connected: true },
+  { id: "youtube", name: "YouTube", icon: "/branding/youtube-pfp.svg", connected: true },
+  { id: "facebook", name: "Facebook", icon: "/branding/facebook-pfp.svg", connected: true },
+  { id: "twitter", name: "Twitter / X", icon: "/branding/twitter-pfp.svg", connected: true },
   { id: "tiktok", name: "TikTok", icon: "🎵", connected: false },
   { id: "telegram", name: "Telegram", icon: "✈️", connected: false },
 ];
@@ -294,42 +296,12 @@ export default function Dashboard() {
         <div
           style={{ padding: "24px 20px", borderBottom: "1px solid #1a1a2e" }}
         >
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <div
-              style={{
-                width: 36,
-                height: 36,
-                borderRadius: 10,
-                background: "linear-gradient(135deg, #00FF88, #00AAFF)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: 18,
-              }}
-            >
-              ⚡
-            </div>
-            <div>
-              <div
-                style={{
-                  fontSize: 15,
-                  fontWeight: 800,
-                  letterSpacing: "0.5px",
-                }}
-              >
-                TOTALSPORTBET
-              </div>
-              <div
-                style={{
-                  fontSize: 10,
-                  color: "#4a4a5e",
-                  letterSpacing: "2px",
-                  fontWeight: 600,
-                }}
-              >
-                AI DASHBOARD
-              </div>
-            </div>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <img
+              src="/branding/logo.svg"
+              alt="TOTALSPORTBET Logo"
+              style={{ height: 42, width: "auto" }}
+            />
           </div>
         </div>
 
@@ -495,7 +467,7 @@ export default function Dashboard() {
                   No predictions yet
                 </div>
                 <div style={{ fontSize: 13, color: "#4a4a5e" }}>
-                  Click "Run Full Pipeline" to fetch today's data and generate
+                  Click &quot;Run Full Pipeline&quot; to fetch today&apos;s data and generate
                   predictions
                 </div>
               </div>
@@ -681,7 +653,15 @@ export default function Dashboard() {
                   <div
                     style={{ display: "flex", alignItems: "center", gap: 12 }}
                   >
-                    <span style={{ fontSize: 20 }}>{p.icon}</span>
+                    {p.icon.startsWith("/") ? (
+                      <img
+                        src={p.icon}
+                        alt={p.name}
+                        style={{ width: 28, height: 28, borderRadius: "50%" }}
+                      />
+                    ) : (
+                      <span style={{ fontSize: 20 }}>{p.icon}</span>
+                    )}
                     <div>
                       <div style={{ fontSize: 14, fontWeight: 600 }}>
                         {p.name}
@@ -791,6 +771,11 @@ export default function Dashboard() {
                           i === 0
                             ? "linear-gradient(135deg, #00FF8820, #00AAFF20)"
                             : "#12121e",
+                        backgroundImage:
+                          i === 0 ? "url(/branding/template-icon.svg)" : undefined,
+                        backgroundSize: "40%",
+                        backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat",
                         border: "1px solid #1a1a2e",
                         display: "flex",
                         alignItems: "center",
