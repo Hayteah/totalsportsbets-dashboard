@@ -734,6 +734,7 @@ export default function Dashboard() {
                     (time) => (
                       <button
                         key={time}
+                        aria-pressed={scheduleTime === time}
                         onClick={() => setScheduleTime(time)}
                         style={{
                           padding: "10px 16px",
