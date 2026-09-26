@@ -132,8 +132,10 @@ function StatusDot({ active }: { active: boolean }) {
 // Platforms config
 // =============================================
 const platforms = [
-  { id: "instagram", name: "Instagram", icon: "📸", connected: true },
-  { id: "facebook", name: "Facebook", icon: "📘", connected: true },
+  { id: "instagram", name: "Instagram", icon: "/branding/instagram-pfp.svg", connected: true },
+  { id: "youtube", name: "YouTube", icon: "/branding/youtube-pfp.svg", connected: true },
+  { id: "facebook", name: "Facebook", icon: "/branding/facebook-pfp.svg", connected: true },
+  { id: "twitter", name: "Twitter / X", icon: "/branding/twitter-pfp.svg", connected: true },
   { id: "tiktok", name: "TikTok", icon: "🎵", connected: false },
   { id: "telegram", name: "Telegram", icon: "✈️", connected: false },
 ];
@@ -292,45 +294,13 @@ export default function Dashboard() {
         }}
       >
         <div
-          style={{ padding: "24px 20px", borderBottom: "1px solid #1a1a2e" }}
+          style={{ padding: "18px 16px", borderBottom: "1px solid #1a1a2e" }}
         >
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <div
-              style={{
-                width: 36,
-                height: 36,
-                borderRadius: 10,
-                background: "linear-gradient(135deg, #00FF88, #00AAFF)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: 18,
-              }}
-            >
-              ⚡
-            </div>
-            <div>
-              <div
-                style={{
-                  fontSize: 15,
-                  fontWeight: 800,
-                  letterSpacing: "0.5px",
-                }}
-              >
-                TOTALSPORTBET
-              </div>
-              <div
-                style={{
-                  fontSize: 10,
-                  color: "#4a4a5e",
-                  letterSpacing: "2px",
-                  fontWeight: 600,
-                }}
-              >
-                AI DASHBOARD
-              </div>
-            </div>
-          </div>
+          <img
+            src="/branding/logo.svg"
+            alt="TOTALSPORTBET AI Logo"
+            style={{ width: "100%", height: "auto", display: "block" }}
+          />
         </div>
 
         <div style={{ padding: "16px 12px", flex: 1 }}>
@@ -681,7 +651,21 @@ export default function Dashboard() {
                   <div
                     style={{ display: "flex", alignItems: "center", gap: 12 }}
                   >
-                    <span style={{ fontSize: 20 }}>{p.icon}</span>
+                    {p.icon.startsWith("/") ? (
+                      <img
+                        src={p.icon}
+                        alt={p.name}
+                        style={{
+                          width: 32,
+                          height: 32,
+                          borderRadius: 6,
+                          objectFit: "contain",
+                          border: "1px solid #1a1a2e",
+                        }}
+                      />
+                    ) : (
+                      <span style={{ fontSize: 20 }}>{p.icon}</span>
+                    )}
                     <div>
                       <div style={{ fontSize: 14, fontWeight: 600 }}>
                         {p.name}
@@ -791,13 +775,18 @@ export default function Dashboard() {
                           i === 0
                             ? "linear-gradient(135deg, #00FF8820, #00AAFF20)"
                             : "#12121e",
+                        backgroundImage:
+                          i === 0 ? "url(/branding/template-icon.svg)" : "none",
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
                         border: "1px solid #1a1a2e",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                         fontSize: 10,
-                        color: "#4a4a5e",
-                        fontWeight: 600,
+                        color: i === 0 ? "#00FF88" : "#4a4a5e",
+                        fontWeight: 700,
+                        textShadow: i === 0 ? "0 2px 4px rgba(0,0,0,0.8)" : "none",
                       }}
                     >
                       {i === 0

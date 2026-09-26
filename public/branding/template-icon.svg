@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f0f18"/>
+      <stop offset="100%" stop-color="#12121e"/>
+    </linearGradient>
+
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88"/>
+      <stop offset="100%" stop-color="#00AAFF"/>
+    </linearGradient>
+
+    <filter id="cardGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="15" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Card Frame -->
+  <rect width="1000" height="1000" rx="40" fill="url(#cardBg)"/>
+  <rect x="20" y="20" width="960" height="960" rx="32" fill="none" stroke="url(#cardGrad)" stroke-width="4" stroke-dasharray="16 8" opacity="0.6"/>
+
+  <!-- Background Watermark Bolt -->
+  <path d="M 580 200 L 360 520 L 520 520 L 420 800 L 640 480 L 480 480 Z" fill="url(#cardGrad)" opacity="0.2"/>
+
+  <!-- Center Crest Symbol -->
+  <g transform="translate(0, -20)">
+    <circle cx="500" cy="450" r="180" fill="#08080d" stroke="url(#cardGrad)" stroke-width="8" filter="url(#cardGlow)"/>
+    <path d="M 540 330 L 420 490 L 510 490 L 450 630 L 580 470 L 490 470 Z" fill="url(#cardGrad)"/>
+  </g>
+
+  <!-- Card Footer AI Prediction Overlay Frame -->
+  <rect x="100" y="720" width="800" height="160" rx="20" fill="#08080d" stroke="#1a1a2e" stroke-width="3"/>
+
+  <!-- AI Confidence Bar Graphics -->
+  <text x="140" y="775" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="28" fill="#E2E2E8">AI CONFIDENCE INDEX</text>
+  <rect x="140" y="800" width="520" height="24" rx="12" fill="#1a1a2e"/>
+  <rect x="140" y="800" width="440" height="24" rx="12" fill="url(#cardGrad)"/>
+
+  <text x="680" y="820" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="32" fill="#00FF88">85% HIGH</text>
+
+  <!-- Header Card Badge -->
+  <rect x="320" y="80" width="360" height="60" rx="30" fill="url(#cardGrad)"/>
+  <text x="500" y="120" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="26" fill="#0a0a0f" text-anchor="middle">TOTALSPORTBET CARD</text>
+</svg>
