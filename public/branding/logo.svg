@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 240" width="100%" height="100%">
+  <defs>
+    <linearGradient id="boltGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+  </defs>
+  <rect width="950" height="240" rx="24" fill="#1a1a2e" stroke="#00FF8830" stroke-width="2" />
+  <g transform="translate(30, 20) scale(0.2)">
+    <path d="M 580 200 L 360 520 L 520 520 L 420 800 L 640 480 L 480 480 Z" fill="url(#boltGradient)" />
+  </g>
+  <text x="240" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-weight="900" font-size="64" fill="#e2e2e8" letter-spacing="2">TOTALSPORTBET</text>
+  <text x="240" y="175" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-weight="700" font-size="28" fill="#00FF88" letter-spacing="6">AI PREDICTIONS</text>
+</svg>
