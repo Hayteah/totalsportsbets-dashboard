@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="100%" height="100%">
+  <defs>
+    <linearGradient id="instaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="50%" stop-color="#00AAFF" />
+      <stop offset="100%" stop-color="#833AB4" />
+    </linearGradient>
+    <filter id="instaGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="20" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <rect width="1000" height="1000" fill="#08080d" />
+  <!-- Outer circle guide line -->
+  <circle cx="500" cy="500" r="450" fill="#0f0f18" stroke="url(#instaGradient)" stroke-width="12" />
+  <circle cx="500" cy="500" r="420" fill="none" stroke="#00FF88" stroke-width="2" stroke-dasharray="10 15" opacity="0.4" />
+  <!-- Centered Lightning Bolt -->
+  <path d="M 580 200 L 360 520 L 520 520 L 420 800 L 640 480 L 480 480 Z" fill="url(#instaGradient)" filter="url(#instaGlow)" />
+  <!-- Brand text -->
+  <text x="500" y="860" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="44" fill="#FFFFFF" letter-spacing="4">TOTALSPORTBET</text>
+  <text x="500" y="905" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="24" fill="#00FF88" letter-spacing="8">INSTAGRAM</text>
+</svg>
