@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="100%" height="100%">
+  <defs>
+    <linearGradient id="boltGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00AAFF" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#08080d" stop-opacity="0" />
+    </radialGradient>
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="24" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="1000" fill="#08080d" />
+  <circle cx="500" cy="500" r="480" fill="url(#bgGlow)" />
+
+  <!-- Circular Safe Zone Contour -->
+  <circle cx="500" cy="500" r="470" fill="none" stroke="url(#boltGrad)" stroke-width="12" />
+
+  <!-- Lightning Bolt -->
+  <g filter="url(#neonGlow)">
+    <path d="M 580 180 L 360 500 L 520 500 L 420 780 L 640 460 L 480 460 Z" fill="url(#boltGrad)" />
+  </g>
+
+  <!-- Branding Banner -->
+  <text x="500" y="850" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="40" font-weight="900" fill="#ffffff" letter-spacing="8" text-anchor="middle">TOTALSPORTBET</text>
+  <text x="500" y="895" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" fill="#00AAFF" letter-spacing="5" text-anchor="middle">YOUTUBE OFFICIAL</text>
+</svg>
