@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="100%" height="100%">
+  <defs>
+    <linearGradient id="igBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#09090e" />
+      <stop offset="50%" stop-color="#0f0f18" />
+      <stop offset="100%" stop-color="#151528" />
+    </linearGradient>
+    <linearGradient id="igRing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="50%" stop-color="#00AAFF" />
+      <stop offset="100%" stop-color="#7000FF" />
+    </linearGradient>
+    <linearGradient id="boltGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="20" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Base Background -->
+  <rect width="1000" height="1000" fill="url(#igBg)" />
+
+  <!-- Instagram Gradient Ring -->
+  <circle cx="500" cy="500" r="460" fill="none" stroke="url(#igRing)" stroke-width="20" />
+  <circle cx="500" cy="500" r="430" fill="none" stroke="#00FF88" stroke-opacity="0.15" stroke-width="4" />
+
+  <!-- Inner Dark Circle -->
+  <circle cx="500" cy="500" r="420" fill="#0c0c14" />
+
+  <!-- Decorative Analytics Grid / Chart Lines in Background -->
+  <path d="M 200 650 L 350 550 L 480 600 L 650 420 L 800 480" fill="none" stroke="#00AAFF" stroke-opacity="0.2" stroke-width="8" stroke-dasharray="12 12" />
+  <circle cx="650" cy="420" r="10" fill="#00FF88" fill-opacity="0.5" />
+
+  <!-- Central Emblem -->
+  <g filter="url(#neonGlow)">
+    <path d="M 570 200 L 350 520 L 510 520 L 410 800 L 630 480 L 470 480 Z" fill="url(#boltGrad)" />
+  </g>
+
+  <!-- Text Label -->
+  <text x="500" y="870" text-anchor="middle" fill="#FFFFFF" font-family="'Montserrat', 'Arial Black', sans-serif" font-size="42" font-weight="900" letter-spacing="6">TOTALSPORTBET</text>
+  <text x="500" y="915" text-anchor="middle" fill="#00FF88" font-family="'Montserrat', 'Arial', sans-serif" font-size="24" font-weight="700" letter-spacing="8">AI PREDICTIONS</text>
+</svg>
