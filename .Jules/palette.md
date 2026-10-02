@@ -1,0 +1,3 @@
+## 2026-10-02 - Accessible Switch Controls for Custom Toggles
+**Learning:** Custom UI switches implemented as `<div>` elements break screen reader accessibility and keyboard navigation (Tab/Space/Enter). Replacing them with `<button type="button" role="switch">`, managing `isFocused` state for custom focus rings, and passing explicit `aria-label`s restores full accessibility without visual layout shifts.
+**Action:** Whenever building or refactoring custom toggle controls in inline-styled UI components, use `<button type="button" role="switch">` with `aria-checked`, `onFocus`/`onBlur` state for focus indicators, and descriptive `aria-label` props.
