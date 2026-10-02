@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c0c14" />
+      <stop offset="100%" stop-color="#141428" />
+    </linearGradient>
+    <linearGradient id="boltGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <!-- Background Container -->
+  <rect width="512" height="512" rx="110" fill="url(#bgGrad)" />
+  <rect width="504" height="504" x="4" y="4" rx="106" fill="none" stroke="#00FF88" stroke-opacity="0.25" stroke-width="8" />
+
+  <!-- Subtle Background Grid Accent -->
+  <path d="M0 128 H512 M0 256 H512 M0 384 H512 M128 0 V512 M256 0 V512 M384 0 V512" stroke="#00AAFF" stroke-opacity="0.05" stroke-width="2" />
+
+  <!-- Glowing Central Lightning Bolt Emblem -->
+  <g filter="url(#glow)">
+    <path d="M 290 90 L 180 270 L 260 270 L 210 420 L 330 250 L 250 250 Z" fill="url(#boltGrad)" />
+  </g>
+</svg>

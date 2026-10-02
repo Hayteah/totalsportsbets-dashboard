@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c0c16" />
+      <stop offset="50%" stop-color="#0f0f20" />
+      <stop offset="100%" stop-color="#181830" />
+    </linearGradient>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFC700" />
+      <stop offset="100%" stop-color="#FF9900" />
+    </linearGradient>
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="16" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Card Frame Background -->
+  <rect width="800" height="1000" rx="32" fill="url(#cardBg)" stroke="#00FF88" stroke-opacity="0.3" stroke-width="6" />
+  <rect x="20" y="20" width="760" height="960" rx="24" fill="none" stroke="#00AAFF" stroke-opacity="0.15" stroke-width="2" />
+
+  <!-- Background Decorative Grid & Watermark -->
+  <path d="M 0 200 H 800 M 0 400 H 800 M 0 600 H 800 M 0 800 H 800" stroke="#00AAFF" stroke-opacity="0.05" stroke-width="2" />
+  <g opacity="0.08" transform="translate(400, 500) scale(0.7)">
+    <path d="M 80 -300 L -140 20 L 20 20 L -80 300 L 140 -20 L -20 -20 Z" fill="url(#primaryGrad)" />
+  </g>
+
+  <!-- Header Branding Section -->
+  <g transform="translate(50, 60)">
+    <!-- Brand Icon -->
+    <rect width="64" height="64" rx="16" fill="url(#primaryGrad)" />
+    <path d="M 38 12 L 20 36 L 33 36 L 25 52 L 44 28 L 31 28 Z" fill="#0c0c14" />
+
+    <!-- Title & Tagline -->
+    <text x="84" y="38" fill="#FFFFFF" font-family="'Montserrat', 'Arial Black', sans-serif" font-size="28" font-weight="900" letter-spacing="2">TOTALSPORTBET</text>
+    <text x="84" y="58" fill="#00FF88" font-family="'Montserrat', 'Arial', sans-serif" font-size="14" font-weight="800" letter-spacing="4">AI VIP PREDICTION</text>
+  </g>
+
+  <!-- Match Badge Header -->
+  <g transform="translate(50, 160)">
+    <rect width="700" height="60" rx="14" fill="#121222" stroke="#1f1f3a" stroke-width="2" />
+    <text x="30" y="38" fill="#8b8ba0" font-family="'Montserrat', sans-serif" font-size="18" font-weight="700">CHAMPIONS LEAGUE</text>
+    <text x="670" y="38" text-anchor="end" fill="#00AAFF" font-family="'Montserrat', sans-serif" font-size="18" font-weight="800">21:00 CET</text>
+  </g>
+
+  <!-- Teams vs Display -->
+  <g transform="translate(50, 260)">
+    <rect width="700" height="180" rx="20" fill="#121222" stroke="#00FF88" stroke-opacity="0.2" stroke-width="2" />
+    <text x="180" y="80" text-anchor="middle" fill="#FFFFFF" font-family="'Montserrat', sans-serif" font-size="32" font-weight="800">HOME TEAM</text>
+    <text x="350" y="105" text-anchor="middle" fill="#00FF88" font-family="'Montserrat', sans-serif" font-size="26" font-weight="900">VS</text>
+    <text x="520" y="80" text-anchor="middle" fill="#FFFFFF" font-family="'Montserrat', sans-serif" font-size="32" font-weight="800">AWAY TEAM</text>
+  </g>
+
+  <!-- Prediction Pick & Odds Section -->
+  <g transform="translate(50, 470)">
+    <rect width="700" height="240" rx="20" fill="#141428" stroke="url(#primaryGrad)" stroke-width="3" />
+    <text x="50" y="60" fill="#8b8ba0" font-family="'Montserrat', sans-serif" font-size="16" font-weight="700" letter-spacing="2">RECOMMENDED PICK</text>
+
+    <text x="50" y="120" fill="#00FF88" font-family="'Montserrat', sans-serif" font-size="36" font-weight="900">BOTH TEAMS TO SCORE (BTTS - YES)</text>
+
+    <!-- Odds & Confidence Badges -->
+    <g transform="translate(50, 150)">
+      <rect width="160" height="50" rx="12" fill="url(#primaryGrad)" />
+      <text x="80" y="33" text-anchor="middle" fill="#0c0c14" font-family="'Montserrat', sans-serif" font-size="22" font-weight="900">ODDS 1.85</text>
+    </g>
+
+    <g transform="translate(230, 150)">
+      <rect width="200" height="50" rx="12" fill="#00FF8818" stroke="#00FF8840" stroke-width="2" />
+      <text x="100" y="33" text-anchor="middle" fill="#00FF88" font-family="'Montserrat', sans-serif" font-size="18" font-weight="800">CONFIDENCE 85%</text>
+    </g>
+
+    <g transform="translate(450, 150)">
+      <rect width="200" height="50" rx="12" fill="#FFC70018" stroke="#FFC70040" stroke-width="2" />
+      <text x="100" y="33" text-anchor="middle" fill="#FFC700" font-family="'Montserrat', sans-serif" font-size="18" font-weight="800">VALUE +14.2%</text>
+    </g>
+  </g>
+
+  <!-- Footer AI Confidence & Call to Action -->
+  <g transform="translate(50, 750)">
+    <rect width="700" height="180" rx="20" fill="#121222" stroke="#1f1f3a" stroke-width="2" />
+    <path d="M 40 40 H 660" stroke="#00AAFF" stroke-opacity="0.2" stroke-width="2" />
+
+    <text x="350" y="80" text-anchor="middle" fill="#FFFFFF" font-family="'Montserrat', sans-serif" font-size="20" font-weight="800">AI MODEL ACCURACY: 72.4% THIS WEEK</text>
+    <text x="350" y="125" text-anchor="middle" fill="#8b8ba0" font-family="'Montserrat', sans-serif" font-size="16" font-weight="600">Follow @TOTALSPORTBET for daily free AI picks</text>
+  </g>
+</svg>
