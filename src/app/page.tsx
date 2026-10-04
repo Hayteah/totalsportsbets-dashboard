@@ -132,8 +132,8 @@ function StatusDot({ active }: { active: boolean }) {
 // Platforms config
 // =============================================
 const platforms = [
-  { id: "instagram", name: "Instagram", icon: "📸", connected: true },
-  { id: "facebook", name: "Facebook", icon: "📘", connected: true },
+  { id: "instagram", name: "Instagram", icon: "/branding/instagram-pfp.svg", connected: true },
+  { id: "facebook", name: "Facebook", icon: "/branding/facebook-pfp.svg", connected: true },
   { id: "tiktok", name: "TikTok", icon: "🎵", connected: false },
   { id: "telegram", name: "Telegram", icon: "✈️", connected: false },
 ];
@@ -681,7 +681,15 @@ export default function Dashboard() {
                   <div
                     style={{ display: "flex", alignItems: "center", gap: 12 }}
                   >
-                    <span style={{ fontSize: 20 }}>{p.icon}</span>
+                    {p.icon.startsWith("/") ? (
+                      <img
+                        src={p.icon}
+                        alt={p.name}
+                        style={{ width: 28, height: 28, borderRadius: 6, objectFit: "cover" }}
+                      />
+                    ) : (
+                      <span style={{ fontSize: 20 }}>{p.icon}</span>
+                    )}
                     <div>
                       <div style={{ fontSize: 14, fontWeight: 600 }}>
                         {p.name}
@@ -793,18 +801,37 @@ export default function Dashboard() {
                             : "#12121e",
                         border: "1px solid #1a1a2e",
                         display: "flex",
+                        flexDirection: "column",
                         alignItems: "center",
                         justifyContent: "center",
                         fontSize: 10,
-                        color: "#4a4a5e",
+                        color: i === 0 ? "#00FF88" : "#4a4a5e",
                         fontWeight: 600,
+                        position: "relative",
+                        overflow: "hidden",
                       }}
                     >
-                      {i === 0
-                        ? "COVER"
-                        : i <= selectedCount
-                          ? `MATCH ${i}`
-                          : "ACCA"}
+                      {i === 0 && (
+                        <img
+                          src="/branding/template-icon.svg"
+                          alt="Template watermark"
+                          style={{
+                            position: "absolute",
+                            inset: 0,
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                            opacity: 0.65,
+                          }}
+                        />
+                      )}
+                      <span style={{ position: "relative", zIndex: 1 }}>
+                        {i === 0
+                          ? "COVER"
+                          : i <= selectedCount
+                            ? `MATCH ${i}`
+                            : "ACCA"}
+                      </span>
                     </div>
                   ))}
                 </div>
