@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="100%" height="100%">
+  <defs>
+    <linearGradient id="boltGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+  </defs>
+
+  <!-- Dark Base Background -->
+  <rect width="1000" height="1000" fill="#08080d" />
+
+  <!-- Center Lightning Bolt -->
+  <path d="M 580 200 L 360 520 L 520 520 L 420 800 L 640 480 L 480 480 Z" fill="url(#boltGradient)" />
+
+  <!-- Facebook Badge -->
+  <g transform="translate(720, 720)">
+    <circle cx="100" cy="100" r="110" fill="#08080d" />
+    <circle cx="100" cy="100" r="95" fill="#1877F2" />
+    <path d="M 115 170 L 115 115 L 133 115 L 136 93 L 115 93 L 115 80 C 115 73 118 68 128 68 L 138 68 L 138 48 C 133 47 125 46 116 46 C 97 46 84 58 84 78 L 84 93 L 65 93 L 65 115 L 84 115 L 84 170 Z" fill="#ffffff" />
+  </g>
+</svg>
