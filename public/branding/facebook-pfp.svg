@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <defs>
+    <linearGradient id="boltGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="1000" fill="#08080d" />
+  <circle cx="500" cy="500" r="460" fill="none" stroke="url(#boltGradient)" stroke-width="20" />
+  <path d="M 580 200 L 360 520 L 520 520 L 420 800 L 640 480 L 480 480 Z" fill="url(#boltGradient)" />
+  <!-- Facebook Badge -->
+  <g transform="translate(680, 680)">
+    <rect width="240" height="240" rx="60" fill="#1877F2" />
+    <path d="M 140 190 V 130 H 160 L 165 100 H 140 V 85 C 140 77 143 70 155 70 H 165 V 42 C 160 41 150 40 138 40 C 112 40 95 56 95 83 V 100 H 75 V 130 H 95 V 190 H 140 Z" fill="#ffffff" />
+  </g>
+</svg>

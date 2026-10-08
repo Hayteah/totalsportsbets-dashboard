@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 240" width="950" height="240">
+  <defs>
+    <linearGradient id="boltGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+  </defs>
+  <!-- Background Badge / Icon -->
+  <rect x="10" y="20" width="200" height="200" rx="40" fill="#0f0f18" stroke="#1a1a2e" stroke-width="4" />
+  <path d="M 126 50 L 78 124 L 114 124 L 90 190 L 142 116 L 106 116 Z" fill="url(#boltGradient)" />
+
+  <!-- Branding Typography -->
+  <text x="240" y="130" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="72" font-weight="900" fill="#ffffff" letter-spacing="2">TOTALSPORTBET</text>
+  <text x="245" y="180" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="28" font-weight="700" fill="#00FF88" letter-spacing="8">AI DASHBOARD</text>
+</svg>
