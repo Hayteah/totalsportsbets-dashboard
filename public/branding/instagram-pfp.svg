@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <defs>
+    <linearGradient id="boltGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <linearGradient id="instaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#833AB4" />
+      <stop offset="50%" stop-color="#FD1D1D" />
+      <stop offset="100%" stop-color="#FCB045" />
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="1000" fill="#08080d" />
+  <circle cx="500" cy="500" r="460" fill="none" stroke="url(#boltGradient)" stroke-width="20" />
+  <path d="M 580 200 L 360 520 L 520 520 L 420 800 L 640 480 L 480 480 Z" fill="url(#boltGradient)" />
+  <!-- Instagram Badge -->
+  <g transform="translate(680, 680)">
+    <rect width="240" height="240" rx="60" fill="url(#instaGrad)" />
+    <rect x="50" y="50" width="140" height="140" rx="35" fill="none" stroke="#ffffff" stroke-width="16" />
+    <circle cx="120" cy="120" r="35" fill="none" stroke="#ffffff" stroke-width="16" />
+    <circle cx="155" cy="85" r="12" fill="#ffffff" />
+  </g>
+</svg>

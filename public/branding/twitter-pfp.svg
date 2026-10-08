@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <defs>
+    <linearGradient id="boltGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="1000" fill="#08080d" />
+  <circle cx="500" cy="500" r="460" fill="none" stroke="url(#boltGradient)" stroke-width="20" />
+  <path d="M 580 200 L 360 520 L 520 520 L 420 800 L 640 480 L 480 480 Z" fill="url(#boltGradient)" />
+  <!-- X / Twitter Badge -->
+  <g transform="translate(680, 680)">
+    <rect width="240" height="240" rx="60" fill="#000000" stroke="#1a1a2e" stroke-width="4" />
+    <path d="M 65 60 L 122 135 L 60 205 H 77 L 129 146 L 168 205 H 205 L 144 117 L 201 50 H 184 L 137 105 L 102 50 H 65 Z M 88 72 H 105 L 182 183 H 165 L 88 72 Z" fill="#ffffff" />
+  </g>
+</svg>
