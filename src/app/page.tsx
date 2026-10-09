@@ -132,8 +132,10 @@ function StatusDot({ active }: { active: boolean }) {
 // Platforms config
 // =============================================
 const platforms = [
-  { id: "instagram", name: "Instagram", icon: "📸", connected: true },
-  { id: "facebook", name: "Facebook", icon: "📘", connected: true },
+  { id: "instagram", name: "Instagram", icon: "/branding/instagram-pfp.svg", connected: true },
+  { id: "facebook", name: "Facebook", icon: "/branding/facebook-pfp.svg", connected: true },
+  { id: "twitter", name: "Twitter / X", icon: "/branding/twitter-pfp.svg", connected: true },
+  { id: "youtube", name: "YouTube", icon: "/branding/youtube-pfp.svg", connected: false },
   { id: "tiktok", name: "TikTok", icon: "🎵", connected: false },
   { id: "telegram", name: "Telegram", icon: "✈️", connected: false },
 ];
@@ -292,44 +294,15 @@ export default function Dashboard() {
         }}
       >
         <div
-          style={{ padding: "24px 20px", borderBottom: "1px solid #1a1a2e" }}
+          style={{ padding: "20px 16px", borderBottom: "1px solid #1a1a2e" }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <div
-              style={{
-                width: 36,
-                height: 36,
-                borderRadius: 10,
-                background: "linear-gradient(135deg, #00FF88, #00AAFF)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: 18,
-              }}
-            >
-              ⚡
-            </div>
-            <div>
-              <div
-                style={{
-                  fontSize: 15,
-                  fontWeight: 800,
-                  letterSpacing: "0.5px",
-                }}
-              >
-                TOTALSPORTBET
-              </div>
-              <div
-                style={{
-                  fontSize: 10,
-                  color: "#4a4a5e",
-                  letterSpacing: "2px",
-                  fontWeight: 600,
-                }}
-              >
-                AI DASHBOARD
-              </div>
-            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/branding/logo.svg"
+              alt="Totalsportbet AI Logo"
+              style={{ height: 42, width: "auto" }}
+            />
           </div>
         </div>
 
@@ -495,7 +468,7 @@ export default function Dashboard() {
                   No predictions yet
                 </div>
                 <div style={{ fontSize: 13, color: "#4a4a5e" }}>
-                  Click "Run Full Pipeline" to fetch today's data and generate
+                  Click &quot;Run Full Pipeline&quot; to fetch today&apos;s data and generate
                   predictions
                 </div>
               </div>
@@ -681,7 +654,16 @@ export default function Dashboard() {
                   <div
                     style={{ display: "flex", alignItems: "center", gap: 12 }}
                   >
-                    <span style={{ fontSize: 20 }}>{p.icon}</span>
+                    {p.icon.startsWith("/") ? (
+                      /* eslint-disable-next-line @next/next/no-img-element */
+                      <img
+                        src={p.icon}
+                        alt={p.name}
+                        style={{ width: 28, height: 28, borderRadius: 6, objectFit: "contain" }}
+                      />
+                    ) : (
+                      <span style={{ fontSize: 20 }}>{p.icon}</span>
+                    )}
                     <div>
                       <div style={{ fontSize: 14, fontWeight: 600 }}>
                         {p.name}
@@ -800,11 +782,33 @@ export default function Dashboard() {
                         fontWeight: 600,
                       }}
                     >
-                      {i === 0
-                        ? "COVER"
-                        : i <= selectedCount
-                          ? `MATCH ${i}`
-                          : "ACCA"}
+                      {i === 0 ? (
+                        <div
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            borderRadius: 8,
+                            backgroundImage: "url(/branding/template-icon.svg)",
+                            backgroundSize: "cover",
+                            backgroundPosition: "center",
+                            display: "flex",
+                            alignItems: "flex-end",
+                            justifyContent: "center",
+                            paddingBottom: 6,
+                            color: "#00FF88",
+                            fontWeight: 800,
+                            fontSize: 9,
+                            letterSpacing: "0.5px",
+                            textShadow: "0 1px 3px rgba(0,0,0,0.8)",
+                          }}
+                        >
+                          COVER
+                        </div>
+                      ) : i <= selectedCount ? (
+                        `MATCH ${i}`
+                      ) : (
+                        "ACCA"
+                      )}
                     </div>
                   ))}
                 </div>

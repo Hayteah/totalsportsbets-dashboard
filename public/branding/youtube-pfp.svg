@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="100%" height="100%">
+  <defs>
+    <linearGradient id="ytGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF0000" />
+      <stop offset="100%" stop-color="#00FF88" />
+    </linearGradient>
+    <linearGradient id="boltGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <rect width="1000" height="1000" fill="#08080D" />
+  <circle cx="500" cy="500" r="460" fill="#0F0F18" stroke="#FF000080" stroke-width="12" />
+  <circle cx="500" cy="500" r="380" fill="none" stroke="#00FF8830" stroke-width="4" stroke-dasharray="16 12" />
+
+  <!-- Central Lightning Bolt Symbol -->
+  <path d="M 580 200 L 360 520 L 520 520 L 420 800 L 640 480 L 480 480 Z" fill="url(#boltGrad)" filter="url(#glow)" />
+
+  <!-- Platform Badge in Corner -->
+  <g transform="translate(680, 680)">
+    <rect width="180" height="180" rx="45" fill="#0F0F18" stroke="#FF0000" stroke-width="6" />
+    <path d="M 40 55 C 40 45 50 35 60 35 L 120 35 C 130 35 140 45 140 55 L 140 125 C 140 135 130 145 120 145 L 60 145 C 50 145 40 135 40 125 Z" fill="#FF0000" />
+    <polygon points="75,65 115,90 75,115" fill="#FFFFFF" />
+  </g>
+</svg>
