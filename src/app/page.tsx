@@ -623,6 +623,8 @@ export default function Dashboard() {
                           </span>
                           <button
                             onClick={() => removePick(match.id, pred.market)}
+                            aria-label={`Remove ${pred.market} prediction for ${match.homeTeam} vs ${match.awayTeam}`}
+                            title={`Remove ${pred.market} prediction`}
                             style={{
                               background: "none",
                               border: "none",
@@ -735,6 +737,12 @@ export default function Dashboard() {
                       <button
                         key={time}
                         onClick={() => setScheduleTime(time)}
+                        aria-pressed={scheduleTime === time}
+                        aria-label={
+                          time === "Now"
+                            ? "Publish immediately"
+                            : `Schedule publication for ${time} CET`
+                        }
                         style={{
                           padding: "10px 16px",
                           borderRadius: 8,
