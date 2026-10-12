@@ -164,10 +164,12 @@ export default function Dashboard() {
     try {
       const res = await fetch("/api/predictions");
       const data = await res.json();
-      if (data.predictions) {
+      if (data.predictions && data.predictions.length > 0) {
         setPredictions(
           data.predictions.map((m: any) => ({ ...m, selected: true })),
         );
+      } else {
+        setPredictions(getDemoData());
       }
     } catch {
       // Use demo data if API not connected yet
@@ -623,10 +625,12 @@ export default function Dashboard() {
                           </span>
                           <button
                             onClick={() => removePick(match.id, pred.market)}
+                            aria-label={`Remove ${pred.market} prediction for ${match.homeTeam} vs ${match.awayTeam}`}
+                            title={`Remove ${pred.market} prediction`}
                             style={{
                               background: "none",
                               border: "none",
-                              color: "#FF6B6B60",
+                              color: "#FF6B6B90",
                               cursor: "pointer",
                               fontSize: 16,
                               padding: "2px 6px",
