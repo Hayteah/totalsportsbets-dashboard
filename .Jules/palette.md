@@ -1,0 +1,3 @@
+## 2026-10-13 - Accessible Switch Toggle with Inline Styling
+**Learning:** In inline-styled React components, refactoring custom clickable `div` elements into semantic `<button type="button" role="switch">` requires setting `padding: 0` and `outline: "none"` while explicitly managing `isFocused` state to render visual focus indicators (`boxShadow`), maintaining both full keyboard accessibility and pixel-perfect design system alignment.
+**Action:** When creating custom interactive switch components, always use a semantic `<button>` with `role="switch"`, `aria-checked`, `aria-label`, and `useState` for explicit focus styling.
