@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 240" width="100%" height="100%">
+  <defs>
+    <linearGradient id="boltGradLogo" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <filter id="glowLogo" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background container -->
+  <rect width="950" height="240" rx="36" fill="#0c0c14" />
+  <rect width="948" height="238" x="1" y="1" rx="35" fill="none" stroke="#00FF88" stroke-opacity="0.2" stroke-width="2" />
+
+  <!-- Icon group -->
+  <g transform="translate(30, 20)">
+    <rect width="200" height="200" rx="40" fill="#12121e" stroke="#00FF88" stroke-opacity="0.3" stroke-width="2" />
+    <g transform="translate(100, 100) scale(0.22) translate(-500, -500)">
+      <path d="M 580 200 L 360 520 L 520 520 L 420 800 L 640 480 L 480 480 Z" fill="url(#boltGradLogo)" filter="url(#glowLogo)" />
+    </g>
+  </g>
+
+  <!-- Text Group -->
+  <text x="260" y="130" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="68" fill="#ffffff" letter-spacing="2">TOTALSPORT<tspan fill="url(#boltGradLogo)">BET</tspan></text>
+  <text x="265" y="180" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="28" fill="#00FF88" letter-spacing="8" opacity="0.9">AI SPORTS PREDICTIONS</text>
+</svg>
