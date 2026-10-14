@@ -80,13 +80,22 @@ function ValueBadge({ value }: { value: number }) {
 function Toggle({
   checked,
   onChange,
+  ariaLabel,
 }: {
   checked: boolean;
   onChange: () => void;
+  ariaLabel?: string;
 }) {
+  const [isFocused, setIsFocused] = useState(false);
   return (
-    <div
+    <button
+      type="button"
+      role="switch"
+      aria-checked={checked}
+      aria-label={ariaLabel}
       onClick={onChange}
+      onFocus={() => setIsFocused(true)}
+      onBlur={() => setIsFocused(false)}
       style={{
         width: 44,
         height: 24,
@@ -95,6 +104,9 @@ function Toggle({
         transition: "all 0.2s",
         background: checked ? "#00FF88" : "#1a1a2e",
         border: `1px solid ${checked ? "#00FF8860" : "#2a2a3e"}`,
+        boxShadow: isFocused ? "0 0 0 2px #00FF88" : "none",
+        padding: 0,
+        outline: "none",
         position: "relative",
         flexShrink: 0,
       }}
@@ -111,7 +123,7 @@ function Toggle({
           background: checked ? "#0a0a0f" : "#4a4a5e",
         }}
       />
-    </div>
+    </button>
   );
 }
 
@@ -533,6 +545,7 @@ export default function Dashboard() {
                       <Toggle
                         checked={match.selected}
                         onChange={() => togglePrediction(match.id)}
+                        ariaLabel={`Select ${match.homeTeam} vs ${match.awayTeam}`}
                       />
                       <div>
                         <div style={{ fontSize: 15, fontWeight: 700 }}>
@@ -699,6 +712,7 @@ export default function Dashboard() {
                   <Toggle
                     checked={selectedPlatforms.includes(p.id)}
                     onChange={() => togglePlatform(p.id)}
+                    ariaLabel={`Toggle ${p.name} publishing`}
                   />
                 </div>
               ))}
