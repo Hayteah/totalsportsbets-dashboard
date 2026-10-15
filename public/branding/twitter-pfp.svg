@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <defs>
+    <linearGradient id="boltGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00FF88" stop-opacity="0.25" />
+      <stop offset="60%" stop-color="#00AAFF" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#08080d" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="twBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="50%" stop-color="#00AAFF" />
+      <stop offset="100%" stop-color="#00FF88" />
+    </linearGradient>
+    <filter id="highGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="35" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Dark Background -->
+  <rect width="1000" height="1000" fill="#08080d" />
+
+  <!-- Radial Center Glow -->
+  <circle cx="500" cy="500" r="480" fill="url(#bgGlow)" />
+
+  <!-- Outer Circle Frame for Twitter Avatar -->
+  <circle cx="500" cy="500" r="460" fill="none" stroke="url(#twBorder)" stroke-width="10" />
+  <circle cx="500" cy="500" r="440" fill="#0c0c14" stroke="#1a1a2e" stroke-width="4" />
+
+  <!-- Lightning Bolt Symbol (High contrast center focus) -->
+  <path d="M 580 180 L 360 500 L 520 500 L 420 780 L 640 460 L 480 460 Z" fill="url(#boltGradient)" filter="url(#highGlow)" />
+
+  <!-- Brand Title -->
+  <text x="500" y="870" font-family="'Inter', 'Montserrat', 'Arial Black', sans-serif" font-size="44" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="4">TOTALSPORTBET</text>
+  <text x="500" y="910" font-family="'Inter', 'Arial', sans-serif" font-size="18" font-weight="800" fill="#00FF88" text-anchor="middle" letter-spacing="8">AI PREDICTIONS</text>
+</svg>

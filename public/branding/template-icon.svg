@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <defs>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f0f18" />
+      <stop offset="100%" stop-color="#07070c" />
+    </linearGradient>
+    <linearGradient id="boltGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <linearGradient id="accentBorder" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1a1a2e" stroke-width="1" opacity="0.6"/>
+    </pattern>
+  </defs>
+
+  <!-- Base Card -->
+  <rect width="800" height="1000" rx="32" fill="url(#cardGrad)" stroke="#1a1a2e" stroke-width="4" />
+
+  <!-- Grid overlay -->
+  <rect width="800" height="1000" fill="url(#grid)" rx="32" />
+
+  <!-- Top Accent Bar -->
+  <rect x="0" y="0" width="800" height="12" rx="6" fill="url(#accentBorder)" />
+
+  <!-- Header Section -->
+  <rect x="40" y="50" width="720" height="100" rx="16" fill="#12121e" stroke="#00FF8830" stroke-width="2" />
+  <!-- Small Badge Icon -->
+  <rect x="70" y="75" width="50" height="50" rx="12" fill="url(#boltGradient)" />
+  <path d="M 100 85 L 85 103 L 94 103 L 89 115 L 102 99 L 93 99 Z" fill="#0a0a0f" />
+
+  <text x="140" y="102" font-family="'Inter', sans-serif" font-size="28" font-weight="800" fill="#FFFFFF" letter-spacing="2">TOTALSPORTBET</text>
+  <text x="140" y="128" font-family="'Inter', sans-serif" font-size="16" font-weight="700" fill="#00FF88" letter-spacing="4">MATCH PREDICTION CARD</text>
+
+  <!-- Watermark Lightning Bolt in Background -->
+  <path d="M 480 320 L 320 560 L 440 560 L 360 780 L 520 520 L 400 520 Z" fill="url(#boltGradient)" opacity="0.12" />
+
+  <!-- Match Section Template Wireframe -->
+  <rect x="40" y="180" width="720" height="180" rx="20" fill="#12121e" stroke="#1a1a2e" stroke-width="2" />
+  <text x="70" y="230" font-family="'Inter', sans-serif" font-size="20" font-weight="700" fill="#8b8ba0">CHAMPIONS LEAGUE · 21:00 CET</text>
+  <text x="70" y="280" font-family="'Inter', sans-serif" font-size="36" font-weight="800" fill="#FFFFFF">TEAM A <tspan fill="#00FF88">vs</tspan> TEAM B</text>
+  <rect x="580" y="240" width="150" height="44" rx="22" fill="#00FF8818" stroke="#00FF8840" stroke-width="1" />
+  <text x="655" y="268" font-family="'Inter', sans-serif" font-size="18" font-weight="700" fill="#00FF88" text-anchor="middle">HIGH 85%</text>
+
+  <!-- Predictions Details Grid -->
+  <rect x="40" y="380" width="720" height="380" rx="20" fill="#12121e" stroke="#1a1a2e" stroke-width="2" />
+
+  <!-- Row 1 -->
+  <rect x="70" y="420" width="660" height="80" rx="12" fill="#0a0a0f" stroke="#1a1a2e" stroke-width="1" />
+  <text x="100" y="468" font-family="'Inter', sans-serif" font-size="18" font-weight="700" fill="#6b6b80">MARKET 1X2</text>
+  <text x="320" y="468" font-family="'Inter', sans-serif" font-size="22" font-weight="800" fill="#FFFFFF">HOME WIN</text>
+  <text x="680" y="468" font-family="'Courier New', monospace" font-size="26" font-weight="800" fill="#00FF88" text-anchor="end">@2.15</text>
+
+  <!-- Row 2 -->
+  <rect x="70" y="520" width="660" height="80" rx="12" fill="#0a0a0f" stroke="#1a1a2e" stroke-width="1" />
+  <text x="100" y="568" font-family="'Inter', sans-serif" font-size="18" font-weight="700" fill="#6b6b80">BOTH TEAMS TO SCORE</text>
+  <text x="380" y="568" font-family="'Inter', sans-serif" font-size="22" font-weight="800" fill="#FFFFFF">YES</text>
+  <text x="680" y="568" font-family="'Courier New', monospace" font-size="26" font-weight="800" fill="#00FF88" text-anchor="end">@1.80</text>
+
+  <!-- Row 3 -->
+  <rect x="70" y="620" width="660" height="80" rx="12" fill="#0a0a0f" stroke="#1a1a2e" stroke-width="1" />
+  <text x="100" y="668" font-family="'Inter', sans-serif" font-size="18" font-weight="700" fill="#6b6b80">OVER/UNDER 2.5</text>
+  <text x="350" y="668" font-family="'Inter', sans-serif" font-size="22" font-weight="800" fill="#FFFFFF">OVER 2.5 GOALS</text>
+  <text x="680" y="668" font-family="'Courier New', monospace" font-size="26" font-weight="800" fill="#00FF88" text-anchor="end">@1.75</text>
+
+  <!-- Footer Banner -->
+  <rect x="40" y="780" width="720" height="150" rx="20" fill="url(#boltGradient)" />
+  <text x="400" y="850" font-family="'Inter', sans-serif" font-size="32" font-weight="900" fill="#0a0a0f" text-anchor="middle" letter-spacing="2">AI POWERED BETTING ANALYTICS</text>
+  <text x="400" y="890" font-family="'Inter', sans-serif" font-size="18" font-weight="700" fill="#0a0a0f" opacity="0.8" text-anchor="middle" letter-spacing="4">SWIPE FOR DETAILED STATS &amp; VALUE BETS</text>
+</svg>

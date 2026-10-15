@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="boltGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Dark Rounded Square Favicon Background -->
+  <rect width="512" height="512" rx="120" fill="#08080d" />
+  <rect x="16" y="16" width="480" height="480" rx="104" fill="#0c0c14" stroke="#00FF8840" stroke-width="8" />
+
+  <!-- Lightning Bolt Icon -->
+  <path d="M 295 100 L 180 270 L 265 270 L 210 412 L 325 242 L 240 242 Z" fill="url(#boltGradient)" filter="url(#glow)" />
+</svg>
