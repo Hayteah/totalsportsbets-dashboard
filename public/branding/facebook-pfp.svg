@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <defs>
+    <linearGradient id="boltGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00FF88" stop-opacity="0.18" />
+      <stop offset="60%" stop-color="#00AAFF" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#08080d" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="fbBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00AAFF" />
+      <stop offset="100%" stop-color="#00FF88" />
+    </linearGradient>
+  </defs>
+
+  <!-- Dark Background -->
+  <rect width="1000" height="1000" fill="#08080d" />
+
+  <!-- Ambient Center Glow -->
+  <circle cx="500" cy="500" r="460" fill="url(#bgGlow)" />
+
+  <!-- Outer Rounded Container Accent -->
+  <rect x="50" y="50" width="900" height="900" rx="180" fill="none" stroke="url(#fbBorder)" stroke-width="8" opacity="0.8" />
+  <rect x="70" y="70" width="860" height="860" rx="160" fill="#0c0c14" stroke="#1a1a2e" stroke-width="4" />
+
+  <!-- Inner Circle Shield -->
+  <circle cx="500" cy="460" r="280" fill="#0a0a0f" stroke="#00FF8830" stroke-width="3" />
+
+  <!-- Lightning Bolt Symbol -->
+  <path d="M 580 200 L 360 520 L 520 520 L 420 800 L 640 480 L 480 480 Z" fill="url(#boltGradient)" />
+
+  <!-- Brand Title -->
+  <text x="500" y="820" font-family="'Inter', 'Montserrat', 'Arial Black', sans-serif" font-size="44" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="4">TOTALSPORTBET</text>
+  <text x="500" y="865" font-family="'Inter', 'Arial', sans-serif" font-size="20" font-weight="700" fill="#00AAFF" text-anchor="middle" letter-spacing="6">AI SPORTS PREDICTIONS</text>
+</svg>
