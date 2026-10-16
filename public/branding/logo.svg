@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 240" width="100%" height="100%">
+  <defs>
+    <linearGradient id="boltGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Logo Mark Container -->
+  <g transform="translate(20, 20)">
+    <rect width="200" height="200" rx="48" fill="#08080d" />
+    <rect width="192" height="192" x="4" y="4" rx="44" fill="none" stroke="url(#boltGradient)" stroke-width="3" stroke-opacity="0.4" />
+    <!-- Bolt -->
+    <path d="M 120 30 L 65 110 L 105 110 L 80 170 L 135 95 L 95 95 Z" fill="url(#boltGradient)" filter="url(#glow)" opacity="0.4" />
+    <path d="M 120 30 L 65 110 L 105 110 L 80 170 L 135 95 L 95 95 Z" fill="url(#boltGradient)" />
+  </g>
+
+  <!-- Typography -->
+  <text x="250" y="125" fill="#FFFFFF" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="72" font-weight="900" letter-spacing="2">TOTALSPORTBET</text>
+  <text x="252" y="175" fill="#00FF88" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="800" letter-spacing="8">AI PREDICTION DASHBOARD</text>
+</svg>

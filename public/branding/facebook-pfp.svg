@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="100%" height="100%">
+  <defs>
+    <linearGradient id="boltGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00AAFF" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#08080d" stop-opacity="1" />
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="25" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Circular Profile Base -->
+  <circle cx="500" cy="500" r="500" fill="#08080d" />
+  <circle cx="500" cy="500" r="500" fill="url(#bgGlow)" />
+  <circle cx="500" cy="500" r="485" fill="none" stroke="url(#boltGradient)" stroke-width="8" stroke-opacity="0.5" />
+
+  <!-- Outer Glow Lightning Bolt -->
+  <path d="M 580 200 L 360 520 L 520 520 L 420 800 L 640 480 L 480 480 Z" fill="url(#boltGradient)" opacity="0.4" filter="url(#glow)" />
+
+  <!-- Main Sharp Lightning Bolt -->
+  <path d="M 580 200 L 360 520 L 520 520 L 420 800 L 640 480 L 480 480 Z" fill="url(#boltGradient)" />
+
+  <!-- Facebook 'f' Accent Emblem -->
+  <g transform="translate(620, 620)">
+    <circle cx="90" cy="90" r="80" fill="#0c0c14" stroke="url(#boltGradient)" stroke-width="6" />
+    <path d="M 105 140 V 95 H 120 L 123 75 H 105 V 63 C 105 57 108 52 117 52 H 124 V 35 C 120 34 113 33 105 33 C 87 33 75 44 75 65 V 75 H 58 V 95 H 75 V 140 Z" fill="#00AAFF" />
+  </g>
+</svg>

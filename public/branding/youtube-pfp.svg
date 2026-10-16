@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="100%" height="100%">
+  <defs>
+    <linearGradient id="boltGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00AAFF" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#08080d" stop-opacity="1" />
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="25" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Circular Profile Base -->
+  <circle cx="500" cy="500" r="500" fill="#08080d" />
+  <circle cx="500" cy="500" r="500" fill="url(#bgGlow)" />
+  <circle cx="500" cy="500" r="485" fill="none" stroke="url(#boltGradient)" stroke-width="8" stroke-opacity="0.5" />
+
+  <!-- Outer Glow Lightning Bolt -->
+  <path d="M 580 200 L 360 520 L 520 520 L 420 800 L 640 480 L 480 480 Z" fill="url(#boltGradient)" opacity="0.4" filter="url(#glow)" />
+
+  <!-- Main Sharp Lightning Bolt -->
+  <path d="M 580 200 L 360 520 L 520 520 L 420 800 L 640 480 L 480 480 Z" fill="url(#boltGradient)" />
+
+  <!-- YouTube Play Accent Emblem -->
+  <g transform="translate(620, 620)">
+    <circle cx="90" cy="90" r="80" fill="#0c0c14" stroke="url(#boltGradient)" stroke-width="6" />
+    <rect x="35" y="55" width="110" height="70" rx="20" fill="none" stroke="#FF0000" stroke-width="8" />
+    <polygon points="78,70 112,90 78,110" fill="#FF0000" />
+  </g>
+</svg>
