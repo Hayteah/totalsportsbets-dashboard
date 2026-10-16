@@ -132,8 +132,10 @@ function StatusDot({ active }: { active: boolean }) {
 // Platforms config
 // =============================================
 const platforms = [
-  { id: "instagram", name: "Instagram", icon: "📸", connected: true },
-  { id: "facebook", name: "Facebook", icon: "📘", connected: true },
+  { id: "instagram", name: "Instagram", icon: "/branding/instagram-pfp.svg", connected: true },
+  { id: "facebook", name: "Facebook", icon: "/branding/facebook-pfp.svg", connected: true },
+  { id: "youtube", name: "YouTube", icon: "/branding/youtube-pfp.svg", connected: true },
+  { id: "twitter", name: "Twitter / X", icon: "/branding/twitter-pfp.svg", connected: true },
   { id: "tiktok", name: "TikTok", icon: "🎵", connected: false },
   { id: "telegram", name: "Telegram", icon: "✈️", connected: false },
 ];
@@ -144,7 +146,7 @@ const platforms = [
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState("predictions");
   const [predictions, setPredictions] = useState<Match[]>([]);
-  const [selectedPlatforms, setSelectedPlatforms] = useState(["instagram"]);
+  const [selectedPlatforms, setSelectedPlatforms] = useState(["instagram", "facebook", "youtube", "twitter"]);
   const [scheduleTime, setScheduleTime] = useState("12:00");
   const [isPublishing, setIsPublishing] = useState(false);
   const [publishStatus, setPublishStatus] = useState<string | null>(null);
@@ -152,7 +154,6 @@ export default function Dashboard() {
   const [pipelineStep, setPipelineStep] = useState("");
   const [accuracy, setAccuracy] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   // Load predictions on mount
   useEffect(() => {
@@ -292,45 +293,13 @@ export default function Dashboard() {
         }}
       >
         <div
-          style={{ padding: "24px 20px", borderBottom: "1px solid #1a1a2e" }}
+          style={{ padding: "18px 16px", borderBottom: "1px solid #1a1a2e" }}
         >
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <div
-              style={{
-                width: 36,
-                height: 36,
-                borderRadius: 10,
-                background: "linear-gradient(135deg, #00FF88, #00AAFF)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: 18,
-              }}
-            >
-              ⚡
-            </div>
-            <div>
-              <div
-                style={{
-                  fontSize: 15,
-                  fontWeight: 800,
-                  letterSpacing: "0.5px",
-                }}
-              >
-                TOTALSPORTBET
-              </div>
-              <div
-                style={{
-                  fontSize: 10,
-                  color: "#4a4a5e",
-                  letterSpacing: "2px",
-                  fontWeight: 600,
-                }}
-              >
-                AI DASHBOARD
-              </div>
-            </div>
-          </div>
+          <img
+            src="/branding/logo.svg"
+            alt="TOTALSPORTBET AI Dashboard"
+            style={{ width: "100%", height: "auto", display: "block" }}
+          />
         </div>
 
         <div style={{ padding: "16px 12px", flex: 1 }}>
@@ -495,7 +464,7 @@ export default function Dashboard() {
                   No predictions yet
                 </div>
                 <div style={{ fontSize: 13, color: "#4a4a5e" }}>
-                  Click "Run Full Pipeline" to fetch today's data and generate
+                  Click &quot;Run Full Pipeline&quot; to fetch today&apos;s data and generate
                   predictions
                 </div>
               </div>
@@ -681,7 +650,15 @@ export default function Dashboard() {
                   <div
                     style={{ display: "flex", alignItems: "center", gap: 12 }}
                   >
-                    <span style={{ fontSize: 20 }}>{p.icon}</span>
+                    {p.icon.startsWith("/") ? (
+                      <img
+                        src={p.icon}
+                        alt={p.name}
+                        style={{ width: 28, height: 28, borderRadius: "50%" }}
+                      />
+                    ) : (
+                      <span style={{ fontSize: 20 }}>{p.icon}</span>
+                    )}
                     <div>
                       <div style={{ fontSize: 14, fontWeight: 600 }}>
                         {p.name}
@@ -791,13 +768,17 @@ export default function Dashboard() {
                           i === 0
                             ? "linear-gradient(135deg, #00FF8820, #00AAFF20)"
                             : "#12121e",
+                        backgroundImage: `url(/branding/template-icon.svg)`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
                         border: "1px solid #1a1a2e",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                         fontSize: 10,
-                        color: "#4a4a5e",
-                        fontWeight: 600,
+                        color: "#00FF88",
+                        fontWeight: 700,
+                        textShadow: "0 2px 4px rgba(0,0,0,0.8)",
                       }}
                     >
                       {i === 0
