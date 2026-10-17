@@ -333,10 +333,14 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <div style={{ padding: "16px 12px", flex: 1 }}>
+        <div role="tablist" aria-label="Dashboard sections" style={{ padding: "16px 12px", flex: 1 }}>
           {tabs.map((tab) => (
             <button
               key={tab.id}
+              role="tab"
+              aria-selected={activeTab === tab.id}
+              aria-controls={`tabpanel-${tab.id}`}
+              id={`tab-${tab.id}`}
               onClick={() => setActiveTab(tab.id)}
               style={{
                 width: "100%",
@@ -357,7 +361,7 @@ export default function Dashboard() {
                 textAlign: "left" as const,
               }}
             >
-              <span style={{ fontSize: 16 }}>{tab.icon}</span> {tab.label}
+              <span style={{ fontSize: 16 }} aria-hidden="true">{tab.icon}</span> {tab.label}
             </button>
           ))}
         </div>
@@ -475,7 +479,7 @@ export default function Dashboard() {
 
         {/* =================== PREDICTIONS TAB =================== */}
         {activeTab === "predictions" && (
-          <div>
+          <div role="tabpanel" id="tabpanel-predictions" aria-labelledby="tab-predictions">
             {loading ? (
               <div
                 style={{
@@ -623,6 +627,8 @@ export default function Dashboard() {
                           </span>
                           <button
                             onClick={() => removePick(match.id, pred.market)}
+                            aria-label={`Remove ${pred.market} prediction for ${match.homeTeam} vs ${match.awayTeam}`}
+                            title={`Remove ${pred.market} prediction for ${match.homeTeam} vs ${match.awayTeam}`}
                             style={{
                               background: "none",
                               border: "none",
@@ -647,6 +653,9 @@ export default function Dashboard() {
         {/* =================== PUBLISH TAB =================== */}
         {activeTab === "publish" && (
           <div
+            role="tabpanel"
+            id="tabpanel-publish"
+            aria-labelledby="tab-publish"
             style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}
           >
             <div
@@ -848,7 +857,7 @@ export default function Dashboard() {
 
         {/* =================== ACCURACY TAB =================== */}
         {activeTab === "accuracy" && accuracy && (
-          <div>
+          <div role="tabpanel" id="tabpanel-accuracy" aria-labelledby="tab-accuracy">
             <div
               style={{
                 display: "grid",
@@ -1075,7 +1084,7 @@ export default function Dashboard() {
 
         {/* =================== SETTINGS TAB =================== */}
         {activeTab === "settings" && (
-          <div style={{ maxWidth: 600 }}>
+          <div role="tabpanel" id="tabpanel-settings" aria-labelledby="tab-settings" style={{ maxWidth: 600 }}>
             <div
               style={{
                 background: "#0f0f18",
