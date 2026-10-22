@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <defs>
+    <linearGradient id="tmplGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+  </defs>
+  <rect width="500" height="500" fill="none" />
+  <!-- Watermark / Background Template Icon -->
+  <path d="M 290 100 L 180 260 L 260 260 L 210 400 L 320 240 L 240 240 Z" fill="url(#tmplGrad)" opacity="0.2" />
+</svg>
