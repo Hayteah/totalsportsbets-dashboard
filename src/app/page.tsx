@@ -623,6 +623,8 @@ export default function Dashboard() {
                           </span>
                           <button
                             onClick={() => removePick(match.id, pred.market)}
+                            aria-label={`Remove ${pred.market} prediction for ${match.homeTeam} vs ${match.awayTeam}`}
+                            title={`Remove ${pred.market} prediction for ${match.homeTeam} vs ${match.awayTeam}`}
                             style={{
                               background: "none",
                               border: "none",
