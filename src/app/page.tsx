@@ -333,10 +333,19 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <div style={{ padding: "16px 12px", flex: 1 }}>
+        <div
+          role="tablist"
+          aria-label="Navigation Tabs"
+          aria-orientation="vertical"
+          style={{ padding: "16px 12px", flex: 1 }}
+        >
           {tabs.map((tab) => (
             <button
               key={tab.id}
+              id={`tab-${tab.id}`}
+              role="tab"
+              aria-selected={activeTab === tab.id}
+              aria-controls={`tabpanel-${tab.id}`}
               onClick={() => setActiveTab(tab.id)}
               style={{
                 width: "100%",
@@ -413,6 +422,9 @@ export default function Dashboard() {
 
       {/* =================== MAIN CONTENT =================== */}
       <div
+        role="tabpanel"
+        id={`tabpanel-${activeTab}`}
+        aria-labelledby={`tab-${activeTab}`}
         style={{ marginLeft: 240, padding: "24px 32px", flex: 1, minWidth: 0 }}
       >
         {/* Header */}
