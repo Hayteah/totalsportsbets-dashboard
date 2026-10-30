@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="100%" height="100%">
+  <defs>
+    <linearGradient id="boltGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <linearGradient id="instaBorder" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00AAFF" />
+      <stop offset="50%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#FFAA00" />
+    </linearGradient>
+    <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00FF88" stop-opacity="0.3" />
+      <stop offset="50%" stop-color="#00AAFF" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#08080d" stop-opacity="0" />
+    </radialGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="30" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Dark Base -->
+  <rect width="1000" height="1000" fill="#08080d" />
+
+  <!-- Ambient Center Glow -->
+  <circle cx="500" cy="500" r="420" fill="url(#centerGlow)" />
+
+  <!-- Circular Outer Frame (Matches IG profile circle viewport) -->
+  <circle cx="500" cy="500" r="460" fill="none" stroke="url(#instaBorder)" stroke-width="8" opacity="0.85" />
+  <circle cx="500" cy="500" r="440" fill="none" stroke="#1a1a2e" stroke-width="2" />
+
+  <!-- Inner Cyber Arc Accents -->
+  <circle cx="500" cy="500" r="380" fill="none" stroke="#00FF88" stroke-width="4" stroke-dasharray="140 60" opacity="0.4" />
+  <circle cx="500" cy="500" r="340" fill="none" stroke="#00AAFF" stroke-width="3" stroke-dasharray="80 40 20 40" opacity="0.35" />
+
+  <!-- Decorative Corner / Crosshair Tech Marks -->
+  <line x1="500" y1="180" x2="500" y2="200" stroke="#00FF88" stroke-width="3" opacity="0.7" />
+  <line x1="500" y1="800" x2="500" y2="820" stroke="#00AAFF" stroke-width="3" opacity="0.7" />
+  <line x1="180" y1="500" x2="200" y2="500" stroke="#00FF88" stroke-width="3" opacity="0.7" />
+  <line x1="800" y1="500" x2="820" y2="500" stroke="#00AAFF" stroke-width="3" opacity="0.7" />
+
+  <!-- Core Centered Lightning Bolt -->
+  <path
+    d="M 580 200 L 360 520 L 520 520 L 420 800 L 640 480 L 480 480 Z"
+    fill="url(#boltGradient)"
+    filter="url(#glow)"
+  />
+</svg>

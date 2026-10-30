@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="100%" height="100%">
+  <defs>
+    <linearGradient id="boltGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00FF88" stop-opacity="0.3" />
+      <stop offset="50%" stop-color="#00AAFF" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#08080d" stop-opacity="0" />
+    </radialGradient>
+    <filter id="xGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="30" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Deep Dark Minimalist Canvas -->
+  <rect width="1000" height="1000" fill="#08080d" />
+
+  <!-- Center Glow -->
+  <circle cx="500" cy="500" r="420" fill="url(#centerGlow)" />
+
+  <!-- Modern Sharp Geometry for X / Twitter aesthetics -->
+  <circle cx="500" cy="500" r="460" fill="none" stroke="#2f3336" stroke-width="4" />
+  <circle cx="500" cy="500" r="452" fill="none" stroke="#00FF88" stroke-width="5" stroke-dasharray="180 80 40 80" opacity="0.8" />
+  <circle cx="500" cy="500" r="370" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="20 40" opacity="0.2" />
+
+  <!-- Minimalist Corner Crosses -->
+  <path d="M 220 220 L 250 220 M 220 220 L 220 250" stroke="#00FF88" stroke-width="3" opacity="0.5" />
+  <path d="M 780 220 L 750 220 M 780 220 L 780 250" stroke="#00AAFF" stroke-width="3" opacity="0.5" />
+  <path d="M 220 780 L 250 780 M 220 780 L 220 750" stroke="#00AAFF" stroke-width="3" opacity="0.5" />
+  <path d="M 780 780 L 750 780 M 780 780 L 780 750" stroke="#00FF88" stroke-width="3" opacity="0.5" />
+
+  <!-- Centered Lightning Bolt -->
+  <path
+    d="M 580 200 L 360 520 L 520 520 L 420 800 L 640 480 L 480 480 Z"
+    fill="url(#boltGradient)"
+    filter="url(#xGlow)"
+  />
+</svg>
