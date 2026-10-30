@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="100%" height="100%">
+  <defs>
+    <linearGradient id="boltGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <radialGradient id="cardGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00FF88" stop-opacity="0.2" />
+      <stop offset="50%" stop-color="#00AAFF" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Ambient Watermark Glow -->
+  <circle cx="500" cy="500" r="450" fill="url(#cardGlow)" />
+
+  <!-- Diagonal Tech Hatching -->
+  <g opacity="0.08" stroke="#00FF88" stroke-width="2">
+    <line x1="100" y1="0" x2="1000" y2="900" />
+    <line x1="200" y1="0" x2="1000" y2="800" />
+    <line x1="300" y1="0" x2="1000" y2="700" />
+    <line x1="0" y1="100" x2="900" y2="1000" />
+    <line x1="0" y1="200" x2="800" y2="1000" />
+  </g>
+
+  <!-- Circular Outer Target Ring -->
+  <circle cx="500" cy="500" r="420" fill="none" stroke="#00FF88" stroke-width="3" stroke-dasharray="20 15" opacity="0.25" />
+  <circle cx="500" cy="500" r="360" fill="none" stroke="#00AAFF" stroke-width="2" stroke-dasharray="8 8" opacity="0.2" />
+
+  <!-- Signature Centered Lightning Bolt (Clean watermark vector) -->
+  <path
+    d="M 580 200 L 360 520 L 520 520 L 420 800 L 640 480 L 480 480 Z"
+    fill="url(#boltGrad)"
+    opacity="0.85"
+  />
+</svg>
