@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <defs>
+    <linearGradient id="boltGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <linearGradient id="ytBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6B6B" stop-opacity="0.6" />
+      <stop offset="50%" stop-color="#00AAFF" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#00FF88" stop-opacity="0.8" />
+    </linearGradient>
+    <radialGradient id="ambientGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00AAFF" stop-opacity="0.2" />
+      <stop offset="50%" stop-color="#00FF88" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#08080d" stop-opacity="0" />
+    </radialGradient>
+    <filter id="pfpGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="22" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1000" height="1000" fill="#08080d" />
+  <circle cx="500" cy="500" r="480" fill="url(#ambientGlow)" />
+
+  <!-- Outer Ring Accent for YouTube circular avatar -->
+  <circle cx="500" cy="500" r="460" fill="none" stroke="url(#ytBorder)" stroke-width="8" stroke-linecap="round" opacity="0.8" />
+  <circle cx="500" cy="500" r="430" fill="none" stroke="#1a1a2e" stroke-width="3" />
+
+  <!-- Subtle sports / analytics ticks -->
+  <line x1="500" y1="60" x2="500" y2="85" stroke="#00FF88" stroke-width="4" opacity="0.6" />
+  <line x1="500" y1="915" x2="500" y2="940" stroke="#00AAFF" stroke-width="4" opacity="0.6" />
+  <line x1="60" y1="500" x2="85" y2="500" stroke="#00FF88" stroke-width="4" opacity="0.6" />
+  <line x1="915" y1="500" x2="940" y2="500" stroke="#00AAFF" stroke-width="4" opacity="0.6" />
+
+  <!-- Core Icon -->
+  <path d="M 580 200 L 360 520 L 520 520 L 420 800 L 640 480 L 480 480 Z" fill="url(#boltGrad)" filter="url(#pfpGlow)" />
+</svg>

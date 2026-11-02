@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <defs>
+    <linearGradient id="boltGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88" />
+      <stop offset="100%" stop-color="#00AAFF" />
+    </linearGradient>
+    <radialGradient id="cardGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00FF88" stop-opacity="0.12" />
+      <stop offset="60%" stop-color="#00AAFF" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Transparent / Watermark Template Icon for Prediction Cards -->
+  <circle cx="500" cy="500" r="420" fill="url(#cardGlow)" />
+  <circle cx="500" cy="500" r="450" fill="none" stroke="#00FF88" stroke-width="2" stroke-dasharray="12 18" opacity="0.25" />
+  <circle cx="500" cy="500" r="380" fill="none" stroke="#00AAFF" stroke-width="1.5" stroke-dasharray="6 12" opacity="0.2" />
+
+  <!-- Centered subtle lightning watermark with low opacity for templates -->
+  <path d="M 580 200 L 360 520 L 520 520 L 420 800 L 640 480 L 480 480 Z" fill="url(#boltGrad)" opacity="0.35" />
+</svg>
