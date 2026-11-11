@@ -655,6 +655,85 @@ export default function Dashboard() {
                 borderRadius: 14,
                 padding: 24,
                 border: "1px solid #1a1a2e",
+                marginBottom: 20,
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: 16,
+                  fontWeight: 700,
+                  marginBottom: 16,
+                  color: "#8b8ba0",
+                }}
+              >
+                Brand &amp; Social Assets
+              </h3>
+              <p style={{ fontSize: 13, color: "#8b8ba0", marginBottom: 16, lineHeight: 1.5 }}>
+                Official theme-matched profile pictures, icons, and prediction graphic templates.
+              </p>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))",
+                  gap: 12,
+                }}
+              >
+                {[
+                  { name: "Instagram", file: "/assets/brand/instagram-profile.png", dim: "1080x1080" },
+                  { name: "YouTube", file: "/assets/brand/youtube-profile.png", dim: "800x800" },
+                  { name: "Facebook", file: "/assets/brand/facebook-profile.png", dim: "800x800" },
+                  { name: "Twitter / X", file: "/assets/brand/twitter-profile.png", dim: "400x400" },
+                  { name: "Homepage Icon", file: "/assets/brand/homepage-icon.png", dim: "512x512" },
+                  { name: "Template Icon", file: "/assets/brand/template-icon.png", dim: "512x512" },
+                  { name: "Story/Post Template", file: "/assets/brand/prediction-template.png", dim: "1080x1350" },
+                ].map((asset, i) => (
+                  <a
+                    key={i}
+                    href={asset.file}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{
+                      background: "#12121e",
+                      borderRadius: 10,
+                      padding: "12px",
+                      border: "1px solid #1a1a2e",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      textDecoration: "none",
+                      color: "inherit",
+                    }}
+                  >
+                    <img
+                      src={asset.file}
+                      alt={asset.name}
+                      style={{
+                        width: 56,
+                        height: 56,
+                        borderRadius: 8,
+                        objectFit: "contain",
+                        marginBottom: 8,
+                        background: "#08080d",
+                        border: "1px solid #1a1a2e",
+                      }}
+                    />
+                    <div style={{ fontSize: 12, fontWeight: 700, textAlign: "center" }}>
+                      {asset.name}
+                    </div>
+                    <div style={{ fontSize: 10, color: "#00AAFF", marginTop: 2 }}>
+                      {asset.dim}
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div
+              style={{
+                background: "#0f0f18",
+                borderRadius: 14,
+                padding: 24,
+                border: "1px solid #1a1a2e",
               }}
             >
               <h3
@@ -1075,7 +1154,144 @@ export default function Dashboard() {
 
         {/* =================== SETTINGS TAB =================== */}
         {activeTab === "settings" && (
-          <div style={{ maxWidth: 600 }}>
+          <div style={{ maxWidth: 860 }}>
+            {/* Brand & Social Assets Card */}
+            <div
+              style={{
+                background: "#0f0f18",
+                borderRadius: 14,
+                padding: 24,
+                border: "1px solid #1a1a2e",
+                marginBottom: 20,
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginBottom: 12,
+                  flexWrap: "wrap",
+                  gap: 8,
+                }}
+              >
+                <div>
+                  <h3
+                    style={{
+                      fontSize: 16,
+                      fontWeight: 700,
+                      color: "#e2e2e8",
+                    }}
+                  >
+                    🎨 Brand &amp; Social Media Assets
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: 12,
+                      color: "#8b8ba0",
+                      marginTop: 4,
+                    }}
+                  >
+                    Generated profile pictures, icons, and templates based on the dashboard theme.
+                  </p>
+                </div>
+                <span
+                  style={{
+                    padding: "4px 10px",
+                    borderRadius: 20,
+                    fontSize: 11,
+                    fontWeight: 700,
+                    background: "#00FF8818",
+                    color: "#00FF88",
+                    border: "1px solid #00FF8840",
+                  }}
+                >
+                  HIGH RESOLUTION
+                </span>
+              </div>
+
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))",
+                  gap: 12,
+                  marginTop: 16,
+                }}
+              >
+                {[
+                  { name: "Instagram Profile", file: "/assets/brand/instagram-profile.png", dim: "1080 × 1080", desc: "Profile Avatar" },
+                  { name: "YouTube Profile", file: "/assets/brand/youtube-profile.png", dim: "800 × 800", desc: "Channel Avatar" },
+                  { name: "Facebook Profile", file: "/assets/brand/facebook-profile.png", dim: "800 × 800", desc: "Page Avatar" },
+                  { name: "Twitter / X", file: "/assets/brand/twitter-profile.png", dim: "400 × 400", desc: "Profile Avatar" },
+                  { name: "Homepage Icon", file: "/assets/brand/homepage-icon.png", dim: "512 × 512", desc: "Web / PWA Icon" },
+                  { name: "Template Icon", file: "/assets/brand/template-icon.png", dim: "512 × 512", desc: "Graphic Badge" },
+                  { name: "Prediction Card", file: "/assets/brand/prediction-template.png", dim: "1080 × 1350", desc: "4:5 Story / Post" },
+                ].map((item, idx) => (
+                  <a
+                    key={idx}
+                    href={item.file}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      textAlign: "center",
+                      padding: 14,
+                      background: "#12121e",
+                      borderRadius: 10,
+                      border: "1px solid #1a1a2e",
+                      textDecoration: "none",
+                      color: "inherit",
+                      transition: "all 0.15s ease",
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: 64,
+                        height: 64,
+                        borderRadius: 10,
+                        overflow: "hidden",
+                        background: "#08080d",
+                        border: "1px solid #1a1a2e",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        marginBottom: 10,
+                      }}
+                    >
+                      <img
+                        src={item.file}
+                        alt={item.name}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "contain",
+                        }}
+                      />
+                    </div>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: "#e2e2e8" }}>
+                      {item.name}
+                    </div>
+                    <div style={{ fontSize: 11, color: "#8b8ba0", marginTop: 2 }}>
+                      {item.desc}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: 10,
+                        fontWeight: 700,
+                        color: "#00AAFF",
+                        marginTop: 6,
+                        fontFamily: "monospace",
+                      }}
+                    >
+                      {item.dim}
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+
             <div
               style={{
                 background: "#0f0f18",

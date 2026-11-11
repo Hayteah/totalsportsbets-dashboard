@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <defs>
+    <linearGradient id="fb-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#08080d"/>
+      <stop offset="50%" stop-color="#0b1021"/>
+      <stop offset="100%" stop-color="#06070c"/>
+    </linearGradient>
+    <linearGradient id="fb-neon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00AAFF"/>
+      <stop offset="100%" stop-color="#00FF88"/>
+    </linearGradient>
+    <radialGradient id="fb-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00AAFF" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#08080d" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="800" height="800" fill="url(#fb-bg)"/>
+  <circle cx="400" cy="400" r="380" fill="url(#fb-glow)"/>
+
+  <!-- Geometric frame -->
+  <circle cx="400" cy="400" r="350" fill="none" stroke="#1a1a2e" stroke-width="3"/>
+  <circle cx="400" cy="400" r="330" fill="none" stroke="url(#fb-neon)" stroke-width="3" stroke-dasharray="10 14"/>
+
+  <!-- Central Crest -->
+  <g transform="translate(400, 360)">
+    <!-- Hexagonal Crest or Rounded Shield -->
+    <path d="M-150 -130 L150 -130 L150 40 L0 160 L-150 40 Z" fill="#0f0f18" stroke="url(#fb-neon)" stroke-width="5"/>
+    <!-- Lightning Bolt inside Crest -->
+    <path d="M25 -95 L-65 0 L-5 0 L-45 85 L75 -15 L15 -15 Z" fill="url(#fb-neon)"/>
+  </g>
+
+  <!-- Typography -->
+  <text x="400" y="600"
+        text-anchor="middle"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+        font-size="42"
+        font-weight="900"
+        letter-spacing="4"
+        fill="#FFFFFF">
+    TOTALSPORT<tspan fill="#00AAFF">BET</tspan>
+  </text>
+  <text x="400" y="645"
+        text-anchor="middle"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+        font-size="16"
+        font-weight="700"
+        letter-spacing="5"
+        fill="#8b8ba0">
+    OFFICIAL PREDICTION HUB
+  </text>
+</svg>

@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#08080d"/>
+      <stop offset="50%" stop-color="#0f0f18"/>
+      <stop offset="100%" stop-color="#050508"/>
+    </linearGradient>
+    <linearGradient id="neon-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88"/>
+      <stop offset="100%" stop-color="#00AAFF"/>
+    </linearGradient>
+    <linearGradient id="bolt-grad" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="35%" stop-color="#00FF88"/>
+      <stop offset="100%" stop-color="#00AAFF"/>
+    </linearGradient>
+    <radialGradient id="center-glow" cx="50%" cy="46%" r="50%">
+      <stop offset="0%" stop-color="#00FF88" stop-opacity="0.25"/>
+      <stop offset="60%" stop-color="#00AAFF" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#08080d" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow-blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="35" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="neon-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#00FF88" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1080" fill="url(#bg-grad)"/>
+
+  <!-- Subtle Radial Glow Behind Emblem -->
+  <circle cx="540" cy="500" r="440" fill="url(#center-glow)"/>
+
+  <!-- Geometric Grid & Circuit Accents -->
+  <g opacity="0.12" stroke="#00FF88" stroke-width="1.5">
+    <circle cx="540" cy="540" r="510" fill="none" stroke="#1a1a2e" stroke-width="2"/>
+    <circle cx="540" cy="540" r="460" fill="none" stroke-dasharray="8 12"/>
+    <circle cx="540" cy="540" r="390" fill="none"/>
+    <line x1="150" y1="540" x2="930" y2="540" stroke-dasharray="6 8"/>
+    <line x1="540" y1="150" x2="540" y2="930" stroke-dasharray="6 8"/>
+  </g>
+
+  <!-- Outer Hexagonal/Circular Tech Ring -->
+  <circle cx="540" cy="540" r="450" fill="none" stroke="url(#neon-glow)" stroke-width="4" opacity="0.6"/>
+  <circle cx="540" cy="540" r="435" fill="none" stroke="#1a1a2e" stroke-width="2"/>
+
+  <!-- Platform Edge Ticks -->
+  <g stroke="#00FF88" stroke-width="4" opacity="0.8">
+    <line x1="540" y1="80" x2="540" y2="110"/>
+    <line x1="540" y1="970" x2="540" y2="1000"/>
+    <line x1="80" y1="540" x2="110" y2="540"/>
+    <line x1="970" y1="540" x2="1000" y2="540"/>
+  </g>
+
+  <!-- Central Rounded Badge -->
+  <rect x="330" y="270" width="420" height="420" rx="90" fill="#0f0f18" stroke="url(#neon-glow)" stroke-width="6" filter="url(#neon-shadow)"/>
+
+  <!-- Subtle Inner Border -->
+  <rect x="345" y="285" width="390" height="390" rx="75" fill="none" stroke="#1a1a2e" stroke-width="2"/>
+
+  <!-- Iconic Lightning Bolt -->
+  <path d="M575 320 L430 500 L530 500 L470 640 L650 455 L550 455 Z"
+        fill="url(#bolt-grad)"
+        filter="url(#glow-blur)"/>
+
+  <!-- Brand Typography -->
+  <text x="540" y="775"
+        text-anchor="middle"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
+        font-size="52"
+        font-weight="900"
+        letter-spacing="5"
+        fill="#FFFFFF">
+    TOTALSPORT<tspan fill="#00FF88">BET</tspan>
+  </text>
+
+  <!-- Subtitle Tag -->
+  <g>
+    <rect x="420" y="810" width="240" height="40" rx="20" fill="#12121e" stroke="#1a1a2e" stroke-width="1.5"/>
+    <text x="540" y="836"
+          text-anchor="middle"
+          font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
+          font-size="16"
+          font-weight="700"
+          letter-spacing="4"
+          fill="#00AAFF">
+      AI PREDICTIONS
+    </text>
+  </g>
+</svg>
