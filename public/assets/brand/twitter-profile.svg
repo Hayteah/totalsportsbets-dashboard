@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="tw-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#08080d"/>
+      <stop offset="100%" stop-color="#0e101c"/>
+    </linearGradient>
+    <linearGradient id="tw-neon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF88"/>
+      <stop offset="100%" stop-color="#00AAFF"/>
+    </linearGradient>
+    <radialGradient id="tw-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00FF88" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#08080d" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="400" height="400" fill="url(#tw-bg)"/>
+  <circle cx="200" cy="200" r="190" fill="url(#tw-glow)"/>
+  <circle cx="200" cy="200" r="180" fill="none" stroke="url(#tw-neon)" stroke-width="3"/>
+  <circle cx="200" cy="200" r="165" fill="none" stroke="#1a1a2e" stroke-width="1.5" stroke-dasharray="6 6"/>
+
+  <!-- High-impact Icon Badge -->
+  <rect x="110" y="80" width="180" height="180" rx="42" fill="#0f0f18" stroke="url(#tw-neon)" stroke-width="3"/>
+
+  <!-- Crisp Lightning Bolt -->
+  <path d="M216 100 L150 178 L195 178 L168 238 L250 160 L205 160 Z" fill="url(#tw-neon)"/>
+
+  <!-- Clean Wordmark for Twitter/X Avatar -->
+  <text x="200" y="305"
+        text-anchor="middle"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+        font-size="22"
+        font-weight="900"
+        letter-spacing="2"
+        fill="#FFFFFF">
+    TOTALSPORT<tspan fill="#00FF88">BET</tspan>
+  </text>
+  <text x="200" y="332"
+        text-anchor="middle"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+        font-size="10"
+        font-weight="700"
+        letter-spacing="3"
+        fill="#00AAFF">
+    AI PICKS · ROI &amp; ODDS
+  </text>
+</svg>
