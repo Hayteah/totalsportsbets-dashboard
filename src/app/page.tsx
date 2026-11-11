@@ -80,26 +80,38 @@ function ValueBadge({ value }: { value: number }) {
 function Toggle({
   checked,
   onChange,
+  ariaLabel,
 }: {
   checked: boolean;
   onChange: () => void;
+  ariaLabel: string;
 }) {
+  const [isFocused, setIsFocused] = useState(false);
   return (
-    <div
+    <button
+      type="button"
+      role="switch"
+      aria-checked={checked}
+      aria-label={ariaLabel}
       onClick={onChange}
+      onFocus={() => setIsFocused(true)}
+      onBlur={() => setIsFocused(false)}
       style={{
         width: 44,
         height: 24,
+        padding: 0,
         borderRadius: 12,
         cursor: "pointer",
         transition: "all 0.2s",
         background: checked ? "#00FF88" : "#1a1a2e",
         border: `1px solid ${checked ? "#00FF8860" : "#2a2a3e"}`,
+        outline: "none",
+        boxShadow: isFocused ? "0 0 0 2px #00AAFF" : "none",
         position: "relative",
         flexShrink: 0,
       }}
     >
-      <div
+      <span
         style={{
           width: 18,
           height: 18,
@@ -109,9 +121,10 @@ function Toggle({
           left: checked ? 22 : 2,
           transition: "all 0.2s",
           background: checked ? "#0a0a0f" : "#4a4a5e",
+          display: "block",
         }}
       />
-    </div>
+    </button>
   );
 }
 
@@ -533,6 +546,7 @@ export default function Dashboard() {
                       <Toggle
                         checked={match.selected}
                         onChange={() => togglePrediction(match.id)}
+                        ariaLabel={`Select ${match.homeTeam} vs ${match.awayTeam}`}
                       />
                       <div>
                         <div style={{ fontSize: 15, fontWeight: 700 }}>
@@ -623,6 +637,8 @@ export default function Dashboard() {
                           </span>
                           <button
                             onClick={() => removePick(match.id, pred.market)}
+                            aria-label={`Remove ${pred.market} prediction for ${match.homeTeam} vs ${match.awayTeam}`}
+                            title={`Remove ${pred.market} prediction`}
                             style={{
                               background: "none",
                               border: "none",
@@ -699,6 +715,7 @@ export default function Dashboard() {
                   <Toggle
                     checked={selectedPlatforms.includes(p.id)}
                     onChange={() => togglePlatform(p.id)}
+                    ariaLabel={`Toggle ${p.name} publishing`}
                   />
                 </div>
               ))}
